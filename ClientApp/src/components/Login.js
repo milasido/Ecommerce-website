@@ -20,8 +20,8 @@ export class Login extends Component {
 
                     {/*Login Form*/}
                 <form>
-                  <input type="text" id="login" class="fadeIn second" name="login" placeholder="Email"/>
-                  <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password"/>
+                  <input type="email" id="login" class="fadeIn second" name="login" placeholder="Email"/>
+                  <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password"/>
                   <input type="submit" class="fadeIn fourth" value="Log In"/>
                 </form>
 

@@ -8,7 +8,7 @@ export class Signup extends Component {
 
     render() {
         return (
-            <div class="wrapper fadeInDown">
+            <div class="fadeInDown">
                 <div id="formContent">
                     {/*Tabs Titles*/}
                     <Link to="/login"><h2 className="inactive underlineHover" >Sign In</h2></Link>
@@ -21,9 +21,9 @@ export class Signup extends Component {
 
                     {/*Login Form*/}
                     <form>
-                        <input type="text" id="email" class="fadeIn second" name="signup" placeholder="Email" />
-                        <input type="text" id="password" class="fadeIn third" name="signup" placeholder="Password" />
-                        <input type="text" id="password2" class="fadeIn third" name="signup" placeholder="Confirm Password" />
+                        <input type="email" id="email" class="fadeIn second" name="signup" placeholder="Email" />
+                        <input type="password" id="password" class="fadeIn third" name="signup" placeholder="Password" />
+                        <input type="password" id="password2" class="fadeIn third" name="signup" placeholder="Confirm Password" />
                         <input type="submit" class="fadeIn fourth" value="Sign Up" />
                     </form>
 
