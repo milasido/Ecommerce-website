@@ -6,6 +6,8 @@ import { Validate } from './components/Validate';
 import { Counter } from './components/Counter';
 import { Login } from './components/Login';
 import { Signup } from './components/Signup';
+import { test } from './components/test';
+
 
 
 import './custom.css'
@@ -20,7 +22,11 @@ export default class App extends Component {
         <Route path='/counter' component={Counter} />
         <Route path='/validate' component={Validate} />
         <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
+            <Route path='/signup' component={Signup} />
+
+            <Route path='/testt' component={test} />
+
+
       </Layout>
     );
   }

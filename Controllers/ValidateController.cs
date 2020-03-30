@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace ecommerce.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("/api/haha/[controller]")]
     [ApiController]
     public class ValidateController : ControllerBase
     {
@@ -50,12 +50,12 @@ namespace ecommerce.Controllers
                         new Address()
                         {
                             Name = "thuy",
-                            Address1 = "Address ID:	" + GetXMLAttribute(element, "ID"),
+                            Address1 = "Address1:	" + GetXMLElement(element, "Address2"),
                             Address2 = "Address2:	" + GetXMLElement(element, "Address1"),
-                            City = "Address2:	" + GetXMLElement(element, "Address1"),
-                            State = "City:		" + GetXMLElement(element, "City"),
-                            Zip5 = "Zip5:		" + GetXMLElement(element, "Zip5"),
-                            Zip4 = "Zip4:		" + GetXMLElement(element, "Zip4")
+                            City = "City:		" + GetXMLElement(element, "City"),
+                            State = "State:		" + GetXMLElement(element, "State"),
+                            Zip5 = "Zip5: " + GetXMLElement(element, "Zip5"),
+                            Zip4 = "Zip4: " + GetXMLElement(element, "Zip4")
                         }
                     );             
                 }

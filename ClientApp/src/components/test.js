@@ -3,12 +3,13 @@
 export class test extends Component {
     static displayName = test.name;
 
-    constructor() {
+    constructor(props) {
+        super(props);
         this.state = { test: [], done: false };
     }
 
     componentDidMount() {
-        fetch('/api/validate')
+        fetch('api/haha/validate')
             .then(res => res.json())
             .then(result => this.setState({ test: result.test }))
     }
@@ -17,14 +18,14 @@ export class test extends Component {
         if (!this.state.done) {
             return (
                 <div>
-                    loadding
+                    
                 </div>
             )
         }
         else {
             return (
                 <div>
-                    test: {this.state.test}
+                    {this.state.test}
                 </div>
             );
         }

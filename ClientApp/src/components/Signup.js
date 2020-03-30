@@ -8,7 +8,7 @@ export class Signup extends Component {
 
     render() {
         return (
-            <div class="fadeInDown">
+            <div class="wrapper fadeInDown">
                 <div id="formContent">
                     {/*Tabs Titles*/}
                     <Link to="/login"><h2 className="inactive underlineHover" >Sign In</h2></Link>

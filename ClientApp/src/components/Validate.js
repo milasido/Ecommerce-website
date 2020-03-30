@@ -15,8 +15,8 @@ export class Validate extends Component {
 
     static renderForecastsTable(forecasts) {
         return (
-            <div id="formContent">
-                <table className='table table-striped' aria-labelledby="tabelLabel">
+            <div className="formContent wrapper">
+                {/*<table className='table table-striped' aria-labelledby="tabelLabel">
                     <thead>
                         <tr>
                             <th>Date</th>
