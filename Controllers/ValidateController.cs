@@ -78,7 +78,7 @@ namespace ecommerce.Controllers
                 return "";
             }
 
-            static string GetXMLAttribute(XElement element, string name)
+            /*static string GetXMLAttribute(XElement element, string name)
             {
                 var el = element.Attribute(name);
                 if (el != null)
@@ -86,7 +86,7 @@ namespace ecommerce.Controllers
                     return el.Value;
                 }
                 return "";
-            }
+            }*/
 
 
         }

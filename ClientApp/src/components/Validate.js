@@ -4,41 +4,9 @@ import './Validate.css';
 export class Validate extends Component {
     static displayName = Validate.name;
 
-    constructor(props) {
-        super(props);
-        this.state = { forecasts: [], loading: true };
-    }
-
-    componentDidMount() {
-        this.populateWeatherData();
-    }
-
-    static renderForecastsTable(forecasts) {
+    render() {
         return (
-            <div className="formContent wrapper">
-                {/*<table className='table table-striped' aria-labelledby="tabelLabel">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Temp. (C)</th>
-                            <th>Temp. (F)</th>
-                            <th>Summary</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {forecasts.map(forecast =>
-                            <tr key={forecast.date}>
-                                <td>{forecast.date}</td>
-                                <td>{forecast.temperatureC}</td>
-                                <td>{forecast.temperatureF}</td>
-                                <td>{forecast.summary}</td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-
-
-                /* adress validation client side*/}
+            <div className="formContent wrapper">            
                 <div class="row">
                     <form class="form-horizontal">
                         <fieldset>
@@ -355,25 +323,5 @@ export class Validate extends Component {
                 </div>
             </div>
         );
-    }
-
-    render() {
-        let contents = this.state.loading
-            ? <p><em>Loading...</em></p>
-            : Validate.renderForecastsTable(this.state.forecasts);
-
-        return (
-            <div>
-                <h2>Address Validation</h2>
-                <p>Please enter you address for shipping</p>
-                {contents}
-            </div>
-        );
-    }
-
-    async populateWeatherData() {
-        const response = await fetch('weatherForecast');
-        const data = await response.json();
-        this.setState({ forecasts: data, loading: false });
     }
 }
