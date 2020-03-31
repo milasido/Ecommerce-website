@@ -32,13 +32,13 @@ namespace ecommerce
         public void ConfigureServices(IServiceCollection services)
         {
             
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            //services.AddDbContext<AuthenticationContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+            services.AddDbContext<AuthenticationContext>(options =>
+           options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
-            //services.AddDefaultIdentity<ApplicationUser>()
-            //    .AddEntityFrameworkStores<AuthenticationContext>();
+            services.AddDefaultIdentity<ApplicationUser>()
+                .AddEntityFrameworkStores<AuthenticationContext>();
 
             services.Configure<IdentityOptions>(option =>
             {
@@ -95,7 +95,6 @@ namespace ecommerce
                 app.UseHsts();
             }
 
-            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

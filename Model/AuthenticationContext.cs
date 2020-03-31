@@ -13,6 +13,6 @@ namespace ecommerce.Model
         {
 
         }
-        public DbSet<ApplicationUser> applicationUsers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

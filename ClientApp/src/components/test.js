@@ -1,33 +1,35 @@
 ﻿import React, { Component } from 'react';
 
 export class test extends Component {
-    static displayName = test.name;
-
-    constructor(props) {
-        super(props);
-        this.state = { test: [], done: false };
+    constructor() {
+        super();
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-        fetch('api/haha/validate')
-            .then(res => res.json())
-            .then(result => this.setState({ test: result.test }))
+    handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+
+        fetch('/api/form-submit-url', {
+            method: 'POST',
+            body: data,
+        });
     }
 
     render() {
-        if (!this.state.done) {
-            return (
-                <div>
-                    
-                </div>
-            )
-        }
-        else {
-            return (
-                <div>
-                    {this.state.test}
-                </div>
-            );
-        }
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor="username">Enter username</label>
+                <input id="username" name="username" type="text" />
+
+                <label htmlFor="email">Enter your email</label>
+                <input id="email" name="email" type="email" />
+
+                <label htmlFor="birthdate">Enter your birth date</label>
+                <input id="birthdate" name="birthdate" type="text" />
+
+                <button>Send data!</button>
+            </form>
+        );
     }
 }

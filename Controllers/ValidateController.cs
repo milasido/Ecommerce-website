@@ -37,7 +37,6 @@ namespace ecommerce.Controllers
             );
             try
             {
-
                 var usps_url = "http://production.shippingapis.com/ShippingAPI.dll?API=Verify&XML=" + requestDoc;
                 var client = new WebClient();
                 var response = client.DownloadString(usps_url);
@@ -78,7 +77,7 @@ namespace ecommerce.Controllers
                 return "";
             }
 
-            /*static string GetXMLAttribute(XElement element, string name)
+            static string GetXMLAttribute(XElement element, string name)
             {
                 var el = element.Attribute(name);
                 if (el != null)
@@ -86,7 +85,7 @@ namespace ecommerce.Controllers
                     return el.Value;
                 }
                 return "";
-            }*/
+            }
 
 
         }
