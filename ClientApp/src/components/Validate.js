@@ -3,6 +3,8 @@ import './Validate.css';
 
 export class Validate extends Component {
     static displayName = Validate.name;
+
+    //api/validate/validate
 /*
     constructor(props) {
         super(props);
@@ -16,7 +18,6 @@ export class Validate extends Component {
             Zip4=''
         }
     }
-
     handleSubmit = (event) => {
         this.setState({
             Name: event.target.value,

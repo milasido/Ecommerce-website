@@ -11,7 +11,7 @@ export class Home extends Component {
     }
 
     componentDidMount() {
-        fetch("/api/haha/validate")
+        fetch("/api/validate/validate")
             .then(res => res.json())
             .then(
                 (result) => {

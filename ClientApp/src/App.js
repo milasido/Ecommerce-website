@@ -6,7 +6,7 @@ import { Validate } from './components/Validate';
 import { Counter } from './components/Counter';
 import { Login } from './components/Login';
 import { Signup } from './components/Signup';
-import { test } from './components/test';
+
 
 
 
@@ -24,7 +24,6 @@ export default class App extends Component {
         <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
 
-            <Route path='/testt' component={test} />
 
 
       </Layout>
