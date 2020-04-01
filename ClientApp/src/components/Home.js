@@ -43,7 +43,7 @@ export class Home extends Component {
                 <ul>
                     {items.map(item => (
                         <div>
-                            
+
                             {item.address1}<br />
                             {item.address2}<br />
                             {item.city}<br />
@@ -58,4 +58,3 @@ export class Home extends Component {
         }
     }
 }
-
