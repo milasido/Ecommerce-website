@@ -19,7 +19,6 @@ export class Validate extends Component {
         this.setState({ [event.target.name]: event.target.value })
     }
 
-
     handleSubmit = event => {
         event.preventDefault();
         console.log(this.state)
@@ -32,23 +31,19 @@ export class Validate extends Component {
             Zip5 : this.state.Zip5,
             Zip4 : this.state.Zip4
         };*/
- 
-
         axios.post('/api/validate/validate', this.state)
             .then(response => {
                 console.log(response);
-            }).then(result => {
-                this.setState(result);
             })
             .catch(error => {
-                console.log(error);
+                console.log(error)
             })
 
     };
 
 
     render() {
-        const { Name, Address1, Address2, City, State, Zip5, Zip4 } = this.state;
+        const { Name, Address1, Address2, City, State, Zip5, Zip4, addr } = this.state;
         return (
             <div className="formContent wrapper">
                 <div class="row">
@@ -123,9 +118,7 @@ export class Validate extends Component {
                             <input type="submit" value="submit" class="fadeIn fourth" />
                         </div>
                     </form>
-                    <div>
-                        {this.state.Zip4}
-                    </div>
+
                 </div>
 
             </div>

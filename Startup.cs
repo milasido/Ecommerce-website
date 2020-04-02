@@ -17,6 +17,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using ecommerce.Model;
+using ecommerce.Data;
+
 namespace ecommerce
 {
     public class Startup
@@ -32,13 +34,12 @@ namespace ecommerce
         public void ConfigureServices(IServiceCollection services)
         {
             
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddControllers();
 
-            services.AddDbContext<AuthenticationContext>(options =>
-           options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("ThuyConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>()
-                .AddEntityFrameworkStores<AuthenticationContext>();
+            
 
             services.Configure<IdentityOptions>(option =>
             {

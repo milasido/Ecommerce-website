@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ecommerce.Model
 {
-    public class Address
+    public class UserAddress
     {
+        [Column(TypeName = "nvarchar(150)")]
         public string Name { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }

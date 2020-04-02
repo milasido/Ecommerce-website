@@ -14,12 +14,12 @@ namespace ecommerce.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController : ControllerBase
+    public class ValidateController : ControllerBase
     {
         [HttpPost("validate")]
         public IActionResult Validate(AddressToValidate addressToValidate)
         {
-            List<Address> result = new List<Address>();
+            UserAddress result = new UserAddress();
             XDocument requestDoc = new XDocument(
                 new XElement("AddressValidateRequest",
                     new XAttribute("USERID", "798STUDE0649"),
@@ -32,6 +32,14 @@ namespace ecommerce.Controllers
                         new XElement("State", addressToValidate.State),
                         new XElement("Zip5", addressToValidate.Zip5),
                         new XElement("Zip4", addressToValidate.Zip4)
+
+
+                        /*new XElement("Address1", "8200 broadway"),
+                        new XElement("Address2", "apt 711n"),
+                        new XElement("City", "houston"),
+                        new XElement("State", "tx"),
+                        new XElement("Zip5", ""),
+                        new XElement("Zip4", "")*/
                     )
                 )
             );
@@ -44,25 +52,20 @@ namespace ecommerce.Controllers
                 var xdoc = XDocument.Parse(response.ToString());
                 foreach (XElement element in xdoc.Descendants("Address"))
                 {
-                    result.Add(
-                        new Address()
-                        {
-                            Name = addressToValidate.Name,
-                            Address1 = GetXMLElement(element, "Address2"),
-                            Address2 = GetXMLElement(element, "Address1"),
-                            City = GetXMLElement(element, "City"),
-                            State = GetXMLElement(element, "State"),
-                            Zip5 = GetXMLElement(element, "Zip5"),
-                            Zip4 = GetXMLElement(element, "Zip4")
-                        }
-                    );
+                    result.Name = addressToValidate.Name;
+                    result.Address1 = GetXMLElement(element, "Address2");
+                    result.Address2 = GetXMLElement(element, "Address1");
+                    result.City = GetXMLElement(element, "City");
+                    result.State = GetXMLElement(element, "State");
+                    result.Zip5 = GetXMLElement(element, "Zip5");
+                    result.Zip4 = GetXMLElement(element, "Zip4");                                      
                 }
             }
             catch (WebException e)
             {
                 Console.WriteLine(e.ToString());
             }
-
+            Console.WriteLine(result.Address1);
             return Ok(result);
 
             //
