@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using ecommerce.Data;
 using ecommerce.Dtos;
@@ -10,6 +13,7 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ecommerce.Controllers
 {
@@ -18,12 +22,15 @@ namespace ecommerce.Controllers
     public class AuthController : ControllerBase
     {
         private DataContext _dataContext;
+        private ApplicationSettings _appsetting;
 
-        public AuthController(Customer dataContext)
+        public AuthController(Customer dataContext, ApplicationSettings appsetting)
         {
             _dataContext = dataContext;
+            _appsetting = appsetting;
         }
-        
+
+        // api/Auth/register
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> Register(CustomerToRegister customerToRegister)
@@ -51,11 +58,64 @@ namespace ecommerce.Controllers
                       prf: KeyDerivationPrf.HMACSHA1,
                       iterationCount: 10000,
                       numBytesRequested: 256 / 8));
-                customerToRegister
+                // store password hashed for new customer
+                newCustomer.PasswordHashed = hashed;
+                newCustomer.PasswordSalt = salted;
+                // add new customer to database
+                await _dataContext.Customer.AddAsync(newCustomer);
+                return StatusCode(201);
             }
-
-
         }
+            
+        // api/Auth/login        
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(CustomerToLogin customerToLogin)
+        {
+            // lowercase email
+            customerToLogin.Email.ToLower();
+            // find email in database
+            if (await _dataContext.Customer.AnyAsync(xxx => xxx.Email == customerToLogin.Email))
+            {
+                // take customer from database
+                var user = await _dataContext.Customer.FirstOrDefaultAsync(xxx => xxx.Email == customerToLogin.Email);
+                // hash password from login
+                byte[] salted = new byte[128 / 8];
+                using (var rng = RandomNumberGenerator.Create())
+                {
+                    rng.GetBytes(salted);
+                }
+                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                      password: customerToLogin.Password,
+                      salt: salted,
+                      prf: KeyDerivationPrf.HMACSHA1,
+                      iterationCount: 10000,
+                      numBytesRequested: 256 / 8));
+                // compare 2 hashed passwords
+                if (hashed != user.PasswordHashed)
+                    return BadRequest(new { message = "Wrong Password!" });
+                else
+                {
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("CustomerId", user.CustomerId.ToString())
+                        }),
+                        Expires = DateTime.UtcNow.AddDays(1),
+                        SigningCredentials = new SigningCredentials(
+                            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appsetting.JWT_Secret)),
+                            SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var sercurityToken = tokenHandler.CreateToken(tokenDescriptor);
+                    var token = tokenHandler.WriteToken(sercurityToken);
+                    return Ok(new { token });
+                }
+            }
+            else return BadRequest(new { message = "This email is not registered" });
+        }
+        
+        
 
     }
 }
