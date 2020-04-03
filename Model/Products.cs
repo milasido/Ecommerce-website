@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using ecommerce.Data;
 
 namespace ecommerce.Model
 {
@@ -15,5 +16,7 @@ namespace ecommerce.Model
         public double ProductPrice { get; set; }
         public string ProductImageUrl { get; set; }    
         public string ProductInformation { get; set; }
+        public int ProductDetailId { get; set; }
+        public ProductDetails productDetails { get; set; }
     }
 }

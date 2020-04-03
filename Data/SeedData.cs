@@ -34,6 +34,7 @@ namespace ecommerce.Data
                         iterationCount: 10000,
                         numBytesRequested: 256 / 8));
                     // store password hashed for new customer
+                    user.Email.ToLower();
                     user.PasswordHashed = hashed;
                     user.PasswordSalt = salted;
                     user.DateCreated = DateTime.Now;

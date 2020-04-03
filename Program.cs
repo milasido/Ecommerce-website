@@ -20,12 +20,12 @@ namespace ecommerce
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                try {
+                try 
+                {
                     var context = services.GetRequiredService<DataContext>();
                     context.Database.Migrate();
-                    // add products and dummy customers to database
-                    // SeedData.Products(context);
-                    // SeedData.DummyCustomers(context);
+                    //add products and dummy customers to database
+                    SeedData.SeedCustomers(context);
                 }
                 catch (Exception e)
                 {

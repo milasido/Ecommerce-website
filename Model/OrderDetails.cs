@@ -11,12 +11,11 @@ namespace ecommerce.Model
     {
         [Key]
         public int DetailId { get; set; }
-        public string DetailProductName { get; set; }
-        public string DetailProductPrice { get; set; }
         public int DetailProductQuantity { get; set; }
-        public int DetailOrderId { get; set; }
-        public int DetailProductId { get; set; }
+        public int OrderId { get; set; }
+        public Orders Orders { get; set; }
         public int ProductId { get; set; }
-        public ICollection<Products> Products { get; set; }
+        public List<Products> Products { get; set; }
+
     }
 }
