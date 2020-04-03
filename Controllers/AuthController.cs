@@ -25,11 +25,13 @@ namespace ecommerce.Controllers
     {
         private DataContext _dataContext;
         private ApplicationSettings _appsetting;
+        private Functions _func;
 
-        public AuthController(DataContext dataContext, IOptions<ApplicationSettings> appsetting)
+        public AuthController(DataContext dataContext, IOptions<ApplicationSettings> appsetting, Functions func)
         {
             _dataContext = dataContext;
             _appsetting = appsetting.Value;
+            _func = func;
         }
 
         // api/Auth/register
@@ -45,24 +47,15 @@ namespace ecommerce.Controllers
             else
             {
                 // create new customer
-                var newCustomer = new Customer();
-                newCustomer.Email = customerToRegister.Email;
+                var newCustomer = new Customer();     
                 // encrypt password
-                byte[] salted = new byte[128 / 8];
-                using (var rng = RandomNumberGenerator.Create())
-                {
-                    rng.GetBytes(salted);
-                }
-                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                      password: customerToRegister.Password,
-                      salt: salted,
-                      prf: KeyDerivationPrf.HMACSHA1,
-                      iterationCount: 10000,
-                      numBytesRequested: 256 / 8));
+                byte[] salted; string hashed;
+                _func.HashPassword(customerToRegister.Password, out salted, out hashed);
                 // store password hashed for new customer
                 newCustomer.PasswordHashed = hashed;
                 newCustomer.PasswordSalt = salted;
                 newCustomer.DateCreated = DateTime.Now;
+                newCustomer.Email = customerToRegister.Email;
                 // add new customer to database
                 await _dataContext.Customer.AddAsync(newCustomer);
                 return StatusCode(201);
@@ -81,17 +74,8 @@ namespace ecommerce.Controllers
                 // take customer from database
                 var user = await _dataContext.Customer.FirstOrDefaultAsync(xxx => xxx.Email == customerToLogin.Email);
                 // hash password from login
-                byte[] salted = new byte[128 / 8];
-                using (var rng = RandomNumberGenerator.Create())
-                {
-                    rng.GetBytes(salted);
-                }
-                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                      password: customerToLogin.Password,
-                      salt: salted,
-                      prf: KeyDerivationPrf.HMACSHA1,
-                      iterationCount: 10000,
-                      numBytesRequested: 256 / 8));
+                byte[] salted; string hashed;
+                _func.HashPassword(customerToLogin.Password, out salted, out hashed);
                 // compare 2 hashed passwords
                 if (hashed != user.PasswordHashed)
                     return BadRequest(new { message = "Wrong Password!" });

@@ -32,14 +32,6 @@ namespace ecommerce.Controllers
                         new XElement("State", addressToValidate.State),
                         new XElement("Zip5", addressToValidate.Zip5),
                         new XElement("Zip4", addressToValidate.Zip4)
-
-
-                        /*new XElement("Address1", "8200 broadway"),
-                        new XElement("Address2", "apt 711n"),
-                        new XElement("City", "houston"),
-                        new XElement("State", "tx"),
-                        new XElement("Zip5", ""),
-                        new XElement("Zip4", "")*/
                     )
                 )
             );
@@ -52,7 +44,7 @@ namespace ecommerce.Controllers
                 var xdoc = XDocument.Parse(response.ToString());
                 foreach (XElement element in xdoc.Descendants("Address"))
                 {
-                    result.Name = addressToValidate.Name;
+                    result.Name = addressToValidate.Name.ToUpper();
                     result.Address1 = GetXMLElement(element, "Address2");
                     result.Address2 = GetXMLElement(element, "Address1");
                     result.City = GetXMLElement(element, "City");
