@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Options;
+
 
 namespace ecommerce.Controllers
 {
@@ -24,15 +26,14 @@ namespace ecommerce.Controllers
         private DataContext _dataContext;
         private ApplicationSettings _appsetting;
 
-        public AuthController(Customer dataContext, ApplicationSettings appsetting)
+        public AuthController(DataContext dataContext, IOptions<ApplicationSettings> appsetting)
         {
             _dataContext = dataContext;
-            _appsetting = appsetting;
+            _appsetting = appsetting.Value;
         }
 
         // api/Auth/register
-        [HttpPost]
-        [Route("register")]
+        [HttpPost("register")]
         public async Task<IActionResult> Register(CustomerToRegister customerToRegister)
         {
             // lowercase email
@@ -61,6 +62,7 @@ namespace ecommerce.Controllers
                 // store password hashed for new customer
                 newCustomer.PasswordHashed = hashed;
                 newCustomer.PasswordSalt = salted;
+                newCustomer.DateCreated = DateTime.Now;
                 // add new customer to database
                 await _dataContext.Customer.AddAsync(newCustomer);
                 return StatusCode(201);
@@ -106,6 +108,13 @@ namespace ecommerce.Controllers
                             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appsetting.JWT_Secret)),
                             SecurityAlgorithms.HmacSha256Signature)
                     };
+                    // store last login for user is now.
+                    user.LastLogin = DateTime.Now;
+                    // store user into database
+                    await _dataContext.Customer.AddAsync(user);
+                    await _dataContext.SaveChangesAsync();
+                    
+
                     var tokenHandler = new JwtSecurityTokenHandler();
                     var sercurityToken = tokenHandler.CreateToken(tokenDescriptor);
                     var token = tokenHandler.WriteToken(sercurityToken);

@@ -14,10 +14,11 @@ namespace ecommerce.Data
         
         }
         public DbSet<Customer> Customer { get; set; }
-
-        public static implicit operator DataContext(Customer v)
-        {
-            throw new NotImplementedException();
-        }
+        public DbSet<CustomerShippingAddresses> CustomerShippingAddresses { get; set; }
+        public DbSet<Orders> Orders { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Products> Products { get; set; }
+        
+        
     }
 }

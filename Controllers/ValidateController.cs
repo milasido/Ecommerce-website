@@ -19,7 +19,7 @@ namespace ecommerce.Controllers
         [HttpPost("validate")]
         public IActionResult Validate(AddressToValidate addressToValidate)
         {
-            UserAddress result = new UserAddress();
+            AddressToValidate result = new AddressToValidate();
             XDocument requestDoc = new XDocument(
                 new XElement("AddressValidateRequest",
                     new XAttribute("USERID", "798STUDE0649"),
@@ -65,7 +65,6 @@ namespace ecommerce.Controllers
             {
                 Console.WriteLine(e.ToString());
             }
-            Console.WriteLine(result.Address1);
             return Ok(result);
 
             //

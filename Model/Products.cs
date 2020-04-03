@@ -11,12 +11,9 @@ namespace ecommerce.Model
     {
         [Key]
         public int ProductId { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
         public string ProductName { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string ProductPrice { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string ProductImgUrl { get; set; }
-      
+        public double ProductPrice { get; set; }
+        public string ProductImageUrl { get; set; }    
+        public string ProductInformation { get; set; }
     }
 }

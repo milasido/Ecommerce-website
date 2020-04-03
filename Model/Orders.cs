@@ -11,21 +11,16 @@ namespace ecommerce.Model
     {
         [Key]
         public int OrderId { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string Order { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string Email { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string Password { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string Address1 { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string Address2 { get; set; }
-        [Column(TypeName = "nvarchar(100)")]
-        public string City { get; set; }
-        [Column(TypeName = "nvarchar(20)")]
-        public string State { get; set; }
-        public int Zip5 { get; set; }
-        public int Zip4 { get; set; }
+        public string OrderName { get; set; }
+        public string OrderShipAddress1 { get; set; }
+        public string OrderShipAddress2 { get; set; }
+        public string OrderShipCity { get; set; }
+        public string OrderShipState { get; set; }
+        public int OrderShipZip5 { get; set; }
+        public int OrderShipZip4 { get; set; }
+        public DateTime OrderDate { get; set; }
+        public int CustomerId { get; set; }
+        public Customer customer { get; set; }
+        public ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }
