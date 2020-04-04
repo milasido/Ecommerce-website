@@ -65,6 +65,7 @@ namespace ecommerce.Controllers
                 newCustomer.DateCreated = DateTime.Now;
                 // add new customer to database
                 await _dataContext.Customer.AddAsync(newCustomer);
+                await _dataContext.SaveChangesAsync();
                 return StatusCode(201);
             }
         }
@@ -109,7 +110,7 @@ namespace ecommerce.Controllers
                             SecurityAlgorithms.HmacSha256Signature)
                     };
                     // store last login for user is now.
-                    user.LastLogin = DateTime.Now;
+                    //user.LastLogin = DateTime.Now;
                     // store user into database
                     await _dataContext.Customer.AddAsync(user);
                     await _dataContext.SaveChangesAsync();

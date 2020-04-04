@@ -1,12 +1,33 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './Login-signup.css'
 
 
 export class Signup extends Component {
     static displayName = Signup.name;
 
+    state = {
+        Email: '',
+        Password: ''
+    }
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+    }
+    handleSubmit = event => {
+        event.preventDefault();
+        console.log(this.state)
+        axios.post('/api/Auth/Register', this.state)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    };
+
     render() {
+        const { Email, Password } = this.state;
         return (
             <div class="wrapper fadeInDown">
                 <div id="formContent">
@@ -20,9 +41,9 @@ export class Signup extends Component {
                     </div>
 
                     {/*Login Form*/}
-                    <form>
-                        <input type="email" id="email" class="fadeIn second" name="signup" placeholder="Email" />
-                        <input type="password" id="password" class="fadeIn third" name="signup" placeholder="Password" />
+                    <form onSubmit={this.handleSubmit}>
+                        <input onChange={this.handleChange} value={Email} type="email" id="email" class="fadeIn second" name="Email" placeholder="Email" />
+                        <input onChange={this.handleChange} value={Password} type="password" id="password" class="fadeIn third" name="Password" placeholder="Password" />
                         <input type="password" id="password2" class="fadeIn third" name="signup" placeholder="Confirm Password" />
                         <input type="submit" class="fadeIn fourth" value="Sign Up" />
                     </form>
