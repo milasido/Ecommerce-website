@@ -23,6 +23,7 @@ namespace ecommerce.Data
         {
             modelBuilder.SeedCustomers();
             modelBuilder.SeedShippingAddressBook();
+            modelBuilder.SeedProducts();
         }
     }
 }
