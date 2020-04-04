@@ -1,5 +1,4 @@
-﻿
-#card-wrapper {
+﻿#card-wrapper {
     height: 420px;
     width: 654px;
     margin: 50px auto;
@@ -10,15 +9,17 @@
 }
 
 #product-img {
-    float: left; 
     height: 420px;
     width: 327px;
-    position: absolute;
+    border-radius: 7px 0 0 7px;
+    position: relative;
 }
 
-    #product-img {
-        border-radius: 7px 0 0 7px;
-    }
+#thumbnail {
+    height: auto;
+    width: 327px;
+    float: left;
+}
 
 #product-info {
     float: left;

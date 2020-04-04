@@ -45,7 +45,7 @@ export class Home extends Component {
                     {items.map(item => (
                         <div id="card-wrapper" class="wrapper">
                             <div id= "product-img" class="product-img">
-                                <img src={item.productImageUrl}/>
+                                <img id="thumbnail" src={item.productImageUrl}/>
                             </div>
                             <div id="product-info" class="product-info">
                                 <div id="product-text" class="product-text">
@@ -54,16 +54,12 @@ export class Home extends Component {
                                     <p>{item.productInformation}</p>
                                 </div>
                                 <div class="product-price-btn">
-                                    <p><span>{item.productPrice}</span>$</p>
+                                    <p><span id="price" >{item.productPrice}</span>$</p>
                                     <button type="button">Add to cart</button>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-                        
+                      
                             /*{ item.productImageUrl }</br>>
                             {item.productName}<br />
                             {item.productPrice}<br />
