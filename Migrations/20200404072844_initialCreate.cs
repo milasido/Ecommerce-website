@@ -192,17 +192,62 @@ namespace ecommerce.Migrations
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 4, 1, 42, 5, 648, DateTimeKind.Local).AddTicks(9196), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=", new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 }, "tx", "", "" });
+                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 4, 2, 28, 43, 662, DateTimeKind.Local).AddTicks(9685), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=", new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 }, "tx", "", "" });
 
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 4, 1, 42, 5, 652, DateTimeKind.Local).AddTicks(9702), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=", new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 }, "MI", "", "49022" });
+                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 4, 2, 28, 43, 667, DateTimeKind.Local).AddTicks(4386), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=", new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 }, "MI", "", "49022" });
 
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 4, 1, 42, 5, 653, DateTimeKind.Local).AddTicks(452), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=", new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 }, "ny", "", "10952" });
+                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 4, 2, 28, 43, 667, DateTimeKind.Local).AddTicks(4453), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=", new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 }, "ny", "", "10952" });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
+                values: new object[] { 1, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
+                values: new object[] { 2, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
+                values: new object[] { 3, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
+                values: new object[] { 4, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
+                values: new object[] { 5, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
+                values: new object[] { 6, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
+                values: new object[] { 7, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
+                values: new object[] { 8, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
+                values: new object[] { 9, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
 
             migrationBuilder.InsertData(
                 table: "CustomerShippingAddresses",

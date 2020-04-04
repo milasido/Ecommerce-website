@@ -197,12 +197,12 @@ namespace ecommerce.Migrations
                             Address1 = "8200 broadway st",
                             Address2 = "apt 711n",
                             City = "houston",
-                            DateCreated = new DateTime(2020, 4, 4, 1, 42, 5, 648, DateTimeKind.Local).AddTicks(9196),
+                            DateCreated = new DateTime(2020, 4, 4, 2, 28, 43, 662, DateTimeKind.Local).AddTicks(9685),
                             Email = "wolnguyen98@gmail.com",
                             Fullname = "thuy nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=",
-                            PasswordSalt = new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 },
+                            PasswordHashed = "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=",
+                            PasswordSalt = new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 },
                             State = "tx",
                             Zip4 = "",
                             Zip5 = ""
@@ -213,12 +213,12 @@ namespace ecommerce.Migrations
                             Address1 = "8956 Sage St",
                             Address2 = "",
                             City = "Benton Harbor",
-                            DateCreated = new DateTime(2020, 4, 4, 1, 42, 5, 652, DateTimeKind.Local).AddTicks(9702),
+                            DateCreated = new DateTime(2020, 4, 4, 2, 28, 43, 667, DateTimeKind.Local).AddTicks(4386),
                             Email = "cmphan7@gmail.com",
                             Fullname = "cuong phan",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=",
-                            PasswordSalt = new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 },
+                            PasswordHashed = "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=",
+                            PasswordSalt = new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 },
                             State = "MI",
                             Zip4 = "",
                             Zip5 = "49022"
@@ -229,12 +229,12 @@ namespace ecommerce.Migrations
                             Address1 = "457 Illinois Road",
                             Address2 = "",
                             City = "Monsey",
-                            DateCreated = new DateTime(2020, 4, 4, 1, 42, 5, 653, DateTimeKind.Local).AddTicks(452),
+                            DateCreated = new DateTime(2020, 4, 4, 2, 28, 43, 667, DateTimeKind.Local).AddTicks(4453),
                             Email = "kimnguyen137@gmail.com",
                             Fullname = "kim nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=",
-                            PasswordSalt = new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 },
+                            PasswordHashed = "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=",
+                            PasswordSalt = new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 },
                             State = "ny",
                             Zip4 = "",
                             Zip5 = "10952"
@@ -454,6 +454,89 @@ namespace ecommerce.Migrations
                     b.HasIndex("productDetailsProductDetailId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            ProductDetailId = 1,
+                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
+                            ProductName = "Dell xps 15",
+                            ProductPrice = 1000.0
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            ProductDetailId = 1,
+                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
+                            ProductName = "Dell xps 15",
+                            ProductPrice = 1000.0
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            ProductDetailId = 1,
+                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
+                            ProductName = "Dell xps 15",
+                            ProductPrice = 1000.0
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            ProductDetailId = 1,
+                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
+                            ProductName = "Dell xps 15",
+                            ProductPrice = 1000.0
+                        },
+                        new
+                        {
+                            ProductId = 5,
+                            ProductDetailId = 1,
+                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
+                            ProductName = "Dell xps 15",
+                            ProductPrice = 1000.0
+                        },
+                        new
+                        {
+                            ProductId = 6,
+                            ProductDetailId = 1,
+                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
+                            ProductName = "Dell xps 15",
+                            ProductPrice = 1000.0
+                        },
+                        new
+                        {
+                            ProductId = 7,
+                            ProductDetailId = 1,
+                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
+                            ProductName = "Dell xps 15",
+                            ProductPrice = 1000.0
+                        },
+                        new
+                        {
+                            ProductId = 8,
+                            ProductDetailId = 1,
+                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
+                            ProductName = "Dell xps 15",
+                            ProductPrice = 1000.0
+                        },
+                        new
+                        {
+                            ProductId = 9,
+                            ProductDetailId = 1,
+                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
+                            ProductName = "Dell xps 15",
+                            ProductPrice = 1000.0
+                        });
                 });
 
             modelBuilder.Entity("ecommerce.Model.CustomerShippingAddresses", b =>

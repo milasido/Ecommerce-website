@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Home_products.css';
 
 export class Home extends Component {
     constructor(props) {
@@ -11,7 +12,7 @@ export class Home extends Component {
     }
 
     componentDidMount() {
-        fetch("/api/validate/validate")
+        fetch("/api/Home/Products")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -40,20 +41,36 @@ export class Home extends Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <ul>
+                <div>
                     {items.map(item => (
-                        <div>
-
-                            {item.address1}<br />
-                            {item.address2}<br />
-                            {item.city}<br />
-                            {item.state}<br />
-                            {item.zip5}<br />
-                            {item.zip4}<br />
-
+                        <div id="card-wrapper" class="wrapper">
+                            <div id= "product-img" class="product-img">
+                                <img src={item.productImageUrl}/>
+                            </div>
+                            <div id="product-info" class="product-info">
+                                <div id="product-text" class="product-text">
+                                    <h1>{item.productName}</h1>
+                                    <h2>by studio and friends</h2>
+                                    <p>{item.productInformation}</p>
+                                </div>
+                                <div class="product-price-btn">
+                                    <p><span>{item.productPrice}</span>$</p>
+                                    <button type="button">Add to cart</button>
+                                </div>
+                            </div>
                         </div>
+
+
+
+
+                        
+                            /*{ item.productImageUrl }</br>>
+                            {item.productName}<br />
+                            {item.productPrice}<br />
+                            {item.productInformation}<br />*/
+                       
                     ))}
-                </ul>
+                </div>
             );
         }
     }

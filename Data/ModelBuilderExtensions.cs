@@ -168,7 +168,7 @@ namespace ecommerce.Data
                 },
                 new Products
                 {
-                    ProductId = 1,
+                    ProductId = 2,
                     ProductName = "Dell xps 15",
                     ProductPrice = 1000,
                     ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
@@ -177,7 +177,7 @@ namespace ecommerce.Data
                 },
                 new Products
                 {
-                    ProductId = 1,
+                    ProductId = 3,
                     ProductName = "Dell xps 15",
                     ProductPrice = 1000,
                     ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
@@ -186,7 +186,7 @@ namespace ecommerce.Data
                 },
                 new Products
                 {
-                    ProductId = 1,
+                    ProductId = 4,
                     ProductName = "Dell xps 15",
                     ProductPrice = 1000,
                     ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
@@ -195,7 +195,7 @@ namespace ecommerce.Data
                 },
                 new Products
                 {
-                    ProductId = 1,
+                    ProductId = 5,
                     ProductName = "Dell xps 15",
                     ProductPrice = 1000,
                     ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
@@ -204,7 +204,7 @@ namespace ecommerce.Data
                 },
                 new Products
                 {
-                    ProductId = 1,
+                    ProductId = 6,
                     ProductName = "Dell xps 15",
                     ProductPrice = 1000,
                     ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
@@ -213,7 +213,7 @@ namespace ecommerce.Data
                 },
                 new Products
                 {
-                    ProductId = 1,
+                    ProductId = 7,
                     ProductName = "Dell xps 15",
                     ProductPrice = 1000,
                     ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
@@ -222,7 +222,7 @@ namespace ecommerce.Data
                 },
                 new Products
                 {
-                    ProductId = 1,
+                    ProductId = 8,
                     ProductName = "Dell xps 15",
                     ProductPrice = 1000,
                     ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
@@ -231,7 +231,7 @@ namespace ecommerce.Data
                 },
                 new Products
                 {
-                    ProductId = 1,
+                    ProductId = 9,
                     ProductName = "Dell xps 15",
                     ProductPrice = 1000,
                     ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
