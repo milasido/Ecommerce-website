@@ -21,6 +21,7 @@ namespace ecommerce.Model
         public DateTime OrderDate { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
+        public int OrderDetailId { get; set; }
         public ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }

@@ -21,8 +21,8 @@ namespace ecommerce.Migrations
                     Address2 = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
                     State = table.Column<string>(nullable: true),
-                    Zip5 = table.Column<int>(nullable: false),
-                    Zip4 = table.Column<int>(nullable: false),
+                    Zip5 = table.Column<string>(nullable: true),
+                    Zip4 = table.Column<string>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     LastLogin = table.Column<DateTime>(nullable: false)
                 },
@@ -122,7 +122,8 @@ namespace ecommerce.Migrations
                     OrderShipZip5 = table.Column<int>(nullable: false),
                     OrderShipZip4 = table.Column<int>(nullable: false),
                     OrderDate = table.Column<DateTime>(nullable: false),
-                    CustomerId = table.Column<int>(nullable: false)
+                    CustomerId = table.Column<int>(nullable: false),
+                    OrderDetailId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

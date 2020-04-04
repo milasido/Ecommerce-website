@@ -180,11 +180,11 @@ namespace ecommerce.Migrations
                     b.Property<string>("State")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Zip4")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Zip4")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("Zip5")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Zip5")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("CustomerId");
 
@@ -264,6 +264,9 @@ namespace ecommerce.Migrations
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("OrderDetailId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("OrderName")
                         .HasColumnType("TEXT");

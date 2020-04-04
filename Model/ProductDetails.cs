@@ -50,5 +50,6 @@ namespace ecommerce.Data
         public string Mainboard { get; set; }
         public string Weight { get; set; }
         public string Backlight { get; set; }
+
     }
 }

@@ -9,6 +9,7 @@ namespace ecommerce.Model
 {
     public class Customer
     {     
+        [Key]
         public int CustomerId { get; set; }
         public string Fullname { get; set; }
         public string Email { get; set; }
@@ -18,8 +19,8 @@ namespace ecommerce.Model
         public string Address2 { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public int Zip5 { get; set; }
-        public int Zip4 { get; set; }
+        public string Zip5 { get; set; }
+        public string Zip4 { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime LastLogin { get; set; }
         public ICollection<CustomerShippingAddresses> CustomerShippingAddresses { get; set; }

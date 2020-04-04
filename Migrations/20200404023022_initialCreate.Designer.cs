@@ -9,7 +9,7 @@ using ecommerce.Data;
 namespace ecommerce.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200403234155_initialCreate")]
+    [Migration("20200404023022_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -182,11 +182,11 @@ namespace ecommerce.Migrations
                     b.Property<string>("State")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Zip4")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Zip4")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("Zip5")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Zip5")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("CustomerId");
 
@@ -266,6 +266,9 @@ namespace ecommerce.Migrations
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("OrderDetailId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("OrderName")
                         .HasColumnType("TEXT");

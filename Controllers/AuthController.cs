@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
-
+using System.Buffers.Text;
 
 namespace ecommerce.Controllers
 {
@@ -81,22 +81,17 @@ namespace ecommerce.Controllers
             {
                 // take customer from database
                 var user = await _dataContext.Customer.FirstOrDefaultAsync(xxx => xxx.Email == customerToLogin.Email);
-                // hash password from login
-                byte[] salted = new byte[128 / 8];
-                using (var rng = RandomNumberGenerator.Create())
-                {
-                    rng.GetBytes(salted);
-                }
+                // decrypt user pass from database             
                 string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                       password: customerToLogin.Password,
-                      salt: salted,
+                      salt: user.PasswordSalt,
                       prf: KeyDerivationPrf.HMACSHA1,
                       iterationCount: 10000,
                       numBytesRequested: 256 / 8));
                 // compare 2 hashed passwords
                 if (hashed != user.PasswordHashed)
                     return BadRequest(new { message = "Wrong Password!" });
-                else
+                else // create token & response to client
                 {
                     var tokenDescriptor = new SecurityTokenDescriptor
                     {
@@ -112,9 +107,6 @@ namespace ecommerce.Controllers
                     // store last login for user is now.
                     //user.LastLogin = DateTime.Now;
                     // store user into database
-                    await _dataContext.Customer.AddAsync(user);
-                    await _dataContext.SaveChangesAsync();
-
 
                     var tokenHandler = new JwtSecurityTokenHandler();
                     var sercurityToken = tokenHandler.CreateToken(tokenDescriptor);
