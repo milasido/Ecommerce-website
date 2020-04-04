@@ -9,7 +9,7 @@ using ecommerce.Data;
 namespace ecommerce.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200404023022_initialCreate")]
+    [Migration("20200404064206_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -191,6 +191,56 @@ namespace ecommerce.Migrations
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customer");
+
+                    b.HasData(
+                        new
+                        {
+                            CustomerId = 1,
+                            Address1 = "8200 broadway st",
+                            Address2 = "apt 711n",
+                            City = "houston",
+                            DateCreated = new DateTime(2020, 4, 4, 1, 42, 5, 648, DateTimeKind.Local).AddTicks(9196),
+                            Email = "wolnguyen98@gmail.com",
+                            Fullname = "thuy nguyen",
+                            LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PasswordHashed = "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=",
+                            PasswordSalt = new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 },
+                            State = "tx",
+                            Zip4 = "",
+                            Zip5 = ""
+                        },
+                        new
+                        {
+                            CustomerId = 2,
+                            Address1 = "8956 Sage St",
+                            Address2 = "",
+                            City = "Benton Harbor",
+                            DateCreated = new DateTime(2020, 4, 4, 1, 42, 5, 652, DateTimeKind.Local).AddTicks(9702),
+                            Email = "cmphan7@gmail.com",
+                            Fullname = "cuong phan",
+                            LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PasswordHashed = "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=",
+                            PasswordSalt = new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 },
+                            State = "MI",
+                            Zip4 = "",
+                            Zip5 = "49022"
+                        },
+                        new
+                        {
+                            CustomerId = 3,
+                            Address1 = "457 Illinois Road",
+                            Address2 = "",
+                            City = "Monsey",
+                            DateCreated = new DateTime(2020, 4, 4, 1, 42, 5, 653, DateTimeKind.Local).AddTicks(452),
+                            Email = "kimnguyen137@gmail.com",
+                            Fullname = "kim nguyen",
+                            LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PasswordHashed = "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=",
+                            PasswordSalt = new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 },
+                            State = "ny",
+                            Zip4 = "",
+                            Zip5 = "10952"
+                        });
                 });
 
             modelBuilder.Entity("ecommerce.Model.CustomerShippingAddresses", b =>
@@ -228,6 +278,80 @@ namespace ecommerce.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("CustomerShippingAddresses");
+
+                    b.HasData(
+                        new
+                        {
+                            ShippingId = 1,
+                            Address1 = "8220 broadway",
+                            Address2 = "apt 711n",
+                            City = "houston",
+                            CustomerId = 1,
+                            Name = "thuy nguyen",
+                            State = "tx",
+                            Zip4 = "1233",
+                            Zip5 = "77061"
+                        },
+                        new
+                        {
+                            ShippingId = 2,
+                            Address1 = "8220 broadway",
+                            Address2 = "apt 709n",
+                            City = "houston",
+                            CustomerId = 1,
+                            Name = "chau nguyen",
+                            State = "tx",
+                            Zip4 = "1233",
+                            Zip5 = "77061"
+                        },
+                        new
+                        {
+                            ShippingId = 3,
+                            Address1 = "921 Trucklemans Lane",
+                            Address2 = "",
+                            City = "Brookfield",
+                            CustomerId = 2,
+                            Name = "cuong nguyen",
+                            State = "ca",
+                            Zip4 = "",
+                            Zip5 = "665501"
+                        },
+                        new
+                        {
+                            ShippingId = 4,
+                            Address1 = "8956 Sage St",
+                            Address2 = "",
+                            City = "Benton Harbor",
+                            CustomerId = 2,
+                            Name = "cuong phan",
+                            State = "MI ",
+                            Zip4 = "",
+                            Zip5 = "49022"
+                        },
+                        new
+                        {
+                            ShippingId = 5,
+                            Address1 = "339 East Thompson Court",
+                            Address2 = "",
+                            City = "Beaver Falls",
+                            CustomerId = 3,
+                            Name = "kim phan",
+                            State = "PA ",
+                            Zip4 = "",
+                            Zip5 = "15010"
+                        },
+                        new
+                        {
+                            ShippingId = 6,
+                            Address1 = "457 Illinois Road",
+                            Address2 = "218 Village Road",
+                            City = "Brookfield",
+                            CustomerId = 3,
+                            Name = "kim nguyen",
+                            State = "ca",
+                            Zip4 = "",
+                            Zip5 = "665501"
+                        });
                 });
 
             modelBuilder.Entity("ecommerce.Model.OrderDetails", b =>
@@ -285,11 +409,11 @@ namespace ecommerce.Migrations
                     b.Property<string>("OrderShipState")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("OrderShipZip4")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("OrderShipZip4")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("OrderShipZip5")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("OrderShipZip5")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("OrderId");
 

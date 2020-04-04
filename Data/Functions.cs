@@ -8,12 +8,6 @@ namespace ecommerce.Data
 {
     public class Functions
     {
-        private DataContext _DataContext;
-        public Functions(DataContext DataContext)
-        {
-            _DataContext = DataContext;
-        }
-
         //Function Hash password give hashed password and salted password
         public void HashPassword(string pass, out byte[] salted, out string hashed)
         {
@@ -29,16 +23,6 @@ namespace ecommerce.Data
                 iterationCount: 10000,
                 numBytesRequested: 256 / 8));
         }
-
-        // Function Add to database
-        public void Add<T>(T entity) where T : class
-        {
-            _DataContext.Add(entity);
-        }
-
-        public void Delete<T>(T entity) where T : class
-        {
-            _DataContext.Remove(entity);
-        }
     }
+
 }

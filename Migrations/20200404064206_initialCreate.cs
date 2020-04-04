@@ -119,8 +119,8 @@ namespace ecommerce.Migrations
                     OrderShipAddress2 = table.Column<string>(nullable: true),
                     OrderShipCity = table.Column<string>(nullable: true),
                     OrderShipState = table.Column<string>(nullable: true),
-                    OrderShipZip5 = table.Column<int>(nullable: false),
-                    OrderShipZip4 = table.Column<int>(nullable: false),
+                    OrderShipZip5 = table.Column<string>(nullable: true),
+                    OrderShipZip4 = table.Column<string>(nullable: true),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     CustomerId = table.Column<int>(nullable: false),
                     OrderDetailId = table.Column<int>(nullable: false)
@@ -188,6 +188,51 @@ namespace ecommerce.Migrations
                         principalColumn: "ProductDetailId",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Customer",
+                columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
+                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 4, 1, 42, 5, 648, DateTimeKind.Local).AddTicks(9196), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=", new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 }, "tx", "", "" });
+
+            migrationBuilder.InsertData(
+                table: "Customer",
+                columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
+                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 4, 1, 42, 5, 652, DateTimeKind.Local).AddTicks(9702), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=", new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 }, "MI", "", "49022" });
+
+            migrationBuilder.InsertData(
+                table: "Customer",
+                columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
+                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 4, 1, 42, 5, 653, DateTimeKind.Local).AddTicks(452), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Fz8BNWOnp8zRlT9MIGhY6emoNMyDcjvvHDGI/9F8IKM=", new byte[] { 252, 58, 72, 209, 206, 69, 2, 219, 185, 6, 208, 8, 156, 105, 56, 196 }, "ny", "", "10952" });
+
+            migrationBuilder.InsertData(
+                table: "CustomerShippingAddresses",
+                columns: new[] { "ShippingId", "Address1", "Address2", "City", "CustomerId", "Name", "State", "Zip4", "Zip5" },
+                values: new object[] { 1, "8220 broadway", "apt 711n", "houston", 1, "thuy nguyen", "tx", "1233", "77061" });
+
+            migrationBuilder.InsertData(
+                table: "CustomerShippingAddresses",
+                columns: new[] { "ShippingId", "Address1", "Address2", "City", "CustomerId", "Name", "State", "Zip4", "Zip5" },
+                values: new object[] { 2, "8220 broadway", "apt 709n", "houston", 1, "chau nguyen", "tx", "1233", "77061" });
+
+            migrationBuilder.InsertData(
+                table: "CustomerShippingAddresses",
+                columns: new[] { "ShippingId", "Address1", "Address2", "City", "CustomerId", "Name", "State", "Zip4", "Zip5" },
+                values: new object[] { 3, "921 Trucklemans Lane", "", "Brookfield", 2, "cuong nguyen", "ca", "", "665501" });
+
+            migrationBuilder.InsertData(
+                table: "CustomerShippingAddresses",
+                columns: new[] { "ShippingId", "Address1", "Address2", "City", "CustomerId", "Name", "State", "Zip4", "Zip5" },
+                values: new object[] { 4, "8956 Sage St", "", "Benton Harbor", 2, "cuong phan", "MI ", "", "49022" });
+
+            migrationBuilder.InsertData(
+                table: "CustomerShippingAddresses",
+                columns: new[] { "ShippingId", "Address1", "Address2", "City", "CustomerId", "Name", "State", "Zip4", "Zip5" },
+                values: new object[] { 5, "339 East Thompson Court", "", "Beaver Falls", 3, "kim phan", "PA ", "", "15010" });
+
+            migrationBuilder.InsertData(
+                table: "CustomerShippingAddresses",
+                columns: new[] { "ShippingId", "Address1", "Address2", "City", "CustomerId", "Name", "State", "Zip4", "Zip5" },
+                values: new object[] { 6, "457 Illinois Road", "218 Village Road", "Brookfield", 3, "kim nguyen", "ca", "", "665501" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_CustomerShippingAddresses_CustomerId",

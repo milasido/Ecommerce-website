@@ -16,8 +16,9 @@ namespace ecommerce
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
-            using (var scope = host.Services.CreateScope())
+            CreateHostBuilder(args).Build().Run();
+            //var host = CreateHostBuilder(args).Build();
+            /*using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try 
@@ -33,7 +34,7 @@ namespace ecommerce
                     logger.LogError(e, "Error occured during migration");
                 }
             }
-            host.Run();
+            host.Run();*/
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

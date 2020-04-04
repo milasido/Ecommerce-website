@@ -34,14 +34,13 @@ namespace ecommerce
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
-
-            services.AddControllers();
-
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("ThuyConnection")));
-
-            
-
+            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+                opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });         
             services.Configure<IdentityOptions>(option =>
             {
                 option.Password.RequireDigit = false;
@@ -97,11 +96,12 @@ namespace ecommerce
                 app.UseHsts();
             }
 
+            app.UseRouting();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
-            app.UseRouting();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+           
 
             app.UseEndpoints(endpoints =>
             {

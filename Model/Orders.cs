@@ -16,8 +16,8 @@ namespace ecommerce.Model
         public string OrderShipAddress2 { get; set; }
         public string OrderShipCity { get; set; }
         public string OrderShipState { get; set; }
-        public int OrderShipZip5 { get; set; }
-        public int OrderShipZip4 { get; set; }
+        public string OrderShipZip5 { get; set; }
+        public string OrderShipZip4 { get; set; }
         public DateTime OrderDate { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
