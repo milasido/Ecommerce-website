@@ -33,10 +33,10 @@ export class NavMenu extends Component {
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" id="toggler" />
 
                         <div class="wrap">
-                            <div class="search">
-                                <input type="text" class="searchTerm" placeholder="What are you looking for?" />
-                                <span><button type="submit" class="searchButton">
-                                    <i class="fa fa-search"></i>
+                            <div className="search">
+                                <input type="text" className="searchTerm" placeholder="What are you looking for?" />
+                                <span><button type="submit" clasNames="searchButton">
+                                    <i className="fa fa-search"></i>
                                 </button>
                                 </span>
                             </div>
@@ -55,7 +55,7 @@ export class NavMenu extends Component {
                                 </NavItem>
                             </ul>
                         </Collapse>
-                        <button id="cart" type="submit"><i className="glyphicon glyphicon-shopping-cart" /> Cart</button>
+                        <button id="cart" type="submit"><i class="glyphicon glyphicon-shopping-cart" /> Cart</button>
                     </Container>
                 </Navbar>
             </header >

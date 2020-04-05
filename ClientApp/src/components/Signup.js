@@ -20,6 +20,8 @@ export class Signup extends Component {
         axios.post('/api/Auth/Register', this.state)
             .then(response => {
                 console.log(response);
+                if (response.status >= 200 && response.status < 300)
+                    this.props.history.replace('/login');
             })
             .catch(error => {
                 console.log(error)

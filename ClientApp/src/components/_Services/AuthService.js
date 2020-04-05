@@ -2,16 +2,15 @@
 import axios from 'axios';
 
 export default class AuthService {
-    constructor(domain) {
-        this.domain = 'api/auth'
+    constructor() {
         this.fetch = this.fetch.bind(this)
         this.login = this.login.bind(this)
         this.getProfile = this.getProfile.bind(this)
     }
 
     login(email, password) {
-        //get a token from api server using fetch api
-        return this.fetch(`${this.domain}/login`, {
+        //get a token from api server using post fetch api
+        return this.fetch('/api/login', {
             method: 'POST',
             body: JSON.stringify({
                 email,
@@ -19,11 +18,12 @@ export default class AuthService {
             })
         }).then(response => {
             this.setToken(response.token) // set token in local storage
-            return Promise.resolve(response);
-        })
+
+            //return Promise.resolve(response);
+        }).then(res => {console(res.data)})
     }
 
-    loogedIn() {
+    loggedIn() {
         //check if there is a token and it's still alive
         const token = this.getToken() // get token from local storage
         return !!token && !this.isTokenExpired(token) 
