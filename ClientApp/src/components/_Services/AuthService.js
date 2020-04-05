@@ -10,7 +10,7 @@ export default class AuthService {
 
     login(email, password) {
         //get a token from api server using post fetch api
-        return this.fetch('/api/login', {
+        return this.fetch('/api/auth/login', {
             method: 'POST',
             body: JSON.stringify({
                 email,
@@ -20,7 +20,7 @@ export default class AuthService {
             this.setToken(response.token) // set token in local storage
 
             //return Promise.resolve(response);
-        }).then(res => {console(res.data)})
+        })
     }
 
     loggedIn() {
