@@ -1,34 +1,33 @@
 ﻿import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Login-signup.css';
+import axios from 'axios';
 import AuthService from './_Services/AuthService';
 
 export class Login extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: ''
+        };
+        // create new authservice
+        this.Auth = new AuthService();
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.Auth = new AuthService();
     }
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
     }
-    handleSubmit(e) {
-        e.preventDefault();
-        console.log(this.state);
+    handleSubmit = (event) => {
+        event.preventDefault();
         this.Auth.login(this.state.email, this.state.password)
-            .then(res => {
-                this.props.history.replace('/');  
+            .then(res => { this.props.history.push('/') })
+            .catch(error => {
+                alert(error);
             })
-            .catch(err => {
-                alert(err);
-            })
-    }
-    /*componentWillMount() {
-        if (this.Auth.loggedIn())
-            this.props.history.replace('/');
-    }*/
 
+    }
 
     render() {
         return (
@@ -42,8 +41,8 @@ export class Login extends Component {
                 </div>
 
                   <form onSubmit={this.handleSubmit}>
-                        <input onChange={this.handleChange} type="email" id="login" class="fadeIn second" name="email" placeholder="Email"/>
-                        <input onChange={this.handleChange} type="password" id="password" class="fadeIn third" name="password" placeholder="Password"/>
+                        <input onChange={this.handleChange} value={this.state.email}  type="email" id="login" class="fadeIn second" name="email" placeholder="Email"/>
+                        <input onChange={this.handleChange} value={this.state.password} type="password" id="password" class="fadeIn third" name="password" placeholder="Password"/>
                   <input type="submit" class="fadeIn fourth" value="Log In"/>
                 </form>
 

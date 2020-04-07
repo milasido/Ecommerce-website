@@ -40,7 +40,7 @@ namespace ecommerce.Controllers
             customerToRegister.Email.ToLower();
             // check if email already in database 
             if (await _dataContext.Customer.AnyAsync(xxx => xxx.Email == customerToRegister.Email))
-                return BadRequest("This Email is already registered");
+                return BadRequest(new { message = "This Email is already registered" });
 
             else
             {

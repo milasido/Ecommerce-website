@@ -19,7 +19,7 @@ export default class AuthService {
         }).then(response => {
             this.setToken(response.token) // set token in local storage
 
-            //return Promise.resolve(response);
+            return Promise.resolve(response);
         })
     }
 
@@ -89,8 +89,8 @@ export default class AuthService {
         if (response.status >= 200 && response.status < 300) { // Success status lies between 200 to 300
             return response
         } else {
-            var error = new Error(response.statusText)
-            error.response = response
+            var error = new Error(response.json())
+            error.response = response.message
             throw error
         }
     }
