@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import logo from '../img/NNP_LOGO.png';
+import { Layout } from './Layout';
 import './NavMenu.css';
 
 export class NavMenu extends Component {
     static displayName = NavMenu.name;
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.toggleNavbar = this.toggleNavbar.bind(this);
-        this.state = {
-            collapsed: true
-        };
+        this.state = { collapsed: true };
     }
 
     toggleNavbar() {
@@ -29,7 +28,6 @@ export class NavMenu extends Component {
 
                     <Container>
                         <img id="logo-nav" src={logo} alt="logo" />
-                        {/*<NavbarBrand tag={Link} to="/">ecommerce</NavbarBrand>*/}
                         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" id="toggler" />
 
                         <div class="wrap">
@@ -50,9 +48,16 @@ export class NavMenu extends Component {
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/validate">validate</NavLink>
                                 </NavItem>
-                                <NavItem>
-                                    <NavLink tag={Link} className="text-dark" to="/login">Login/Register</NavLink>
-                                </NavItem>
+                                {this.props.isLogin === false &&
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-dark" to="/login">Login/Register</NavLink>
+                                    </NavItem>
+                                }
+                                {this.props.isLogin === true &&
+                                    <NavItem onClick={this.props.handleStatus}>
+                                        <NavLink tag={Link} className="text-dark" to="/">Logout</NavLink>
+                                    </NavItem>
+                                }
                             </ul>
                         </Collapse>
                         <button id="cart" type="submit"><i class="glyphicon glyphicon-shopping-cart" /> Cart</button>

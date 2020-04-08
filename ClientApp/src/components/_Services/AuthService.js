@@ -94,4 +94,10 @@ export default class AuthService {
             throw error
         }
     }
+
+    loginStatus() {
+        if (!this.loggedIn())
+            return false;
+        else return true;
+    }
 }
