@@ -36,7 +36,7 @@ export default class App extends Component {
             localStorage.removeItem('id_token');
             this.setState({ isLogin: !this.state.isLogin });
         }
-        if (localStorage.getItem('id_token') != null && this.state.isLogin==true) {
+        if (localStorage.getItem('id_token') == null) {
             console.log("login work");
             this.setState({ isLogin: !this.state.isLogin });
         }
