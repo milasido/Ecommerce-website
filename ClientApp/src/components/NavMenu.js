@@ -58,9 +58,16 @@ export class NavMenu extends Component {
                                         <NavLink tag={Link} className="text-dark" to="/">Logout</NavLink>
                                     </NavItem>
                                 }
+                                {this.props.isLogin === true && //if status is logged in
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-dark" to="/">Account</NavLink>
+                                    </NavItem>
+                                }
                             </ul>
                         </Collapse>
-                        <button id="cart" type="submit"><i class="glyphicon glyphicon-shopping-cart" /> Cart</button>
+                        <Link to="/cart">
+                            <button id="cart" type="submit"><i class="glyphicon glyphicon-shopping-cart" /> Cart</button>
+                        </Link>
                     </Container>
                 </Navbar>
             </header >

@@ -7,6 +7,7 @@ import { Counter } from './components/Counter';
 import { Login } from './components/Login';
 import { Signup } from './components/Signup';
 import { NavMenu } from './components/NavMenu';
+import { Cart } from './components/Cart';
 
 
 
@@ -23,7 +24,7 @@ export default class App extends Component {
 
     constructor(props) {
         super(props);
-        if (localStorage.getItem('id_token') == null)
+        if (localStorage.getItem('id_token') == null) // no token in local storage
             this.state = { isLogin: false };
         else
             this.state = { isLogin: true };
@@ -35,7 +36,7 @@ export default class App extends Component {
             localStorage.removeItem('id_token');
             this.setState({ isLogin: !this.state.isLogin });
         }
-        else {
+        if (localStorage.getItem('id_token') != null && this.state.isLogin==true) {
             console.log("login work");
             this.setState({ isLogin: !this.state.isLogin });
         }
@@ -52,6 +53,9 @@ export default class App extends Component {
                 props => <Login {...props} handleStatus={this.handleStatus} />
             }/>
         <Route path='/signup' component={Signup} />
+         <Route path='/cart' component={Cart} />
+
+
         </Fragment>
     );
   }
