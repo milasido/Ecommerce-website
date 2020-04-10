@@ -48,12 +48,12 @@ export class NavMenu extends Component {
                                 <NavItem>
                                     <NavLink tag={Link} className="text-dark" to="/validate">validate</NavLink>
                                 </NavItem>
-                                {this.props.isLogin === false &&
+                                {this.props.isLogin === false && // if not log in yet
                                     <NavItem>
-                                        <NavLink tag={Link} className="text-dark" to="/login">Login/Register</NavLink>
+                                        <NavLink tag={Link} className="text-dark" to="/login">Login<br/>Register</NavLink>
                                     </NavItem>
                                 }
-                                {this.props.isLogin === true &&
+                                {this.props.isLogin === true && //if status is logged in
                                     <NavItem onClick={this.props.handleStatus}>
                                         <NavLink tag={Link} className="text-dark" to="/">Logout</NavLink>
                                     </NavItem>

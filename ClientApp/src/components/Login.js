@@ -16,11 +16,12 @@ export class Login extends Component {
         this.Auth = new AuthService();
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
+    //handle change form events
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
     }
+    //handle submit form
     handleSubmit = (event) => {
         event.preventDefault();
         this.Auth.login(this.state.email, this.state.password)
@@ -28,7 +29,7 @@ export class Login extends Component {
             .catch(error => {
                 alert(error);
             });
-        
+        this.props.handleStatus(); // after login, run to update the login/logout status
     }
 
 
@@ -47,7 +48,7 @@ export class Login extends Component {
                         <form onSubmit={this.handleSubmit}>
                             <input onChange={this.handleChange} value={this.state.email} type="email" id="login" class="fadeIn second" name="email" placeholder="Email" />
                             <input onChange={this.handleChange} value={this.state.password} type="password" id="password" class="fadeIn third" name="password" placeholder="Password" />
-                            <input onClick={this.props.handleStatus} type="submit" class="fadeIn fourth" value="Log In" />
+                            <input type="submit" class="fadeIn fourth" value="Log In" />
                         </form>
 
                         <div id="formFooter">

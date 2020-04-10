@@ -29,12 +29,16 @@ export default class App extends Component {
             this.state = { isLogin: true };
         this.handleStatus = this.handleStatus.bind(this);
     }
-
+    // handle status logged in or logged out of page
     handleStatus() {
-        if (this.state.isLogin == true)
+        if (localStorage.getItem('id_token') != null) {
             localStorage.removeItem('id_token');
-        if (localStorage.getItem('id_token') == null)
-            this.setState({ isLogin: !this.state.isLogin })
+            this.setState({ isLogin: !this.state.isLogin });
+        }
+        else {
+            console.log("login work");
+            this.setState({ isLogin: !this.state.isLogin });
+        }
     }
    
   render () {
@@ -44,7 +48,9 @@ export default class App extends Component {
         <Route exact path='/' component={Home} />
         <Route path='/counter' component={Counter} />
         <Route path='/validate' component={Validate} />
-        <Route path='/login' component={Login} handleStatus={this.handleStatus} isLogin={this.state.isLogin}/>
+        <Route path='/login' render={
+                props => <Login {...props} handleStatus={this.handleStatus} />
+            }/>
         <Route path='/signup' component={Signup} />
         </Fragment>
     );
