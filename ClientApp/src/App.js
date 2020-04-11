@@ -8,11 +8,13 @@ import { Login } from './components/Login';
 import { Signup } from './components/Signup';
 import { NavMenu } from './components/NavMenu';
 import { Cart } from './components/Cart';
-
+import { Account } from './components/Account';
+import { Checkout } from './components/Checkout';
 
 
 
 import './custom.css'
+
 
 
 
@@ -34,6 +36,7 @@ export default class App extends Component {
     handleStatus() {
         if (localStorage.getItem('id_token') != null) {
             localStorage.removeItem('id_token');
+            localStorage.removeItem('profile');
             this.setState({ isLogin: !this.state.isLogin });
         }
         if (localStorage.getItem('id_token') == null) {
@@ -50,10 +53,14 @@ export default class App extends Component {
         <Route path='/counter' component={Counter} />
         <Route path='/validate' component={Validate} />
         <Route path='/login' render={
-                props => <Login {...props} handleStatus={this.handleStatus} />
-            }/>
+            props => <Login {...props} handleStatus={this.handleStatus} />
+            } />
+        <Route path='/account' render={
+                  props => <Account {...props} handleStatus={this.handleStatus} isLogin={this.state.isLogin} />
+        } />
         <Route path='/signup' component={Signup} />
-         <Route path='/cart' component={Cart} />
+        <Route path='/cart' component={Cart} />
+        <Route path='/checkout' component={Checkout} />
 
 
         </Fragment>

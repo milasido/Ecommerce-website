@@ -5,7 +5,6 @@ export default class AuthService {
     constructor() {
         this.fetch = this.fetch.bind(this)
         this.login = this.login.bind(this)
-        this.getProfile = this.getProfile.bind(this)
     }
 
     login(email, password) {
@@ -17,8 +16,8 @@ export default class AuthService {
                 password
             })
         }).then(response => {
-            this.setToken(response.token) // set token in local storage
-
+            this.setToken(response.token); // set token in local storage
+            this.setProfile(response.token);   // set profile for user login       
             return Promise.resolve(response);
         })
     }
@@ -57,10 +56,13 @@ export default class AuthService {
         // delete token and profile data from local storage
         localStorage.removeItem('id_token');
     }
-
-    getProfile() {
-        //using jwt-decode
-        return decode(this.getItem());
+    setProfile(token) {
+        // Saves profile data to localStorage
+        localStorage.setItem('profile', JSON.stringify(decode(token)));
+    }
+    getUserId() {
+        if(this.loggedIn())
+        return JSON.parse(localStorage.getItem('profile')).CustomerId;
     }
 
     fetch(url, options) {
