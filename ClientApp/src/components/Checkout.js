@@ -3,13 +3,14 @@ import AuthService from './_Services/AuthService';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import './Checkout.css';
+import { Container } from 'reactstrap';
 
 export class Checkout extends Component {
 
     render() {
 
         return (
-            <div class="row rrr">
+            <Container class="row rrr">
                 <div class="col-75 c75">
                     <div class="container ctn">
                         <form action="/action_page.php">
@@ -32,8 +33,12 @@ export class Checkout extends Component {
                                             <input type="text1" id="state" name="state" placeholder="NY" />
                                         </div>
                                         <div class="col-50 c50">
-                                            <label for="zip">Zip</label>
+                                            <label for="zip5">Zip 5</label>
                                             <input type="text1" id="zip" name="zip" placeholder="10001" />
+                                        </div>
+                                        <div class="col-50 c50">
+                                            <label for="zip4">Zip 4</label>
+                                            <input type="text1" id="zip4" name="zip4" placeholder="1111" />
                                         </div>
                                     </div>
                                 </div>
@@ -42,10 +47,10 @@ export class Checkout extends Component {
                                     <h3>Payment</h3>
                                     <label for="fname">Accepted Cards</label>
                                     <div class="icon-container">
-                                        <i id="visa" class="fa fa-cc-visa" ></i>
-                                        <i id="amex" class="fa fa-cc-amex" ></i>
-                                        <i id="mastercard" class="fa fa-cc-mastercard" ></i>
-                                        <i id="discover" class="fa fa-cc-discover" ></i>
+                                        <i id="visa" class="fa fa-cc-visa" >   </i>
+                                        <i id="amex" class="fa fa-cc-amex" >   </i>
+                                        <i id="mastercard" class="fa fa-cc-mastercard" >   </i>
+                                        <i id="discover" class="fa fa-cc-discover" >   </i>
                                     </div>
                                     <label for="cname">Name on Card</label>
                                     <input type="text1" id="cname" name="cardname" placeholder="John More Doe" />
@@ -91,7 +96,7 @@ export class Checkout extends Component {
                             <p>Total <span id="pr" class="price" ><b>$30</b></span></p>
                     </div>
                     </div>
-            </div>
+            </Container>
             );
         }
     }

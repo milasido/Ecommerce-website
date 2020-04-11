@@ -17,10 +17,6 @@ import './custom.css'
 
 
 
-
-
-
-
 export default class App extends Component {
     static displayName = App.name;
 
@@ -47,21 +43,25 @@ export default class App extends Component {
    
   render () {
       return (
-        <Fragment>
-        <NavMenu handleStatus={this.handleStatus} isLogin={this.state.isLogin}/>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/validate' component={Validate} />
-        <Route path='/login' render={
-            props => <Login {...props} handleStatus={this.handleStatus} />
-            } />
-        <Route path='/account' render={
-                  props => <Account {...props} handleStatus={this.handleStatus} isLogin={this.state.isLogin} />
-        } />
-        <Route path='/signup' component={Signup} />
-        <Route path='/cart' component={Cart} />
-        <Route path='/checkout' component={Checkout} />
+          <Fragment>
 
+            <NavMenu handleStatus={this.handleStatus} isLogin={this.state.isLogin}/>
+            <Route exact path='/' component={Home} />
+            <Route path='/counter' component={Counter} />
+            <Route path='/validate' component={Validate} />
+            <Route path='/login' render={
+                props => <Login {...props} handleStatus={this.handleStatus} />
+                } />
+            <Route path='/account' render={
+                      props => <Account {...props} handleStatus={this.handleStatus} isLogin={this.state.isLogin} />
+            } />
+            <Route path='/signup' component={Signup} />
+
+            <Route path='/checkout' component={Checkout} />
+
+            <Route path='/cart' render={
+                props => <Cart {...props} isLogin={this.state.isLogin} />
+            } />
 
         </Fragment>
     );

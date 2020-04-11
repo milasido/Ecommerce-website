@@ -12,8 +12,8 @@
 }
 
 .c50 {
-    -ms-flex: 50%; /* IE10 */
-    flex: 50%;
+    -ms-flex: 33%; /* IE10 */
+    flex: 33%;
 }
 
 .c75 {
@@ -83,8 +83,20 @@ span.price {
         margin-bottom: 20px;
     }
 }
-#visa{color: navy}
-#amex{color: blue}
-#mastercard{color: red}
-#discover{color:orange}
+#visa {
+    color: navy;
+    margin-right: 5px;
+}
+#amex {
+    color: blue;
+    margin-right: 5px;
+}
+#mastercard {
+    color: red;
+    margin-right: 5px;
+}
+#discover {
+    color: orange; 
+    margin-right: 5px;
+}
 #pr{color:black}
