@@ -23,6 +23,7 @@ namespace ecommerce.Model
         public string Zip4 { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime LastLogin { get; set; }
+        public Cart Cart { get; set; }
         public ICollection<CustomerShippingAddresses> CustomerShippingAddresses { get; set; }
         public ICollection<Orders> Orders { get; set; }
     }

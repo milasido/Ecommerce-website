@@ -144,6 +144,34 @@ namespace ecommerce.Migrations
                     b.ToTable("ProductDetails");
                 });
 
+            modelBuilder.Entity("ecommerce.Model.Cart", b =>
+                {
+                    b.Property<int>("CartId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ProductsProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CartId");
+
+                    b.HasIndex("CustomerId")
+                        .IsUnique();
+
+                    b.HasIndex("ProductsProductId");
+
+                    b.ToTable("Cart");
+                });
+
             modelBuilder.Entity("ecommerce.Model.Customer", b =>
                 {
                     b.Property<int>("CustomerId")
@@ -197,12 +225,12 @@ namespace ecommerce.Migrations
                             Address1 = "8200 broadway st",
                             Address2 = "apt 711n",
                             City = "houston",
-                            DateCreated = new DateTime(2020, 4, 4, 2, 28, 43, 662, DateTimeKind.Local).AddTicks(9685),
+                            DateCreated = new DateTime(2020, 4, 11, 18, 40, 14, 454, DateTimeKind.Local).AddTicks(6422),
                             Email = "wolnguyen98@gmail.com",
                             Fullname = "thuy nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=",
-                            PasswordSalt = new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 },
+                            PasswordHashed = "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=",
+                            PasswordSalt = new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 },
                             State = "tx",
                             Zip4 = "",
                             Zip5 = ""
@@ -213,12 +241,12 @@ namespace ecommerce.Migrations
                             Address1 = "8956 Sage St",
                             Address2 = "",
                             City = "Benton Harbor",
-                            DateCreated = new DateTime(2020, 4, 4, 2, 28, 43, 667, DateTimeKind.Local).AddTicks(4386),
+                            DateCreated = new DateTime(2020, 4, 11, 18, 40, 14, 459, DateTimeKind.Local).AddTicks(414),
                             Email = "cmphan7@gmail.com",
                             Fullname = "cuong phan",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=",
-                            PasswordSalt = new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 },
+                            PasswordHashed = "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=",
+                            PasswordSalt = new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 },
                             State = "MI",
                             Zip4 = "",
                             Zip5 = "49022"
@@ -229,12 +257,12 @@ namespace ecommerce.Migrations
                             Address1 = "457 Illinois Road",
                             Address2 = "",
                             City = "Monsey",
-                            DateCreated = new DateTime(2020, 4, 4, 2, 28, 43, 667, DateTimeKind.Local).AddTicks(4453),
+                            DateCreated = new DateTime(2020, 4, 11, 18, 40, 14, 459, DateTimeKind.Local).AddTicks(464),
                             Email = "kimnguyen137@gmail.com",
                             Fullname = "kim nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=",
-                            PasswordSalt = new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 },
+                            PasswordHashed = "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=",
+                            PasswordSalt = new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 },
                             State = "ny",
                             Zip4 = "",
                             Zip5 = "10952"
@@ -537,6 +565,19 @@ namespace ecommerce.Migrations
                             ProductName = "Dell xps 15",
                             ProductPrice = 1000.0
                         });
+                });
+
+            modelBuilder.Entity("ecommerce.Model.Cart", b =>
+                {
+                    b.HasOne("ecommerce.Model.Customer", "Customer")
+                        .WithOne("Cart")
+                        .HasForeignKey("ecommerce.Model.Cart", "CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ecommerce.Model.Products", "Products")
+                        .WithMany()
+                        .HasForeignKey("ProductsProductId");
                 });
 
             modelBuilder.Entity("ecommerce.Model.CustomerShippingAddresses", b =>

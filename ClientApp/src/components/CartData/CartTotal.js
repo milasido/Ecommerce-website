@@ -13,7 +13,7 @@ export default function CartTotal() {
                             type="button"
                         >
                             Clear Cart
-            </button>
+                    </button>
                     </Link>
                     <h5>
                         <span className="text-title">Subtotal: </span>
@@ -27,6 +27,15 @@ export default function CartTotal() {
                         <span className="text-title">Total: </span>
                         <strong>$</strong>
                     </h5>
+
+                    <Link to="/checkout">
+                        <button
+                            className="btn btn-outline-danger text-uppercase mb-3 px-5"
+                            type="button"
+                        >
+                            Begin to checkout
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

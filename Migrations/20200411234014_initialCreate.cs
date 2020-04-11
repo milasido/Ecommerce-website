@@ -189,20 +189,48 @@ namespace ecommerce.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Customer",
-                columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 4, 2, 28, 43, 662, DateTimeKind.Local).AddTicks(9685), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=", new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 }, "tx", "", "" });
+            migrationBuilder.CreateTable(
+                name: "Cart",
+                columns: table => new
+                {
+                    CartId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProductId = table.Column<int>(nullable: false),
+                    ProductsProductId = table.Column<int>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false),
+                    CustomerId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cart", x => x.CartId);
+                    table.ForeignKey(
+                        name: "FK_Cart_Customer_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customer",
+                        principalColumn: "CustomerId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Cart_Products_ProductsProductId",
+                        column: x => x.ProductsProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Restrict);
+                });
 
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 4, 2, 28, 43, 667, DateTimeKind.Local).AddTicks(4386), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=", new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 }, "MI", "", "49022" });
+                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 11, 18, 40, 14, 454, DateTimeKind.Local).AddTicks(6422), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=", new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 }, "tx", "", "" });
 
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 4, 2, 28, 43, 667, DateTimeKind.Local).AddTicks(4453), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atp/aKVvAH2L7d7Y6ujdnep7UkzLLdDMyiiowaX5K2M=", new byte[] { 43, 1, 212, 161, 174, 125, 47, 73, 147, 39, 122, 90, 102, 157, 58, 134 }, "ny", "", "10952" });
+                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 11, 18, 40, 14, 459, DateTimeKind.Local).AddTicks(414), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=", new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 }, "MI", "", "49022" });
+
+            migrationBuilder.InsertData(
+                table: "Customer",
+                columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
+                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 11, 18, 40, 14, 459, DateTimeKind.Local).AddTicks(464), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=", new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 }, "ny", "", "10952" });
 
             migrationBuilder.InsertData(
                 table: "Products",
@@ -280,6 +308,17 @@ namespace ecommerce.Migrations
                 values: new object[] { 6, "457 Illinois Road", "218 Village Road", "Brookfield", 3, "kim nguyen", "ca", "", "665501" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cart_CustomerId",
+                table: "Cart",
+                column: "CustomerId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cart_ProductsProductId",
+                table: "Cart",
+                column: "ProductsProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CustomerShippingAddresses_CustomerId",
                 table: "CustomerShippingAddresses",
                 column: "CustomerId");
@@ -307,6 +346,9 @@ namespace ecommerce.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Cart");
+
             migrationBuilder.DropTable(
                 name: "CustomerShippingAddresses");
 

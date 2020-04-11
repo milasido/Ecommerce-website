@@ -59,12 +59,7 @@ export class Home extends Component {
                                 </div>
                             </div>
                         </div>
-                      
-                            /*{ item.productImageUrl }</br>>
-                            {item.productName}<br />
-                            {item.productPrice}<br />
-                            {item.productInformation}<br />*/
-                       
+
                     ))}
                 </div>
             );

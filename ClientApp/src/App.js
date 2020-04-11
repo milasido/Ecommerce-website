@@ -28,6 +28,7 @@ export default class App extends Component {
             this.state = { isLogin: true };
         this.handleStatus = this.handleStatus.bind(this);
     }
+
     // handle status logged in or logged out of page
     handleStatus() {
         if (localStorage.getItem('id_token') != null) {

@@ -19,6 +19,7 @@ namespace ecommerce.Data
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<ProductDetails> ProductDetails { get; set; }
+        public DbSet<Cart> Cart { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.SeedCustomers();
