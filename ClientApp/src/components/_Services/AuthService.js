@@ -17,7 +17,8 @@ export default class AuthService {
             })
         }).then(response => {
             this.setToken(response.token); // set token in local storage
-            this.setProfile(response.token);   // set profile for user login       
+            this.setProfile(response.token);   // set profile for user login
+            this.setCart(); // set cart for user
             return Promise.resolve(response);
         })
     }
@@ -63,6 +64,9 @@ export default class AuthService {
     getUserId() {
         if(this.loggedIn())
         return JSON.parse(localStorage.getItem('profile')).CustomerId;
+    }
+    setCart() {
+        localStorage.setItem("cart", JSON.stringify(null));
     }
 
     fetch(url, options) {

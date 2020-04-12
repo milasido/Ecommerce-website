@@ -13,31 +13,20 @@ export class Cart extends Component {
         this.Auth = new AuthService();
         this.state = {
             isLogin: this.props.isLogin,
-            items: [],
+            carts: [],
             paid: false
         }
+ 
     }
-    componentDidMount() {
-        fetch("/api/Home/Products")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        items: result
-                    });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
-    }
+
+    
+
+
+    /*componentDidMount() {
+        window.addEventListener("cart", e => 
+            this.setState({items: this.state.items.concat()})
+    }*/
+    
 
     render() {
         if (this.state.isLogin == false)

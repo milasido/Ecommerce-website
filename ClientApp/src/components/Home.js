@@ -55,7 +55,7 @@ export class Home extends Component {
                                 </div>
                                 <div class="product-price-btn">
                                     <p><span id="price" >{item.productPrice}</span>$</p>
-                                    <button type="button">Add to cart</button>
+                                    <button onClick={()=>this.props.addToCart(JSON.stringify(item))} type="button">Add to cart</button>
                                 </div>
                             </div>
                         </div>
