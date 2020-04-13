@@ -25,7 +25,6 @@ export default class App extends Component {
         if (localStorage.getItem('id_token') == null) // no token in local storage
             this.state = {
                 isLogin: false,
-                cartChange: false
             };
         else
             this.state = {
@@ -43,8 +42,7 @@ export default class App extends Component {
         }
         else {
             localStorage.setItem("cart", item);
-        }
-        this.setState({cartChange: !this.state.cartChange}) // update state to know cart was changed
+        }     
     }
     // handle status logged in or logged out of page
     handleStatus() {

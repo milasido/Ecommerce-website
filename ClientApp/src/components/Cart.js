@@ -13,16 +13,20 @@ export class Cart extends Component {
         this.Auth = new AuthService();
         this.state = {
             isLogin: this.props.isLogin,
-            cartChange: this.props.cartChange,
             carts: [],
             paid: false
         }
+        this.handleClearCart = this.handleClearCart.bind(this);
     }   
 
-
+    handleClearCart() {
+        localStorage.setItem("cart", JSON.stringify(null));
+        this.setState({carts: []})
+    }
     componentDidMount() {
         this.setState({ carts: JSON.parse('['+localStorage.getItem("cart")+']') });
     }
+
 
     render() {
         const { carts, paid, isLogin } = this.state;
@@ -35,7 +39,7 @@ export class Cart extends Component {
             <Fragment>
                 <CartColumns />
                 <CartItem carts={this.state.carts}/>
-                <CartTotal/>
+                <CartTotal handleClearCart={this.handleClearCart}/>
             </Fragment>
         );
     }

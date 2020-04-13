@@ -1,44 +1,76 @@
 ﻿import React, { Component } from 'react';
 import AuthService from './_Services/AuthService';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import axios from 'axios';
 import './Checkout.css';
 import { Container } from 'reactstrap';
+import  CartItem  from './CartData/CartItem';
 
 export class Checkout extends Component {
 
-    render() {
+/*    constructor(props) {
+        super(props)*/
+        state = {
+            Name: '',
+            Address1: '',
+            Address2: '',
+            City: '',
+            State: '',
+            Zip5: '',
+            Zip4: '',
+            ValidateResult: {}
+        }
+        /*this.handleChange = this.handleChange.bind(this);
+        this.handleValidate = this.handleValidate.bind(this);*/
 
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+    }
+    handleValidate = event => {
+        event.preventDefault();
+        console.log(this.state)       
+        axios.post('/api/validate/validate', this.state)
+            .then(response => {
+                this.setState({ ValidateResult: response.data });
+                console.log(this.state.ValidateResult)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    };
+
+    render() {
+        const { Name, Address1, Address2, City, State, Zip5, Zip4 } = this.state;
         return (
-            <Container class="row rrr">
+            <div class="row rrr">
                 <div class="col-75 c75">
                     <div class="container ctn">
-                        <form action="/action_page.php">
+                        <form onSubmit={this.handleValidate}>
 
                             <div class="row rrr">
                                 <div class="col-50 c50">
-                                    <h3>Billing Address</h3>
+                                    <h3>Shipping Address</h3>
                                     <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                                    <input type="text1" id="fname" name="firstname" placeholder="John M. Doe" />
-                                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                                    <input type="text1" id="email" name="email" placeholder="john@example.com" />
-                                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                                    <input type="text1" id="adr" name="address" placeholder="542 W. 15th Street" />
+                                    <input onChange={this.handleChange} value={Name} type="text1" id="fname" name="Name" placeholder="John M. Doe" />
+                                    <label for="adr"><i class="fa fa-address-card-o"></i> Address 1</label>
+                                    <input onChange={this.handleChange} value={Address1} type="text1" id="adr1" name="Address1" placeholder="542 W. 15th Street" />
+                                    <label for="adr"><i class="fa fa-address-card-o"></i> Address 2 (optional)</label>
+                                    <input onChange={this.handleChange} value={Address2} type="text1" id="adr2" name="Address2" placeholder="Apt 123" />
                                     <label for="city"><i class="fa fa-institution"></i> City</label>
-                                    <input type="text1" id="city" name="city" placeholder="New York" />
+                                    <input onChange={this.handleChange} value={City} type="text1" id="city" name="City" placeholder="New York" />
 
                                     <div class="row rrr">
                                         <div class="col-50 c50">
                                             <label for="state">State</label>
-                                            <input type="text1" id="state" name="state" placeholder="NY" />
+                                            <input onChange={this.handleChange} value={State} type="text1" id="state" name="State" placeholder="NY" />
                                         </div>
                                         <div class="col-50 c50">
                                             <label for="zip5">Zip 5</label>
-                                            <input type="text1" id="zip" name="zip" placeholder="10001" />
+                                            <input onChange={this.handleChange} value={Zip5} type="text1" id="zip" name="Zip5" placeholder="10001" />
                                         </div>
                                         <div class="col-50 c50">
                                             <label for="zip4">Zip 4</label>
-                                            <input type="text1" id="zip4" name="zip4" placeholder="1111" />
+                                            <input onChange={this.handleChange} value={Zip4} type="text1" id="zip4" name="Zip4" placeholder="1111" />
                                         </div>
                                     </div>
                                 </div>
@@ -73,8 +105,30 @@ export class Checkout extends Component {
 
                             </div>
                             <label>
-                                <input type="checkbox" checked="checked" name="sameadr" /> Shipping address same as billing
+                                <input type="checkbox" checked="checked" name="sameadr" /> Billing address same as billing
                             </label>
+
+                            <button type="submit" >validate</button>
+
+                            {this.state.ValidateResult.address1 != "" &&
+                                <div>
+                                <p2>Shipping Address Recommend:</p2><br/><br/> 
+                                {this.state.ValidateResult.name} <br />
+                                {this.state.ValidateResult.address1} <br />
+                                {this.state.ValidateResult.address2} <br />
+                                {this.state.ValidateResult.city} <br />
+                                {this.state.ValidateResult.state} <br />
+                                {this.state.ValidateResult.zip5}-{this.state.ValidateResult.zip4}
+                                
+                                </div>
+                            }
+                            {this.state.ValidateResult.address1 == "" &&
+                                <div>
+                                    <p2>Cannot validate your address, please type it correcty</p2>
+                                </div>
+                            }
+
+
                             <input type="submit" value="Continue to checkout" class="btnnn" />
                         </form>
                     </div>
@@ -95,8 +149,9 @@ export class Checkout extends Component {
                         <hr/>
                             <p>Total <span id="pr" class="price" ><b>$30</b></span></p>
                     </div>
-                    </div>
-            </Container>
+                </div>
+            </div>
+
             );
         }
     }
