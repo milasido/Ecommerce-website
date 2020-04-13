@@ -24,20 +24,27 @@ export default class App extends Component {
         super(props);
         if (localStorage.getItem('id_token') == null) // no token in local storage
             this.state = {
-                isLogin: false};
+                isLogin: false,
+                cartChange: false
+            };
         else
             this.state = {
-                isLogin: true};
+                isLogin: true,
+                cartChange: false
+            };
         this.handleStatus = this.handleStatus.bind(this);
         this.addToCart = this.addToCart.bind(this);
     }
 
     addToCart(item) {
         if (localStorage.getItem("cart") != "null") {
-            var items = localStorage.getItem("cart").concat(item);
+            var items = localStorage.getItem("cart").concat(','+item);
             localStorage.setItem("cart", items);
         }
-        else localStorage.setItem("cart", item);
+        else {
+            localStorage.setItem("cart", item);
+        }
+        this.setState({cartChange: !this.state.cartChange}) // update state to know cart was changed
     }
     // handle status logged in or logged out of page
     handleStatus() {
@@ -78,7 +85,7 @@ export default class App extends Component {
               <Route path='/checkout' component={Checkout} />
 
               <Route path='/cart' render={
-                    props => <Cart {...props} isLogin={this.state.isLogin} />
+                  props => <Cart {...props} isLogin={this.state.isLogin} cartChange={this.state.cartChange}/>
                     } />
 
         </Fragment>

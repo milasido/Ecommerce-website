@@ -13,30 +13,28 @@ export class Cart extends Component {
         this.Auth = new AuthService();
         this.state = {
             isLogin: this.props.isLogin,
+            cartChange: this.props.cartChange,
             carts: [],
             paid: false
         }
- 
+    }   
+
+
+    componentDidMount() {
+        this.setState({ carts: JSON.parse('['+localStorage.getItem("cart")+']') });
     }
 
-    
-
-
-    /*componentDidMount() {
-        window.addEventListener("cart", e => 
-            this.setState({items: this.state.items.concat()})
-    }*/
-    
-
     render() {
-        if (this.state.isLogin == false)
+        const { carts, paid, isLogin } = this.state;
+        console.log(carts);
+        if (isLogin == false)
             return (<p1> Please login to see your cart! </p1>)
-        else if (this.state.items[0] == null)
+        else if (carts[0] == null)
             return (<p1> Your cart is empty! </p1>)
-        return (
+        else return (
             <Fragment>
                 <CartColumns />
-                <CartItem/>
+                <CartItem carts={this.state.carts}/>
                 <CartTotal/>
             </Fragment>
         );
