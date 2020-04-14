@@ -2,7 +2,9 @@
 import { Link } from 'react-router-dom';
 
 export default function CartTotal({ handleClearCart, carts }) {
-
+    const sub = carts.reduce((sum, i) => (sum += i.quantity * i.productPrice), 0);
+    const tax = sub * 8.5 / 100;
+    const total = sub + tax;
     return (
         <div className="container">
             <div className="row">
@@ -18,17 +20,16 @@ export default function CartTotal({ handleClearCart, carts }) {
                     </Link>
                     <h5>
                         
-                        <span className="text-title">Subtotal: <strong>$ </strong>
-                        {carts.reduce((sum, i) => (sum += i.quantity * i.productPrice), 0)}
+                        <span className="text-title">Subtotal: <strong>$ {sub}</strong>
                         </span>                      
                     </h5>
                     <h5>
-                        <span className="text-title">Tax: </span>
-                        <strong>$</strong>
+                        <span className="text-title">Tax(8.5%): </span>
+                        <strong>$ {tax}</strong>
                     </h5>
                     <h5>
                         <span className="text-title">Total: </span>
-                        <strong>$</strong>
+                        <strong>$ {total}</strong>
                     </h5>
 
                     <Link to="/checkout">

@@ -110,7 +110,7 @@ export class Checkout extends Component {
 
                             <button type="submit" >validate</button>
 
-                            {this.state.ValidateResult.address1 != "" &&
+                            {this.state.ValidateResult.address1 != "" && // could return result
                                 <div>
                                 <p2>Shipping Address Recommend:</p2><br/><br/> 
                                 {this.state.ValidateResult.name} <br />
@@ -122,7 +122,7 @@ export class Checkout extends Component {
                                 
                                 </div>
                             }
-                            {this.state.ValidateResult.address1 == "" &&
+                            {this.state.ValidateResult.address1 == "" && // return null if couldn't validate
                                 <div>
                                     <p2>Cannot validate your address, please type it correcty</p2>
                                 </div>

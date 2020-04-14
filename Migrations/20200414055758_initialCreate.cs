@@ -220,62 +220,62 @@ namespace ecommerce.Migrations
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 11, 18, 40, 14, 454, DateTimeKind.Local).AddTicks(6422), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=", new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 }, "tx", "", "" });
+                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 14, 0, 57, 58, 536, DateTimeKind.Local).AddTicks(1787), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "b7mwkK6e9tNk19QrCG3bu3YYCGTmizn6iGk5ELHmMU4=", new byte[] { 51, 198, 45, 74, 159, 59, 32, 209, 186, 111, 101, 229, 138, 36, 206, 137 }, "tx", "", "" });
 
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 11, 18, 40, 14, 459, DateTimeKind.Local).AddTicks(414), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=", new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 }, "MI", "", "49022" });
+                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 14, 0, 57, 58, 540, DateTimeKind.Local).AddTicks(923), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "b7mwkK6e9tNk19QrCG3bu3YYCGTmizn6iGk5ELHmMU4=", new byte[] { 51, 198, 45, 74, 159, 59, 32, 209, 186, 111, 101, 229, 138, 36, 206, 137 }, "MI", "", "49022" });
 
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 11, 18, 40, 14, 459, DateTimeKind.Local).AddTicks(464), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=", new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 }, "ny", "", "10952" });
+                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 14, 0, 57, 58, 540, DateTimeKind.Local).AddTicks(977), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "b7mwkK6e9tNk19QrCG3bu3YYCGTmizn6iGk5ELHmMU4=", new byte[] { 51, 198, 45, 74, 159, 59, 32, 209, 186, 111, 101, 229, 138, 36, 206, 137 }, "ny", "", "10952" });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
-                values: new object[] { 1, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+                values: new object[] { 1, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell XPS 15", 1399.0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
-                values: new object[] { 2, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+                values: new object[] { 2, null, 1, "http://pngimg.com/uploads/macbook/macbook_PNG76.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Macbook Pro 2020", 1999.0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
-                values: new object[] { 3, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+                values: new object[] { 3, null, 1, "https://png2.cleanpng.com/sh/b8528a5e30d72245cdbbb8c45918877e/L0KzQYm4UcE3N6RnipH0aYP2gLBuTfhxNaR1fdV9cnWwiIS9TcE0NZJqReVucnnog37wjwRmdF5ohARuLXm6Pb3okQQucKEyiAJuY4T1dX7BU8YuOWQyedcALUP3hX7qiPVkc55mjNc2Y3BwgMa0VfJmbZI5S6NtZUW7QIi1UMk1PWM8UaY6NUS1Q4e9UsU4QWI1T5D5bne=/kisspng-hp-spectre-x36-13-ae-series-intel-core-i7-lapt-hp-spectre-x36-13-ae5-3tu-checkmate-compu-5beea431de5807.0945279415423662579107.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "HP Spectre X360 15", 1849.0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
-                values: new object[] { 4, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+                values: new object[] { 4, null, 1, "https://png2.cleanpng.com/sh/374245de3c2eea1a275400c98ec203f4/L0KzQYq3UcI2N5x1R91yc4Pzfri0ggN2e153h9k2c4T1ecm0kBNiel5ugZ9wbEWwRH7zggB1d6EyeeVAcz31f7i0hBFucZ8yTdU9YnHpc4WBhfM3amMzSqs9M0O5RoS4VcQ5PGc5SKgDNUi3SHB3jvc=/kisspng-asus-rog-strix-scar-ii-gl5-4-laptop-asus-rog-gamin-5c4bafc48ec6b2.2943366315484640685848.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "ASUS GL702 Gamming", 1499.0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
-                values: new object[] { 5, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+                values: new object[] { 5, null, 1, "https://png2.cleanpng.com/sh/e6616b48999baa49bc3dd3655cb77303/L0KzQYm3VsE4N6pmi5H0aYP2gLBuTfxieKV0iJ9qc4X2PcP2h710fKNukJ9wbEW4Q37wjwRmdF5ohARuLXm6Pbr6iP9xeJpzfAJ0LUXlQofrWMQ5Omk5SacBLkK0QoK7WcAzOWY3UaQCMkO8QoK9VMkveJ9s/kisspng-laptop-asus-rog-strix-gl553-intel-core-i7-ishoppingpk-5b26d848284156.2121490215292723921649.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "HP Gaming Pavilion 17", 999.0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
-                values: new object[] { 6, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+                values: new object[] { 6, null, 1, "https://static.acer.com/up/Resource/Acer/Laptops/Swift_7/Photogallery/20190322/Acer-Swift-7-SF714-52T-Black-photogallery-02.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Acer Swift 7", 1799.0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
-                values: new object[] { 7, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+                values: new object[] { 7, null, 1, "https://png2.cleanpng.com/sh/634af83ba7489df748a5b02f0ff0e2b0/L0KzQYm3VcE4N5xmfZH0aYP2gLBuTfxieKV0iJ9tZXzvPbLzifVvf5J3fZ86Nz31RH7rhfxtNZJxgdd3d3H1dX64V71zPF5oRadqZnS1QYS4VshjPWk6RqY7OUm5SIG3UcUzPmY4UKc9NUS1SIq1kP5o/kisspng-laptop-dell-alienware-17-r4-dell-alienware-17-r4-c-5afd213168b585.4299680015265385454289.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell Alienware 17", 2999.0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
-                values: new object[] { 8, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+                values: new object[] { 8, null, 1, "https://png2.cleanpng.com/sh/f9413eeafb234fe2d5961891ddd3a7c7/L0KzQYm3UsAzN5h8fZH0aYP2gLBuTf1ia5N0h902cILyPb7ogBlvfJD4gJ92YXPlf7FyTfFqel5xeeJ9b4CwfbLqgv9wc151htk2cHnmPYboV8U0QJdmStQDMkC0PoeCUsMyOWc4Sac6N0a2QYi6WME4QGMziNDw/kisspng-macbook-pro-macintosh-macbook-air-laptop-macbook-png-pic-5a7538fa2b8201.6923116315176317381782.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Macbook Air 13 2019", 1299.0, null });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "ProductId", "OrderDetailsDetailId", "ProductDetailId", "ProductImageUrl", "ProductInformation", "ProductName", "ProductPrice", "productDetailsProductDetailId" },
-                values: new object[] { 9, null, 1, "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "Dell xps 15", 1000.0, null });
+                values: new object[] { 9, null, 1, "https://png2.cleanpng.com/sh/75c27a763e0e2eacc4233bf572d6d185/L0KzQYm3WcI4N6t2kJH0aYP2gLBuTfxmdpD7h599aHnxe8HohL11PGcyiJ87LXb6PYK7TflvfJZxRdV4cnWweYa0jB4ue5JxfZ8AYnHnQoa8VvIybJY3S5CAOEe2QIm3V8E2O2k1T6UENEK6Qom9TwBvbz==/kisspng-lenovo-thinkpad-t46-p-2-fw-14-intel-core-i5-on-sale-5bad2556b1de23.5873080715380739427286.png", "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.", "LENOVO Thinkpad X1 Carbon Gen 7", 1719.0, null });
 
             migrationBuilder.InsertData(
                 table: "CustomerShippingAddresses",

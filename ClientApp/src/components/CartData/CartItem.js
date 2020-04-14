@@ -13,7 +13,7 @@ export default function CartItem({ carts, handleRemoveItem }) {
                         <img
                             src={item.productImageUrl}
                             alt="Product"
-                            style={{ width: '5rem', height: '5rem' }}
+                            style={{ width: '5rem', height: 'auto' }}
                             className="img-fluid"
                         />
                     </div>

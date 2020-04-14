@@ -9,7 +9,7 @@ using ecommerce.Data;
 namespace ecommerce.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200411234014_initialCreate")]
+    [Migration("20200414055758_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -227,12 +227,12 @@ namespace ecommerce.Migrations
                             Address1 = "8200 broadway st",
                             Address2 = "apt 711n",
                             City = "houston",
-                            DateCreated = new DateTime(2020, 4, 11, 18, 40, 14, 454, DateTimeKind.Local).AddTicks(6422),
+                            DateCreated = new DateTime(2020, 4, 14, 0, 57, 58, 536, DateTimeKind.Local).AddTicks(1787),
                             Email = "wolnguyen98@gmail.com",
                             Fullname = "thuy nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=",
-                            PasswordSalt = new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 },
+                            PasswordHashed = "b7mwkK6e9tNk19QrCG3bu3YYCGTmizn6iGk5ELHmMU4=",
+                            PasswordSalt = new byte[] { 51, 198, 45, 74, 159, 59, 32, 209, 186, 111, 101, 229, 138, 36, 206, 137 },
                             State = "tx",
                             Zip4 = "",
                             Zip5 = ""
@@ -243,12 +243,12 @@ namespace ecommerce.Migrations
                             Address1 = "8956 Sage St",
                             Address2 = "",
                             City = "Benton Harbor",
-                            DateCreated = new DateTime(2020, 4, 11, 18, 40, 14, 459, DateTimeKind.Local).AddTicks(414),
+                            DateCreated = new DateTime(2020, 4, 14, 0, 57, 58, 540, DateTimeKind.Local).AddTicks(923),
                             Email = "cmphan7@gmail.com",
                             Fullname = "cuong phan",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=",
-                            PasswordSalt = new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 },
+                            PasswordHashed = "b7mwkK6e9tNk19QrCG3bu3YYCGTmizn6iGk5ELHmMU4=",
+                            PasswordSalt = new byte[] { 51, 198, 45, 74, 159, 59, 32, 209, 186, 111, 101, 229, 138, 36, 206, 137 },
                             State = "MI",
                             Zip4 = "",
                             Zip5 = "49022"
@@ -259,12 +259,12 @@ namespace ecommerce.Migrations
                             Address1 = "457 Illinois Road",
                             Address2 = "",
                             City = "Monsey",
-                            DateCreated = new DateTime(2020, 4, 11, 18, 40, 14, 459, DateTimeKind.Local).AddTicks(464),
+                            DateCreated = new DateTime(2020, 4, 14, 0, 57, 58, 540, DateTimeKind.Local).AddTicks(977),
                             Email = "kimnguyen137@gmail.com",
                             Fullname = "kim nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "atLC4Tyof1kQxQH1XTZ5/xyqcH4V0RfJol5uZ/7mfyM=",
-                            PasswordSalt = new byte[] { 28, 73, 30, 162, 0, 26, 43, 158, 37, 90, 26, 37, 188, 66, 108, 74 },
+                            PasswordHashed = "b7mwkK6e9tNk19QrCG3bu3YYCGTmizn6iGk5ELHmMU4=",
+                            PasswordSalt = new byte[] { 51, 198, 45, 74, 159, 59, 32, 209, 186, 111, 101, 229, 138, 36, 206, 137 },
                             State = "ny",
                             Zip4 = "",
                             Zip5 = "10952"
@@ -492,80 +492,80 @@ namespace ecommerce.Migrations
                             ProductDetailId = 1,
                             ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
                             ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
-                            ProductName = "Dell xps 15",
-                            ProductPrice = 1000.0
+                            ProductName = "Dell XPS 15",
+                            ProductPrice = 1399.0
                         },
                         new
                         {
                             ProductId = 2,
                             ProductDetailId = 1,
-                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductImageUrl = "http://pngimg.com/uploads/macbook/macbook_PNG76.png",
                             ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
-                            ProductName = "Dell xps 15",
-                            ProductPrice = 1000.0
+                            ProductName = "Macbook Pro 2020",
+                            ProductPrice = 1999.0
                         },
                         new
                         {
                             ProductId = 3,
                             ProductDetailId = 1,
-                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductImageUrl = "https://png2.cleanpng.com/sh/b8528a5e30d72245cdbbb8c45918877e/L0KzQYm4UcE3N6RnipH0aYP2gLBuTfhxNaR1fdV9cnWwiIS9TcE0NZJqReVucnnog37wjwRmdF5ohARuLXm6Pb3okQQucKEyiAJuY4T1dX7BU8YuOWQyedcALUP3hX7qiPVkc55mjNc2Y3BwgMa0VfJmbZI5S6NtZUW7QIi1UMk1PWM8UaY6NUS1Q4e9UsU4QWI1T5D5bne=/kisspng-hp-spectre-x36-13-ae-series-intel-core-i7-lapt-hp-spectre-x36-13-ae5-3tu-checkmate-compu-5beea431de5807.0945279415423662579107.png",
                             ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
-                            ProductName = "Dell xps 15",
-                            ProductPrice = 1000.0
+                            ProductName = "HP Spectre X360 15",
+                            ProductPrice = 1849.0
                         },
                         new
                         {
                             ProductId = 4,
                             ProductDetailId = 1,
-                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductImageUrl = "https://png2.cleanpng.com/sh/374245de3c2eea1a275400c98ec203f4/L0KzQYq3UcI2N5x1R91yc4Pzfri0ggN2e153h9k2c4T1ecm0kBNiel5ugZ9wbEWwRH7zggB1d6EyeeVAcz31f7i0hBFucZ8yTdU9YnHpc4WBhfM3amMzSqs9M0O5RoS4VcQ5PGc5SKgDNUi3SHB3jvc=/kisspng-asus-rog-strix-scar-ii-gl5-4-laptop-asus-rog-gamin-5c4bafc48ec6b2.2943366315484640685848.png",
                             ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
-                            ProductName = "Dell xps 15",
-                            ProductPrice = 1000.0
+                            ProductName = "ASUS GL702 Gamming",
+                            ProductPrice = 1499.0
                         },
                         new
                         {
                             ProductId = 5,
                             ProductDetailId = 1,
-                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductImageUrl = "https://png2.cleanpng.com/sh/e6616b48999baa49bc3dd3655cb77303/L0KzQYm3VsE4N6pmi5H0aYP2gLBuTfxieKV0iJ9qc4X2PcP2h710fKNukJ9wbEW4Q37wjwRmdF5ohARuLXm6Pbr6iP9xeJpzfAJ0LUXlQofrWMQ5Omk5SacBLkK0QoK7WcAzOWY3UaQCMkO8QoK9VMkveJ9s/kisspng-laptop-asus-rog-strix-gl553-intel-core-i7-ishoppingpk-5b26d848284156.2121490215292723921649.png",
                             ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
-                            ProductName = "Dell xps 15",
-                            ProductPrice = 1000.0
+                            ProductName = "HP Gaming Pavilion 17",
+                            ProductPrice = 999.0
                         },
                         new
                         {
                             ProductId = 6,
                             ProductDetailId = 1,
-                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductImageUrl = "https://static.acer.com/up/Resource/Acer/Laptops/Swift_7/Photogallery/20190322/Acer-Swift-7-SF714-52T-Black-photogallery-02.png",
                             ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
-                            ProductName = "Dell xps 15",
-                            ProductPrice = 1000.0
+                            ProductName = "Acer Swift 7",
+                            ProductPrice = 1799.0
                         },
                         new
                         {
                             ProductId = 7,
                             ProductDetailId = 1,
-                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductImageUrl = "https://png2.cleanpng.com/sh/634af83ba7489df748a5b02f0ff0e2b0/L0KzQYm3VcE4N5xmfZH0aYP2gLBuTfxieKV0iJ9tZXzvPbLzifVvf5J3fZ86Nz31RH7rhfxtNZJxgdd3d3H1dX64V71zPF5oRadqZnS1QYS4VshjPWk6RqY7OUm5SIG3UcUzPmY4UKc9NUS1SIq1kP5o/kisspng-laptop-dell-alienware-17-r4-dell-alienware-17-r4-c-5afd213168b585.4299680015265385454289.png",
                             ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
-                            ProductName = "Dell xps 15",
-                            ProductPrice = 1000.0
+                            ProductName = "Dell Alienware 17",
+                            ProductPrice = 2999.0
                         },
                         new
                         {
                             ProductId = 8,
                             ProductDetailId = 1,
-                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductImageUrl = "https://png2.cleanpng.com/sh/f9413eeafb234fe2d5961891ddd3a7c7/L0KzQYm3UsAzN5h8fZH0aYP2gLBuTf1ia5N0h902cILyPb7ogBlvfJD4gJ92YXPlf7FyTfFqel5xeeJ9b4CwfbLqgv9wc151htk2cHnmPYboV8U0QJdmStQDMkC0PoeCUsMyOWc4Sac6N0a2QYi6WME4QGMziNDw/kisspng-macbook-pro-macintosh-macbook-air-laptop-macbook-png-pic-5a7538fa2b8201.6923116315176317381782.png",
                             ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
-                            ProductName = "Dell xps 15",
-                            ProductPrice = 1000.0
+                            ProductName = "Macbook Air 13 2019",
+                            ProductPrice = 1299.0
                         },
                         new
                         {
                             ProductId = 9,
                             ProductDetailId = 1,
-                            ProductImageUrl = "https://i.dell.com/sites/csimages/Video_Imagery/all/xps_7590_touch.png",
+                            ProductImageUrl = "https://png2.cleanpng.com/sh/75c27a763e0e2eacc4233bf572d6d185/L0KzQYm3WcI4N6t2kJH0aYP2gLBuTfxmdpD7h599aHnxe8HohL11PGcyiJ87LXb6PYK7TflvfJZxRdV4cnWweYa0jB4ue5JxfZ8AYnHnQoa8VvIybJY3S5CAOEe2QIm3V8E2O2k1T6UENEK6Qom9TwBvbz==/kisspng-lenovo-thinkpad-t46-p-2-fw-14-intel-core-i5-on-sale-5bad2556b1de23.5873080715380739427286.png",
                             ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
-                            ProductName = "Dell xps 15",
-                            ProductPrice = 1000.0
+                            ProductName = "LENOVO Thinkpad X1 Carbon Gen 7",
+                            ProductPrice = 1719.0
                         });
                 });
 

@@ -41,20 +41,20 @@ export class Home extends Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <div>
+                <div className="row">
                     {items.map(item => (
-                        <div id="card-wrapper" class="wrapper">
-                            <div id= "product-img" class="product-img">
+                        <div id="card-wrapper" className="cwrapper">
+                            <div id= "cproduct-img" className="cproduct-img">
                                 <img id="thumbnail" src={item.productImageUrl}/>
                             </div>
                             <div id="product-info" class="product-info">
                                 <div id="product-text" class="product-text">
-                                    <h1>{item.productName}</h1>
-                                    <h2>by studio and friends</h2>
+                                    <h1><b>{item.productName}</b></h1>
+                                    <h2>imported by knn .inc</h2>
                                     <p>{item.productInformation}</p>
                                 </div>
                                 <div class="product-price-btn">
-                                    <p><span id="price" >{item.productPrice}</span>$</p>
+                                    <p><span id="price" >${item.productPrice}</span></p>
                                     <button onClick={()=>this.props.addToCart(JSON.stringify(item))} type="button">Add to cart</button>
                                 </div>
                             </div>
