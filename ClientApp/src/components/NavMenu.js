@@ -25,7 +25,7 @@ export class NavMenu extends Component {
 
  render() {
      return (
-         <Navbar className="navbar-expand-sm navbar-toggleable-sm navbar-inverse border-bottom box-shadow mb-3" light>
+         <Navbar className="navbar-expand-sm navbar-toggleable-sm navbar-inverse border-bottom box-shadow mb-1" light>
                  <Link to={"/"}>     
                     <img id="logo-nav" className="img-fluid img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Flag_of_South_Vietnam.svg" alt="logo" />
                 </Link>

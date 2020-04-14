@@ -13,6 +13,9 @@ html {
         font-size: 16px;
     }
 }
+.navbar{
+    height: 32px !important;
+}
 .navbar-inverse{
     color: white;
 }
@@ -33,11 +36,10 @@ html {
     display: inline-block;
     text-transform: uppercase;
     font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+     
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 5px 20px;
+    margin: 2px 10px 2px 10px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -55,6 +57,7 @@ html {
     width: auto;
     max-height: 70px;
     max-width: 250px;
+    height: 40px !important;
     position: relative;
 }
 
