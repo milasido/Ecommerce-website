@@ -1,6 +1,6 @@
 ﻿.cwrapper {
-    height: 420px;
-    width: 654px;
+    height: 250px;
+    width: 440px;
     margin: 50px auto;
     border-radius: 7px 7px 7px 7px;
     -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -9,36 +9,38 @@
 }
 
 .cproduct-img {
-    height: 420px;
-    width: 327px;
+    height: 250px;
+    width: 220px;
     border-radius: 7px 0 0 7px;
     float: left;
 }
 
+
 #thumbnail {
-    height: auto;
-    width: 327px;
+    width: 220px;
     float: left;
     position: absolute;
+    margin: auto;
+    vertical-align: middle;
 }
 
 #product-info {
     float: left;
-    height: 420px;
-    width: 327px;
+    height: 250px;
+    width: 220px;
     border-radius: 0 7px 10px 7px;
     background-color: #ffffff;
 }
 
 #product-text {
-    height: 300px;
-    width: 327px;
+    height: 200px;
+    width: 220px;
 }
 
     .product-text h1 {
-        margin: 0 0 0 38px;
-        padding-top: 52px;
-        font-size: 34px;
+        margin: 0 0 0 0px;
+        padding-top: 15px;
+        font-size: 25px;
         color: #474747;
     }
 
@@ -48,8 +50,8 @@
     }
 
     #product-text h2 {
-        margin: 0 0 47px 38px;
-        font-size: 13px;
+        margin: 0 0 0 0;
+        font-size: 10px;
         font-family: 'Raleway', sans-serif;
         font-weight: 400;
         text-transform: uppercase;
@@ -59,58 +61,50 @@
 
     #product-text p {
         height: 125px;
-        margin: 0 0 0 38px;
+        margin: 0 10px 10px 0;
         font-family: 'Playfair Display', serif;
         color: #8d8d8d;
         line-height: 1.7em;
-        font-size: 15px;
+        font-size: 13px;
         font-weight: lighter;
         overflow: hidden;
     }
 
 .product-price-btn {
-    height: 103px;
-    width: 327px;
-    margin-top: 17px;
+    height: 70px;
+    width: 220px;
     position: relative;
 }
 
     .product-price-btn p {
         display: inline-block;
         position: absolute;
-        top: -13px;
-        height: 50px;
+
+        height: 30px;
         font-family: 'Trocchi', serif;
-        margin: 0 0 0 38px;
-        font-size: 28px;
-        font-weight: lighter;
+        margin: 0 0 0 0px;
+        font-size: 20px;
+        font-weight: bold;
         color: #474747;
     }
 #cardd{
     float: left;
 }
 
-#price {
-    display: inline-block;
-    height: 50px;
-    font-family: 'Suranna', serif;
-    font-size: 34px;
-}
-
 .product-price-btn button {
     float: right;
     display: inline-block;
-    height: 50px;
-    width: 150px;
+    height: 28px;
+    width: 100px;
     margin: 0 42px 0 14px;
     box-sizing: border-box;
     border: transparent;
     border-radius: 60px;
     font-family: 'Raleway', sans-serif;
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     color: #ffffff;
     background-color: #9cebd5;
     cursor: pointer;

@@ -13,13 +13,14 @@ html {
         font-size: 16px;
     }
 }
-
+.navbar-inverse{
+    color: white;
+}
 .box-shadow {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+.cwrapper{
 
-.container {
-    position: relative;
 }
 
 #cart {
@@ -39,11 +40,10 @@ html {
     margin: 5px 20px 5px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    right:5%;
 }
+
 
 #toggle{
     right: 50px;
@@ -53,9 +53,9 @@ html {
 #logo-nav {
     height: auto;
     width: auto;
-    max-height: 72px;
+    max-height: 70px;
     max-width: 250px;
-    position: absolute;
+    position: relative;
 }
 
 .search {

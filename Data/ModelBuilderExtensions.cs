@@ -196,7 +196,7 @@ namespace ecommerce.Data
                 new Products
                 {
                     ProductId = 5,
-                    ProductName = "HP Gaming Pavilion 17",
+                    ProductName = "HP Gaming Pavilion",
                     ProductPrice = 999,
                     ProductImageUrl = "https://png2.cleanpng.com/sh/e6616b48999baa49bc3dd3655cb77303/L0KzQYm3VsE4N6pmi5H0aYP2gLBuTfxieKV0iJ9qc4X2PcP2h710fKNukJ9wbEW4Q37wjwRmdF5ohARuLXm6Pbr6iP9xeJpzfAJ0LUXlQofrWMQ5Omk5SacBLkK0QoK7WcAzOWY3UaQCMkO8QoK9VMkveJ9s/kisspng-laptop-asus-rog-strix-gl553-intel-core-i7-ishoppingpk-5b26d848284156.2121490215292723921649.png",
                     ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
@@ -223,7 +223,7 @@ namespace ecommerce.Data
                 new Products
                 {
                     ProductId = 8,
-                    ProductName = "Macbook Air 13 2019",
+                    ProductName = "Macbook Air 13",
                     ProductPrice = 1299,
                     ProductImageUrl = "https://png2.cleanpng.com/sh/f9413eeafb234fe2d5961891ddd3a7c7/L0KzQYm3UsAzN5h8fZH0aYP2gLBuTf1ia5N0h902cILyPb7ogBlvfJD4gJ92YXPlf7FyTfFqel5xeeJ9b4CwfbLqgv9wc151htk2cHnmPYboV8U0QJdmStQDMkC0PoeCUsMyOWc4Sac6N0a2QYi6WME4QGMziNDw/kisspng-macbook-pro-macintosh-macbook-air-laptop-macbook-png-pic-5a7538fa2b8201.6923116315176317381782.png",
                     ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
@@ -232,7 +232,7 @@ namespace ecommerce.Data
                 new Products
                 {
                     ProductId = 9,
-                    ProductName = "LENOVO Thinkpad X1 Carbon Gen 7",
+                    ProductName = "LENOVO Thinkpad X1",
                     ProductPrice = 1719,
                     ProductImageUrl = "https://png2.cleanpng.com/sh/75c27a763e0e2eacc4233bf572d6d185/L0KzQYm3WcI4N6t2kJH0aYP2gLBuTfxmdpD7h599aHnxe8HohL11PGcyiJ87LXb6PYK7TflvfJZxRdV4cnWweYa0jB4ue5JxfZ8AYnHnQoa8VvIybJY3S5CAOEe2QIm3V8E2O2k1T6UENEK6Qom9TwBvbz==/kisspng-lenovo-thinkpad-t46-p-2-fw-14-intel-core-i5-on-sale-5bad2556b1de23.5873080715380739427286.png",
                     ProductInformation = "The world’s smallest 15.6-inch performance laptop with a stunning OLED display option. Now featuring 9th Gen Intel® Core™ processors.",
