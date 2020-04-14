@@ -1,7 +1,7 @@
 ﻿import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function CartTotal({ handleClearCart }) {
+export default function CartTotal({ handleClearCart, carts }) {
 
     return (
         <div className="container">
@@ -17,8 +17,10 @@ export default function CartTotal({ handleClearCart }) {
                     </button>
                     </Link>
                     <h5>
-                        <span className="text-title">Subtotal: </span>
-                        <strong>$</strong>
+                        
+                        <span className="text-title">Subtotal: <strong>$ </strong>
+                        {carts.reduce((sum, i) => (sum += i.quantity * i.productPrice), 0)}
+                        </span>                      
                     </h5>
                     <h5>
                         <span className="text-title">Tax: </span>

@@ -66,7 +66,8 @@ export default class AuthService {
         return JSON.parse(localStorage.getItem('profile')).CustomerId;
     }
     setCart() {
-        localStorage.setItem("cart", JSON.stringify(null));
+        //set cart as empty array after login if nothing in database
+        localStorage.setItem("cart", JSON.stringify([]));
     }
 
     fetch(url, options) {

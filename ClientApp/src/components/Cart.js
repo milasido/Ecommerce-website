@@ -17,14 +17,58 @@ export class Cart extends Component {
             paid: false
         }
         this.handleClearCart = this.handleClearCart.bind(this);
+        this.handleRemoveItem = this.handleRemoveItem.bind(this);
+        this.handleTotal = this.handleTotal.bind(this);
     }   
 
-    handleClearCart() {
-        localStorage.setItem("cart", JSON.stringify(null));
-        this.setState({carts: []})
+    handleTotal() {
+        
     }
+
+    handleClearCart() {
+        // change state carts to be null
+        this.setState({ carts: [] })
+        // set local storage cart to be empty array
+        localStorage.setItem("cart", JSON.stringify([]));  
+    }
+
+     
+    handleRemoveItem(item) {
+        // remove item which has item.id from the carts array
+        const newCart = this.state.carts.filter(x => x.producId != item.producId);
+        console.log("new cart", newCart);
+        localStorage.setItem("cart", JSON.stringify(newCart));  
+        this.setState({ carts: newCart });
+    }
+
+
     componentDidMount() {
-        this.setState({ carts: JSON.parse('['+localStorage.getItem("cart")+']') });
+        // convert json string to array of object
+        var fixCart = JSON.parse(localStorage.getItem("cart"));
+        // merge products in cart by id, add attribute quantity
+        var result = [];
+        // only if user logged in and cart is not empty in the localstorage
+        if (localStorage.getItem("id_token") != null && localStorage.getItem("cart")!="[]") {
+            fixCart.forEach(function (a) {
+                if (!this[a.productId]) {
+                    this[a.productId] = {
+                        producId: a.productId,
+                        productName: a.productName,
+                        productPrice: a.productPrice,
+                        productImageUrl: a.productImageUrl,
+                        productInformation: a.productInformation,
+                        quantity: 0
+                    };
+                    result.push(this[a.productId]);
+                }
+                this[a.productId].quantity += a.quantity;
+            }, Object.create(null));
+
+            console.log("cartafter", result);
+
+            // set state for new cart after merging
+            this.setState({ carts: result });
+        }
     }
 
 
@@ -38,8 +82,8 @@ export class Cart extends Component {
         else return (
             <Fragment>
                 <CartColumns />
-                <CartItem carts={this.state.carts}/>
-                <CartTotal handleClearCart={this.handleClearCart}/>
+                <CartItem carts={this.state.carts} handleRemoveItem={this.handleRemoveItem}/>
+                <CartTotal handleClearCart={this.handleClearCart} carts={this.state.carts}/>
             </Fragment>
         );
     }

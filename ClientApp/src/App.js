@@ -36,22 +36,31 @@ export default class App extends Component {
     }
 
     addToCart(item) {
-        if (localStorage.getItem("cart") != "null") {
-            var items = localStorage.getItem("cart").concat(','+item);
-            localStorage.setItem("cart", items);
+        if (this.state.isLogin == true) { // if loggin
+            if (localStorage.getItem("cart") != "[]") {
+                var myJsonObject = JSON.parse(item); //change to obj
+                myJsonObject.quantity = 1; //add quantity
+                myJsonObject = JSON.stringify(myJsonObject); //change back to string
+                var items = localStorage.getItem("cart").slice(0, -1).concat(',' + myJsonObject) + "]"; // set as array string
+                localStorage.setItem("cart", items); // add array cart to localstorage
+            }
+            else {
+                var myJsonObject = JSON.parse(item); //change to obj
+                myJsonObject.quantity = 1; //add quantity
+                myJsonObject = "[" + JSON.stringify(myJsonObject) + "]"; //change back to string
+                localStorage.setItem("cart", myJsonObject);
+            }
         }
-        else {
-            localStorage.setItem("cart", item);
-        }     
     }
-    // handle status logged in or logged out of page
+    // handle logout or loggin when click
     handleStatus() {
-        if (localStorage.getItem('id_token') != null) {
+        if (localStorage.getItem('id_token') != null) { // if logged in
             localStorage.removeItem('id_token');
             localStorage.removeItem('profile');
+            localStorage.removeItem('cart');
             this.setState({ isLogin: !this.state.isLogin });
         }
-        if (localStorage.getItem('id_token') == null) {
+        if (localStorage.getItem('id_token') == null) { // if not logged in
             console.log("login work");
             this.setState({ isLogin: !this.state.isLogin });
         }
@@ -64,27 +73,19 @@ export default class App extends Component {
 
               <NavMenu handleStatus={this.handleStatus} isLogin={this.state.isLogin} />
 
-              <Route exact path='/' render={
-                    props => <Home {...props} addToCart={this.addToCart}/>
-                    }/>
+              <Route exact path='/' render={props => <Home {...props} addToCart={this.addToCart}/>}/>
 
               <Route path='/counter' component={Counter} />
 
               <Route path='/validate' component={Validate} />
 
-              <Route path='/login' render={
-                    props => <Login {...props} handleStatus={this.handleStatus} />
-                    } />
-              <Route path='/account' render={
-                    props => <Account {...props} handleStatus={this.handleStatus} isLogin={this.state.isLogin} />
-                    } />
+              <Route path='/login' render={props => <Login {...props} handleStatus={this.handleStatus} />} />
+              <Route path='/account' render={props => <Account {...props} handleStatus={this.handleStatus} isLogin={this.state.isLogin} />} />
               <Route path='/signup' component={Signup} />
 
               <Route path='/checkout' component={Checkout} />
 
-              <Route path='/cart' render={
-                  props => <Cart {...props} isLogin={this.state.isLogin} cartChange={this.state.cartChange}/>
-                    } />
+              <Route path='/cart' render={props => <Cart {...props} isLogin={this.state.isLogin} cartChange={this.state.cartChange}/>} />
 
         </Fragment>
     );
