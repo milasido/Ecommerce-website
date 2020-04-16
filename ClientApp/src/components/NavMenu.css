@@ -3,9 +3,14 @@
     text-align: center;
     word-break: break-all;
 }
-
+.text-light:active{
+    color:yellow !important;
+}
 html {
     font-size: 14px;
+}
+ul.navbar NavLink, ul.navbar NavLink:active{
+    color:yellow !important;
 }
 
 @media (min-width: 768px) {
@@ -14,7 +19,7 @@ html {
     }
 }
 .navbar{
-    height: 32px !important;
+    height: auto !important;
 }
 .navbar-inverse{
     color: white;

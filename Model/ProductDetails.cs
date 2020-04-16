@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using ecommerce.Model;
@@ -50,6 +51,9 @@ namespace ecommerce.Data
         public string Mainboard { get; set; }
         public string Weight { get; set; }
         public string Backlight { get; set; }
+        public int ProductId { get; set; }
+        [ForeignKey("ProductId")]
+        public Products Products { get; set; }
 
     }
 }

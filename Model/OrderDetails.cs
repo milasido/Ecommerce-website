@@ -11,11 +11,11 @@ namespace ecommerce.Model
     {
         [Key]
         public int DetailId { get; set; }
-        public int DetailProductQuantity { get; set; }
-        public int OrderId { get; set; }
-        public Orders Orders { get; set; }
         public int ProductId { get; set; }
-        public List<Products> Products { get; set; }
-
+        public int Quantity { get; set; }
+        public int SalePrice { get; set; }
+        public int OrderId { get; set; }
+        [ForeignKey("OrderId")]
+        public Orders Orders { get; set; }
     }
 }

@@ -41,7 +41,7 @@ export class Cart extends Component {
         this.setState({ carts: newCart });
     }
 
-
+    // cart will be stored on localstorage
     componentDidMount() {
         // convert json string to array of object
         var fixCart = JSON.parse(localStorage.getItem("cart"));
