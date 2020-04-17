@@ -58,17 +58,14 @@ export default class App extends Component {
     //save cart
     handleSaveCart() {
         const cartSave = localStorage.getItem('cart');
-        if (cartSave != "[]") { 
-            const id = JSON.parse(localStorage.getItem('profile')).CustomerId;
-            axios.post(('/api/users/' + id + '/savecart'), JSON.parse(cartSave))
-        }
-        else console.log("cart null", cartSave)
+        const id = JSON.parse(localStorage.getItem('profile')).CustomerId;
+        axios.post(('/api/users/' + id + '/savecart'), JSON.parse(cartSave));
     }
 
     // handle logout or loggin when click
     handleStatus() {
         if (localStorage.getItem('id_token') != null) { // if logged in
-            this.handleSaveCart();
+            this.handleSaveCart(); // update current cart to database when logging out
             localStorage.removeItem('id_token');
             localStorage.removeItem('profile');
             localStorage.removeItem('cart');
@@ -81,27 +78,27 @@ export default class App extends Component {
     }
 
 
-  render () {
-      return (
-          <Fragment>
+    render() {
+        return (
+            <Fragment>
 
-              <NavMenu handleStatus={this.handleStatus} isLogin={this.state.isLogin} />
+                <NavMenu handleStatus={this.handleStatus} isLogin={this.state.isLogin} />
 
-              <Route exact path='/' render={props => <Home {...props} addToCart={this.addToCart}/>}/>
+                <Route exact path='/' render={props => <Home {...props} addToCart={this.addToCart} />} />
 
-              <Route path='/counter' component={Counter} />
+                <Route path='/counter' component={Counter} />
 
-              <Route path='/validate' component={Validate} />
+                <Route path='/validate' component={Validate} />
 
-              <Route path='/login' render={props => <Login {...props} handleStatus={this.handleStatus} />} />
-              <Route path='/account' render={props => <Account {...props} handleStatus={this.handleStatus} isLogin={this.state.isLogin} />} />
-              <Route path='/signup' component={Signup} />
+                <Route path='/login' render={props => <Login {...props} handleStatus={this.handleStatus} />} />
+                <Route path='/account' render={props => <Account {...props} handleStatus={this.handleStatus} isLogin={this.state.isLogin} />} />
+                <Route path='/signup' component={Signup} />
 
-              <Route path='/checkout' component={Checkout} />
+                <Route path='/checkout' component={Checkout} />
 
-              <Route path='/cart' render={props => <Cart {...props} isLogin={this.state.isLogin} cartChange={this.state.cartChange}/>} />
+                <Route path='/cart' render={props => <Cart {...props} isLogin={this.state.isLogin} cartChange={this.state.cartChange} />} />
 
-        </Fragment>
-    );
-  }
+            </Fragment>
+        );
+    }
 }
