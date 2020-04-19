@@ -103,17 +103,14 @@ export default class AuthService {
     _checkStatus(response) {
         // raises an error in case response status is not a success
         if (response.status >= 200 && response.status < 300) { // Success status lies between 200 to 300
-            return response
+            {
+                console.log("login ok", response);
+                return response
+            }
         } else {
-            var error = new Error(response.json())
-            error.response = response.message
-            throw error
+            // if status is not ok throw text error from response
+            return response.text().then(text => { throw new Error(text).message })
         }
     }
 
-    loginStatus() {
-        if (!this.loggedIn())
-            return false;
-        else return true;
-    }
 }

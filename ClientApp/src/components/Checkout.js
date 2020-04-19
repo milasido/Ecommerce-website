@@ -5,6 +5,8 @@ import axios from 'axios';
 import './Checkout.css';
 import { Container } from 'reactstrap';
 import  CartItem  from './CartData/CartItem';
+import CartTotal from './CartData/CartTotal';
+import { Cart } from './Cart';
 
 export class Checkout extends Component {
 
@@ -136,7 +138,7 @@ export class Checkout extends Component {
 
                 <div class="col-25 ccc">
                     <div class="container">
-                        <h4>Cart
+                        {/*<h4>Cart
                             <span id="pr" class="price" >
                                 <i class="fa fa-shopping-cart"></i>
                                 <b>4</b>
@@ -147,7 +149,9 @@ export class Checkout extends Component {
                         <p><a href="#">Product 3</a> <span class="price">$8</span></p>
                         <p><a href="#">Product 4</a> <span class="price">$2</span></p>
                         <hr/>
-                            <p>Total <span id="pr" class="price" ><b>$30</b></span></p>
+                            <p>Total <span id="pr" class="price" ><b>$30</b></span></p>*/}
+                        <Cart/>
+                        
                     </div>
                 </div>
             </div>

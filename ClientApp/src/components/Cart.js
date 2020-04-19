@@ -36,8 +36,8 @@ export class Cart extends Component {
     handleRemoveItem(item) {
         // remove item which has item.id from the carts array
         const newCart = this.state.carts.filter(x => x.producId != item.producId);
-        console.log("new cart", newCart);
-        localStorage.setItem("cart", JSON.stringify(newCart));  
+        console.log("new cart", newCart);// test newcart
+        localStorage.setItem("cart", JSON.stringify(newCart));  //set new cart to local storage
         this.setState({ carts: newCart });
     }
 

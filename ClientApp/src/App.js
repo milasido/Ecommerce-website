@@ -15,9 +15,10 @@ import { Checkout } from './components/Checkout';
 
 import './custom.css'
 import axios from 'axios';
+import AuthService from './components/_Services/AuthService';
 
 
-
+const auth = new AuthService();
 export default class App extends Component {
     static displayName = App.name;
 
@@ -64,14 +65,14 @@ export default class App extends Component {
 
     // handle logout or loggin when click
     handleStatus() {
-        if (localStorage.getItem('id_token') != null) { // if logged in
+        if (localStorage.getItem('id_token') !== null) { // if logged in
             this.handleSaveCart(); // update current cart to database when logging out
             localStorage.removeItem('id_token');
             localStorage.removeItem('profile');
             localStorage.removeItem('cart');
             this.setState({ isLogin: !this.state.isLogin });
         }
-        if (localStorage.getItem('id_token') == null) { // if not logged in
+        if (localStorage.getItem('id_token') === null) { // if not logged in
             console.log("login is working");
             this.setState({ isLogin: !this.state.isLogin });
         }
