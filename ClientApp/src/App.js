@@ -91,7 +91,7 @@ export default class App extends Component {
 
                 <Route path='/validate' component={Validate} />
 
-                <Route path='/login' render={props => <Login {...props} handleStatus={this.handleStatus} />} />
+                <Route path='/login' render={props => <Login {...props} handleStatus={this.handleStatus} />} isLogin={this.state.isLogin}/>
                 <Route path='/account' render={props => <Account {...props} handleStatus={this.handleStatus} isLogin={this.state.isLogin} />} />
                 <Route path='/signup' component={Signup} />
 

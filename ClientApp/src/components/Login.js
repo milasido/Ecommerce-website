@@ -9,7 +9,7 @@ const initialState = {
     email: '',
     password: '',
     emailError: "",
-    passwordError: ""
+    passwordError: "",
 }
 
 export class Login extends Component {
@@ -53,11 +53,12 @@ export class Login extends Component {
             this.Auth.login(this.state.email, this.state.password)
                 .then(res => {
                     this.props.history.push('/');
-                    this.props.handleStatus(); //after login, run to update the login/logout status
+                    //this.props.handleStatus(); //after login, run to update the login/logout status
                 })
                 .catch(error => {
-                    this.setState({ passwordError: "* "+JSON.parse(error).message });
-                })                
+                    this.setState({ passwordError: "* " + JSON.parse(error).message });
+                })
+            this.props.handleStatus();
         }
     }
 
