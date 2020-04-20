@@ -69,5 +69,32 @@ namespace ecommerce.Controllers
             return Ok("save successful");
         }
 
+
+        [HttpPost("{id}/savehistory")]
+        public async Task<IActionResult> SaveHistory(int id, OrderToSave order)
+        {
+            var ordertosave = new Orders();
+            ordertosave.CustomerId = id;
+            ordertosave.OrderName = order.name;
+            ordertosave.OrderShipAddress1 = order.address1;
+            ordertosave.OrderShipAddress2 = order.address2;
+            ordertosave.OrderShipCity = order.city;
+            ordertosave.OrderShipState = order.state;
+            ordertosave.OrderShipZip5 = order.zip5;
+            ordertosave.OrderShipZip4 = order.zip4;
+            ordertosave.OrderDate = DateTime.Now;
+            
+            foreach (var item in order.detail)
+            {
+                ordertosave.OrderDetails.ProductId = item.productId;
+                ordertosave.OrderDetails.Quantity = item.quantity;
+                ordertosave.OrderDetails.SalePrice = item.productPrice;
+            }
+
+            await _dataContext.Orders.AddAsync(ordertosave);
+            await _dataContext.SaveChangesAsync();
+            return Ok("save successful");
+        }
+
     }
 }

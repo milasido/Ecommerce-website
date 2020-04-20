@@ -7,6 +7,7 @@ import { Container } from 'reactstrap';
 import  CartItem  from './CartData/CartItem';
 import CartTotal from './CartData/CartTotal';
 import { Cart } from './Cart';
+import { Link } from 'react-router-dom';
 
 export class Checkout extends Component {
 
@@ -30,10 +31,11 @@ export class Checkout extends Component {
     }
     handleValidate = event => {
         event.preventDefault();
-        console.log(this.state)       
+        //console.log(this.state)       
         axios.post('/api/validate/validate', this.state)
             .then(response => {
                 this.setState({ ValidateResult: response.data });
+                localStorage.setItem("ship", JSON.stringify(response.data));
                 console.log(this.state.ValidateResult)
             })
             .catch(error => {
@@ -132,6 +134,9 @@ export class Checkout extends Component {
 
 
                             <input type="submit" value="Continue to checkout" class="btnnn" />
+                            <Link to='/confirm'>
+                                <button>Continue to checkout</button>
+                            </Link>
                         </form>
                     </div>
                 </div>

@@ -10,12 +10,13 @@ import { NavMenu } from './components/NavMenu';
 import { Cart } from './components/Cart';
 import { Account } from './components/Account';
 import { Checkout } from './components/Checkout';
-
+import { Confirm } from './components/Confirm';
 
 
 import './custom.css'
 import axios from 'axios';
 import AuthService from './components/_Services/AuthService';
+import { ThankYou } from './components/ThankYou';
 
 
 const auth = new AuthService();
@@ -98,6 +99,8 @@ export default class App extends Component {
                 <Route path='/checkout' component={Checkout} />
 
                 <Route path='/cart' render={props => <Cart {...props} isLogin={this.state.isLogin} cartChange={this.state.cartChange} />} />
+                <Route path='/thankyou' component={ThankYou} />
+                <Route path='/confirm' component={Confirm} />
 
             </Fragment>
         );

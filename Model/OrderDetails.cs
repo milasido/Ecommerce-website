@@ -13,7 +13,7 @@ namespace ecommerce.Model
         public int DetailId { get; set; }
         public int ProductId { get; set; }
         public int Quantity { get; set; }
-        public int SalePrice { get; set; }
+        public double SalePrice { get; set; }
         public int OrderId { get; set; }
         [ForeignKey("OrderId")]
         public Orders Orders { get; set; }
