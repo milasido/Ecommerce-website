@@ -114,7 +114,7 @@ export class Checkout extends Component {
 
                             <button type="submit" >validate</button>
 
-                            {this.state.ValidateResult.address1 != "" && // could return result
+                            {this.state.ValidateResult.address1 != "" && // able to return result
                                 <div>
                                 <p2>Shipping Address Recommend:</p2><br/><br/> 
                                 {this.state.ValidateResult.name} <br />
@@ -133,7 +133,7 @@ export class Checkout extends Component {
                             }
 
 
-                            <input type="submit" value="Continue to checkout" class="btnnn" />
+                            {/*<input type="submit" value="Continue to checkout" class="btnnn" />*/}
                             <Link to='/confirm'>
                                 <button>Continue to checkout</button>
                             </Link>

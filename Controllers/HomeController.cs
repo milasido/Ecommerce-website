@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ecommerce.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ecommerce.Controllers
 {
@@ -23,6 +24,14 @@ namespace ecommerce.Controllers
         public ActionResult Get()
         {
             return Ok(_dataContext.Products.ToList());
+        }
+
+        //api/home/products/{id}
+        [HttpGet("Products/{id}")]
+        public async Task<IActionResult> GetProductDetail(int id)
+        {
+            var detail = await _dataContext.ProductDetails.FirstOrDefaultAsync(x => x.ProductId == id);
+            return Ok(detail);
         }
     }
 }

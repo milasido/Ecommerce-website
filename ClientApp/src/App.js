@@ -18,6 +18,7 @@ import axios from 'axios';
 import AuthService from './components/_Services/AuthService';
 import { ThankYou } from './components/ThankYou';
 import { OrderDetail } from './components/OrderDetail';
+import { ProductDetail } from './components/ProductDetail';
 
 
 const auth = new AuthService();
@@ -105,6 +106,7 @@ export default class App extends Component {
                 <Route path='/confirm' component={Confirm} />
                 <Route path='/history' component={OrderHistory} />
                 <Route path='/orderdetail' component={OrderDetail} />
+                <Route path='/productdetail' component={ProductDetail} />
 
 
             </Fragment>

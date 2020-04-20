@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Home_products.css';
 
 export class Home extends Component {
@@ -44,10 +45,13 @@ export class Home extends Component {
                 <div className="row">
                     {items.map(item => (
                         <div id="card-wrapper" className="cwrapper">
-
-                            <div id= "cproduct-img" className="cproduct-img">
-                                <img id="thumbnail" src={item.productImageUrl}/>
+                            
+                            <div id="cproduct-img" className="cproduct-img">
+                                <Link to='/productdetail' onClick={()=>localStorage.setItem("PID", item.productId)}>
+                                    <img id="thumbnail" src={item.productImageUrl} />
+                                </Link>
                             </div>
+                            
 
                             <div id="product-info" className="product-info">
                                 <div id="product-text" className="product-text">
