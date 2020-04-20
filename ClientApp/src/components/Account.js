@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import AuthService from './_Services/AuthService';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 
@@ -42,7 +43,9 @@ export class Account extends Component {
                     {user.state}<br />
                     {user.zip5}<br />
                     {user.zip4}<br />
-                    <button>Order History</button>
+                    <Link to='/history'>
+                        <button>Order History</button>
+                    </Link>
                 </div>
             );
         }

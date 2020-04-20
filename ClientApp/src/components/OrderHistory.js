@@ -1,4 +1,6 @@
 ﻿import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './OrderHistory.css';
 
 export class OrderHistory extends Component {
 
@@ -7,19 +9,23 @@ export class OrderHistory extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            OID: 0,
+            history: []
         };
     }
 
+
     componentDidMount() {
-        fetch("/api/Home/Products")
+        const id = JSON.parse(localStorage.getItem('profile')).CustomerId;
+        fetch("/api/users/" + id + "/ordershistory")
             .then(res => res.json())
             .then(
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        items: result
+                        history: result
                     });
+                    console.log("his", result);
                 },
                 // Note: it's important to handle errors here
                 // instead of a catch() block so that we don't swallow
@@ -34,40 +40,41 @@ export class OrderHistory extends Component {
     }
 
     render() {
-        const { error, isLoaded, items } = this.state;
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
-            return <div>Loading...</div>;
-        } else {
-            return (
-                <div className="row">
-                    {items.map(item => (
-                        <div id="card-wrapper" className="cwrapper">
-
-                            <div id="cproduct-img" className="cproduct-img">
-                                <img id="thumbnail" src={item.productImageUrl} />
-                            </div>
-
-                            <div id="product-info" className="product-info">
-                                <div id="product-text" className="product-text">
-                                    <h1><b>{item.productName}</b></h1>
-                                    <h2>imported by knn inc</h2>
-                                    <p>{item.productInformation}</p>
-                                </div>
-                                <div className="product-price-btn">
-                                    <p><span id="price" >${item.productPrice}</span></p>
-                                    <button onClick={() => this.props.addToCart(JSON.stringify(item))} type="button">Add to cart</button>
-                                </div>
-                            </div>
-
+        const his = this.state.history;
+        return (
+            <div className="container">
+                    <div>
+                        <div class="page-header">
+                        <h1>ORDER HISTORY <small>TOTAL ORDERS: {his.length}</small></h1>
                         </div>
 
-                    ))}
-                </div>
-            );
-        }
+                        <div class="flex-col">
+
+                            <div class="order-history-container">
+                                <div class="flex-row order-history-header">
+                                    <div class="flex-item order-history-header-item order-num">ORDER #</div>
+                                    <div class="flex-item order-history-header-item">ORDER DATE</div>
+                                    <div class="flex-item order-history-header-item num-of-items"># OF ITEMS</div>
+                                    <div class="flex-item order-history-header-item">ORDER TOTAL</div>
+                                    <div class="flex-end-cap"></div>
+                                </div>
+                            </div>
+                        {his.map(order => (
+                            <Link to='/orderdetail' onClick={()=>localStorage.setItem("OID", order.orderId)}>
+                            <div class="order-rows-container">                           
+                                <div class="flex-row order-row">
+                                    <div class="flex-item order-row-item order-num">NNP20192020{order.orderId}</div>
+                                    <div class="flex-item order-row-item">{order.orderDate}</div>
+                                    <div class="flex-item order-row-item num-of-items">{order.numberOfItems}</div>
+                                    <div class="flex-item order-row-item">{order.orderTotal}</div>
+                                    <div class="flex-end-cap"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                                </div>
+                            </div>
+                            </Link>
+                        ))}
+                        </div>
+                    </div>
+            </div>
+        )
     }
-
-
 }

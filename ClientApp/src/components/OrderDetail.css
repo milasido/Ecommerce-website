@@ -1,0 +1,167 @@
+﻿.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.bose-orderDetail {
+    padding: 8px;
+}
+
+@media (min-width: 768px) {
+    .bose-orderDetail {
+        padding: 16px;
+    }
+}
+
+.bose-orderDetail .bose-orderDetail__headerText {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .bose-orderDetail .bose-orderDetail__headerText {
+        display: inline;
+    }
+}
+
+.bose-orderDetail .bose-orderDetail__separator {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .bose-orderDetail .bose-orderDetail__separator {
+        display: inline;
+    }
+
+        .bose-orderDetail .bose-orderDetail__separator::before {
+            padding: 0 16px;
+            content: "|";
+        }
+}
+
+.bose-orderDetail .bose-orderDetail__summary {
+    padding: 8px;
+    border: 1px solid black;
+    margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+    .bose-orderDetail .bose-orderDetail__summary {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+}
+
+.bose-orderDetail .bose-orderDetail__summarySection:not(:first-child) {
+    padding-top: 16px;
+}
+
+@media (min-width: 768px) {
+    .bose-orderDetail .bose-orderDetail__summarySection:not(:first-child) {
+        padding-top: 0;
+    }
+}
+
+.bose-orderDetail .bose-orderDetail__summarySectionTitle {
+    display: block;
+    padding-bottom: 8px;
+}
+
+.bose-orderDetail .bose-orderDetail__priceSummary {
+    min-width: 300px;
+    max-width: 320px;
+}
+
+.bose-orderDetail .bose-orderDetail__priceRow {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 4px;
+}
+
+    .bose-orderDetail .bose-orderDetail__priceRow:last-child {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid black;
+        font-weight: bold;
+    }
+
+.bose-orderDetail .bose-orderDetail__items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bose-orderDetail .bose-orderDetail__item {
+    width: 100%;
+    padding: 8px 0;
+    border-bottom: 1px solid black;
+}
+
+@media (min-width: 768px) {
+    .bose-orderDetail .bose-orderDetail__item {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 16px 0;
+    }
+
+        .bose-orderDetail .bose-orderDetail__item > div {
+            width: 25%;
+        }
+}
+
+.bose-orderDetail .bose-orderDetail__itemSection {
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    .bose-orderDetail .bose-orderDetail__itemSection {
+        width: 25%;
+    }
+
+        .bose-orderDetail .bose-orderDetail__itemSection:not(:last-child) {
+            padding-right: 8px;
+        }
+
+        .bose-orderDetail .bose-orderDetail__itemSection.bose-orderDetail__itemSection--product {
+            width: 30%;
+        }
+
+        .bose-orderDetail .bose-orderDetail__itemSection.bose-orderDetail__itemSection--status {
+            width: 20%;
+        }
+}
+
+.bose-orderDetail .bose-orderDetail__itemSection:not(:first-child) {
+    padding-top: 16px;
+}
+
+@media (min-width: 768px) {
+    .bose-orderDetail .bose-orderDetail__itemSection:not(:first-child) {
+        padding-top: 0;
+    }
+}
+
+.bose-orderDetail .bose-orderDetail__itemImage {
+    float: none;
+    width: 100px;
+    height: 100px;
+}
+
+@media (min-width: 768px) {
+    .bose-orderDetail .bose-orderDetail__itemImage {
+        float: left;
+        padding-right: 8px;
+    }
+}
+
+.bose-orderDetail .bose-orderDetail__itemAction {
+    display: block;
+}
+
+    .bose-orderDetail .bose-orderDetail__itemAction:not(:first-child) {
+        padding-top: 16px;
+    }
+
+p {
+    margin: 0;
+}

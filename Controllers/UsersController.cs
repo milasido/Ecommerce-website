@@ -73,6 +73,12 @@ namespace ecommerce.Controllers
         [HttpPost("{id}/savehistory")]
         public async Task<IActionResult> SaveHistory(int id, OrderToSave order)
         {
+            int numberOfItems = 0; double total = 0;
+            foreach (var item in order.detail)
+            {
+                numberOfItems += item.quantity;
+                total += item.productPrice * item.quantity * 8.5 / 100;
+            }
             var ordertosave = new Orders();
             ordertosave.CustomerId = id;
             ordertosave.OrderName = order.name;
@@ -83,6 +89,8 @@ namespace ecommerce.Controllers
             ordertosave.OrderShipZip5 = order.zip5;
             ordertosave.OrderShipZip4 = order.zip4;
             ordertosave.OrderDate = DateTime.Now;
+            ordertosave.NumberOfItems = numberOfItems;
+            ordertosave.OrderTotal = total;
             await _dataContext.Orders.AddAsync(ordertosave);
             await _dataContext.SaveChangesAsync();
 
@@ -90,14 +98,25 @@ namespace ecommerce.Controllers
             {
                 var itemtosave = new OrderDetails();
                 itemtosave.ProductId = item.productId;
+                itemtosave.ProductUrl = item.productImageUrl;
+                itemtosave.ProductName = item.productName;
                 itemtosave.Quantity = item.quantity;
                 itemtosave.SalePrice = item.productPrice;
-                itemtosave.OrderId = _dataContext.Orders.Max(o => o.OrderId);
+                itemtosave.OrderId = _dataContext.Orders.Max(o => o.OrderId); // get last orderid just added 
                 await _dataContext.OrderDetails.AddAsync(itemtosave);
             }
             await _dataContext.SaveChangesAsync();
             return Ok("save successful");
         }
 
+
+        [HttpGet("{id}/ordershistory")]
+        public async Task<IActionResult> GetOrdersHistory(int id)
+        {
+            var cart = await _dataContext.Cart.Where(x => x.CustomerId == id).ToListAsync();
+            // get list of orders include order detail
+            var history = await _dataContext.Orders.Where(x => x.CustomerId == id).Include(i => i.OrderDetails).ToListAsync();
+            return Ok(history);
+        }
     }
 }

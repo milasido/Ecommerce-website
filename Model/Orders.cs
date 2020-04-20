@@ -18,6 +18,8 @@ namespace ecommerce.Model
         public string OrderShipState { get; set; }
         public string OrderShipZip5 { get; set; }
         public string OrderShipZip4 { get; set; }
+        public double OrderTotal { get; set; }
+        public int NumberOfItems { get; set; }
         public DateTime OrderDate { get; set; }
         public ICollection<OrderDetails> OrderDetails { get; set; }
         public int CustomerId { get; set; }

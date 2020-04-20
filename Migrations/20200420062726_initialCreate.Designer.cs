@@ -9,7 +9,7 @@ using ecommerce.Data;
 namespace ecommerce.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200420015520_initialCreate")]
+    [Migration("20200420062726_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -238,12 +238,12 @@ namespace ecommerce.Migrations
                             Address1 = "8200 broadway st",
                             Address2 = "apt 711n",
                             City = "houston",
-                            DateCreated = new DateTime(2020, 4, 19, 20, 55, 20, 521, DateTimeKind.Local).AddTicks(4061),
+                            DateCreated = new DateTime(2020, 4, 20, 1, 27, 25, 948, DateTimeKind.Local).AddTicks(7953),
                             Email = "wolnguyen98@gmail.com",
                             Fullname = "thuy nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=",
-                            PasswordSalt = new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 },
+                            PasswordHashed = "dkZwYcNG1jmnYx1PjNNizezw3h+pVzt1Eov1q09qARE=",
+                            PasswordSalt = new byte[] { 48, 238, 253, 237, 151, 136, 80, 18, 61, 34, 53, 26, 202, 143, 161, 115 },
                             State = "tx",
                             Zip4 = "",
                             Zip5 = ""
@@ -254,12 +254,12 @@ namespace ecommerce.Migrations
                             Address1 = "8956 Sage St",
                             Address2 = "",
                             City = "Benton Harbor",
-                            DateCreated = new DateTime(2020, 4, 19, 20, 55, 20, 525, DateTimeKind.Local).AddTicks(44),
+                            DateCreated = new DateTime(2020, 4, 20, 1, 27, 25, 952, DateTimeKind.Local).AddTicks(6277),
                             Email = "cmphan7@gmail.com",
                             Fullname = "cuong phan",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=",
-                            PasswordSalt = new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 },
+                            PasswordHashed = "dkZwYcNG1jmnYx1PjNNizezw3h+pVzt1Eov1q09qARE=",
+                            PasswordSalt = new byte[] { 48, 238, 253, 237, 151, 136, 80, 18, 61, 34, 53, 26, 202, 143, 161, 115 },
                             State = "MI",
                             Zip4 = "",
                             Zip5 = "49022"
@@ -270,12 +270,12 @@ namespace ecommerce.Migrations
                             Address1 = "457 Illinois Road",
                             Address2 = "",
                             City = "Monsey",
-                            DateCreated = new DateTime(2020, 4, 19, 20, 55, 20, 525, DateTimeKind.Local).AddTicks(85),
+                            DateCreated = new DateTime(2020, 4, 20, 1, 27, 25, 952, DateTimeKind.Local).AddTicks(6454),
                             Email = "kimnguyen137@gmail.com",
                             Fullname = "kim nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=",
-                            PasswordSalt = new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 },
+                            PasswordHashed = "dkZwYcNG1jmnYx1PjNNizezw3h+pVzt1Eov1q09qARE=",
+                            PasswordSalt = new byte[] { 48, 238, 253, 237, 151, 136, 80, 18, 61, 34, 53, 26, 202, 143, 161, 115 },
                             State = "ny",
                             Zip4 = "",
                             Zip5 = "10952"
@@ -405,6 +405,12 @@ namespace ecommerce.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ProductName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProductUrl")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
@@ -425,6 +431,9 @@ namespace ecommerce.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CustomerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("NumberOfItems")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OrderDate")
@@ -450,6 +459,9 @@ namespace ecommerce.Migrations
 
                     b.Property<string>("OrderShipZip5")
                         .HasColumnType("TEXT");
+
+                    b.Property<double>("OrderTotal")
+                        .HasColumnType("REAL");
 
                     b.HasKey("OrderId");
 

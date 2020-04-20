@@ -111,6 +111,8 @@ namespace ecommerce.Migrations
                     OrderShipState = table.Column<string>(nullable: true),
                     OrderShipZip5 = table.Column<string>(nullable: true),
                     OrderShipZip4 = table.Column<string>(nullable: true),
+                    OrderTotal = table.Column<double>(nullable: false),
+                    NumberOfItems = table.Column<int>(nullable: false),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     CustomerId = table.Column<int>(nullable: false)
                 },
@@ -190,6 +192,8 @@ namespace ecommerce.Migrations
                     DetailId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     ProductId = table.Column<int>(nullable: false),
+                    ProductUrl = table.Column<string>(nullable: true),
+                    ProductName = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
                     SalePrice = table.Column<double>(nullable: false),
                     OrderId = table.Column<int>(nullable: false)
@@ -208,17 +212,17 @@ namespace ecommerce.Migrations
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 19, 20, 55, 20, 521, DateTimeKind.Local).AddTicks(4061), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=", new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 }, "tx", "", "" });
+                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 20, 1, 27, 25, 948, DateTimeKind.Local).AddTicks(7953), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "dkZwYcNG1jmnYx1PjNNizezw3h+pVzt1Eov1q09qARE=", new byte[] { 48, 238, 253, 237, 151, 136, 80, 18, 61, 34, 53, 26, 202, 143, 161, 115 }, "tx", "", "" });
 
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 19, 20, 55, 20, 525, DateTimeKind.Local).AddTicks(44), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=", new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 }, "MI", "", "49022" });
+                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 20, 1, 27, 25, 952, DateTimeKind.Local).AddTicks(6277), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "dkZwYcNG1jmnYx1PjNNizezw3h+pVzt1Eov1q09qARE=", new byte[] { 48, 238, 253, 237, 151, 136, 80, 18, 61, 34, 53, 26, 202, 143, 161, 115 }, "MI", "", "49022" });
 
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 19, 20, 55, 20, 525, DateTimeKind.Local).AddTicks(85), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=", new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 }, "ny", "", "10952" });
+                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 20, 1, 27, 25, 952, DateTimeKind.Local).AddTicks(6454), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "dkZwYcNG1jmnYx1PjNNizezw3h+pVzt1Eov1q09qARE=", new byte[] { 48, 238, 253, 237, 151, 136, 80, 18, 61, 34, 53, 26, 202, 143, 161, 115 }, "ny", "", "10952" });
 
             migrationBuilder.InsertData(
                 table: "Products",

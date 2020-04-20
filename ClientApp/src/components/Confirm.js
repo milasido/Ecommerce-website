@@ -12,7 +12,7 @@ export class Confirm extends Component {
         history.detail = itemsPaid; // add paid items into history object
         console.log("history to post", history);
         localStorage.setItem("order", JSON.stringify(history));
-
+        localStorage.setItem("cart", JSON.stringify([])); // set cart empty after purchase
         axios.post('/api/users/'+ id +'/savehistory', history);
     }
 
