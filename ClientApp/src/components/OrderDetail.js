@@ -122,8 +122,7 @@ export class OrderDetail extends Component {
                                             {or.orderShipState} {or.orderShipZip5}-{or.orderShipZip4}<br />  
                                         </div>
 
-                                        <div className="bose-orderDetail__itemSection">
-                                            <a className="bose-orderDetail__itemAction">Add to my products</a>
+                                        <div className="bose-orderDetail__itemSection">                                
                                             <a className="bose-orderDetail__itemAction">Return</a>
                                             <a className="bose-orderDetail__itemAction">Support</a>
                                             <a className="bose-orderDetail__itemAction">Write a review</a>

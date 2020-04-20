@@ -144,7 +144,7 @@
 .bose-orderDetail .bose-orderDetail__itemImage {
     float: none;
     width: 100px;
-    height: 100px;
+    height: auto;
 }
 
 @media (min-width: 768px) {
@@ -156,6 +156,7 @@
 
 .bose-orderDetail .bose-orderDetail__itemAction {
     display: block;
+    text-align:right;
 }
 
     .bose-orderDetail .bose-orderDetail__itemAction:not(:first-child) {
