@@ -191,7 +191,7 @@ namespace ecommerce.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ProductId = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
-                    SalePrice = table.Column<int>(nullable: false),
+                    SalePrice = table.Column<double>(nullable: false),
                     OrderId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -208,17 +208,17 @@ namespace ecommerce.Migrations
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 16, 1, 32, 18, 267, DateTimeKind.Local).AddTicks(7288), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "BZNkKTAUlzM2u1t9g2KZFQ9Ypxe4iYzpUZGlN4vhdSs=", new byte[] { 164, 87, 47, 117, 244, 231, 185, 157, 1, 73, 0, 212, 49, 5, 247, 51 }, "tx", "", "" });
+                values: new object[] { 1, "8200 broadway st", "apt 711n", "houston", new DateTime(2020, 4, 19, 20, 55, 20, 521, DateTimeKind.Local).AddTicks(4061), "wolnguyen98@gmail.com", "thuy nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=", new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 }, "tx", "", "" });
 
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 16, 1, 32, 18, 272, DateTimeKind.Local).AddTicks(2390), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "BZNkKTAUlzM2u1t9g2KZFQ9Ypxe4iYzpUZGlN4vhdSs=", new byte[] { 164, 87, 47, 117, 244, 231, 185, 157, 1, 73, 0, 212, 49, 5, 247, 51 }, "MI", "", "49022" });
+                values: new object[] { 2, "8956 Sage St", "", "Benton Harbor", new DateTime(2020, 4, 19, 20, 55, 20, 525, DateTimeKind.Local).AddTicks(44), "cmphan7@gmail.com", "cuong phan", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=", new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 }, "MI", "", "49022" });
 
             migrationBuilder.InsertData(
                 table: "Customer",
                 columns: new[] { "CustomerId", "Address1", "Address2", "City", "DateCreated", "Email", "Fullname", "LastLogin", "PasswordHashed", "PasswordSalt", "State", "Zip4", "Zip5" },
-                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 16, 1, 32, 18, 272, DateTimeKind.Local).AddTicks(2466), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "BZNkKTAUlzM2u1t9g2KZFQ9Ypxe4iYzpUZGlN4vhdSs=", new byte[] { 164, 87, 47, 117, 244, 231, 185, 157, 1, 73, 0, 212, 49, 5, 247, 51 }, "ny", "", "10952" });
+                values: new object[] { 3, "457 Illinois Road", "", "Monsey", new DateTime(2020, 4, 19, 20, 55, 20, 525, DateTimeKind.Local).AddTicks(85), "kimnguyen137@gmail.com", "kim nguyen", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=", new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 }, "ny", "", "10952" });
 
             migrationBuilder.InsertData(
                 table: "Products",
@@ -308,8 +308,7 @@ namespace ecommerce.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_OrderId",
                 table: "OrderDetails",
-                column: "OrderId",
-                unique: true);
+                column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_CustomerId",
@@ -319,8 +318,7 @@ namespace ecommerce.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ProductDetails_ProductId",
                 table: "ProductDetails",
-                column: "ProductId",
-                unique: true);
+                column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

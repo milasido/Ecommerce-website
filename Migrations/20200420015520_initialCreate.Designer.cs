@@ -9,7 +9,7 @@ using ecommerce.Data;
 namespace ecommerce.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200416063218_initialCreate")]
+    [Migration("20200420015520_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -146,8 +146,7 @@ namespace ecommerce.Migrations
 
                     b.HasKey("ProductDetailId");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductDetails");
                 });
@@ -239,12 +238,12 @@ namespace ecommerce.Migrations
                             Address1 = "8200 broadway st",
                             Address2 = "apt 711n",
                             City = "houston",
-                            DateCreated = new DateTime(2020, 4, 16, 1, 32, 18, 267, DateTimeKind.Local).AddTicks(7288),
+                            DateCreated = new DateTime(2020, 4, 19, 20, 55, 20, 521, DateTimeKind.Local).AddTicks(4061),
                             Email = "wolnguyen98@gmail.com",
                             Fullname = "thuy nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "BZNkKTAUlzM2u1t9g2KZFQ9Ypxe4iYzpUZGlN4vhdSs=",
-                            PasswordSalt = new byte[] { 164, 87, 47, 117, 244, 231, 185, 157, 1, 73, 0, 212, 49, 5, 247, 51 },
+                            PasswordHashed = "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=",
+                            PasswordSalt = new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 },
                             State = "tx",
                             Zip4 = "",
                             Zip5 = ""
@@ -255,12 +254,12 @@ namespace ecommerce.Migrations
                             Address1 = "8956 Sage St",
                             Address2 = "",
                             City = "Benton Harbor",
-                            DateCreated = new DateTime(2020, 4, 16, 1, 32, 18, 272, DateTimeKind.Local).AddTicks(2390),
+                            DateCreated = new DateTime(2020, 4, 19, 20, 55, 20, 525, DateTimeKind.Local).AddTicks(44),
                             Email = "cmphan7@gmail.com",
                             Fullname = "cuong phan",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "BZNkKTAUlzM2u1t9g2KZFQ9Ypxe4iYzpUZGlN4vhdSs=",
-                            PasswordSalt = new byte[] { 164, 87, 47, 117, 244, 231, 185, 157, 1, 73, 0, 212, 49, 5, 247, 51 },
+                            PasswordHashed = "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=",
+                            PasswordSalt = new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 },
                             State = "MI",
                             Zip4 = "",
                             Zip5 = "49022"
@@ -271,12 +270,12 @@ namespace ecommerce.Migrations
                             Address1 = "457 Illinois Road",
                             Address2 = "",
                             City = "Monsey",
-                            DateCreated = new DateTime(2020, 4, 16, 1, 32, 18, 272, DateTimeKind.Local).AddTicks(2466),
+                            DateCreated = new DateTime(2020, 4, 19, 20, 55, 20, 525, DateTimeKind.Local).AddTicks(85),
                             Email = "kimnguyen137@gmail.com",
                             Fullname = "kim nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "BZNkKTAUlzM2u1t9g2KZFQ9Ypxe4iYzpUZGlN4vhdSs=",
-                            PasswordSalt = new byte[] { 164, 87, 47, 117, 244, 231, 185, 157, 1, 73, 0, 212, 49, 5, 247, 51 },
+                            PasswordHashed = "WZ2appDt1+W2KxeHuRjUcXHV5yr/5gaR9nMggYNZCxo=",
+                            PasswordSalt = new byte[] { 87, 216, 62, 222, 231, 84, 248, 188, 127, 234, 24, 231, 73, 85, 92, 239 },
                             State = "ny",
                             Zip4 = "",
                             Zip5 = "10952"
@@ -409,13 +408,12 @@ namespace ecommerce.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("SalePrice")
-                        .HasColumnType("INTEGER");
+                    b.Property<double>("SalePrice")
+                        .HasColumnType("REAL");
 
                     b.HasKey("DetailId");
 
-                    b.HasIndex("OrderId")
-                        .IsUnique();
+                    b.HasIndex("OrderId");
 
                     b.ToTable("OrderDetails");
                 });
@@ -560,8 +558,8 @@ namespace ecommerce.Migrations
             modelBuilder.Entity("ecommerce.Data.ProductDetails", b =>
                 {
                     b.HasOne("ecommerce.Model.Products", "Products")
-                        .WithOne("productDetails")
-                        .HasForeignKey("ecommerce.Data.ProductDetails", "ProductId")
+                        .WithMany("productDetails")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -587,8 +585,8 @@ namespace ecommerce.Migrations
             modelBuilder.Entity("ecommerce.Model.OrderDetails", b =>
                 {
                     b.HasOne("ecommerce.Model.Orders", "Orders")
-                        .WithOne("OrderDetails")
-                        .HasForeignKey("ecommerce.Model.OrderDetails", "OrderId")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

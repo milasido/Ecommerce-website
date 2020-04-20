@@ -19,7 +19,7 @@ namespace ecommerce.Model
         public string OrderShipZip5 { get; set; }
         public string OrderShipZip4 { get; set; }
         public DateTime OrderDate { get; set; }
-        public OrderDetails OrderDetails { get; set; }
+        public ICollection<OrderDetails> OrderDetails { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 

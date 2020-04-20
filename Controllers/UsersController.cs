@@ -83,15 +83,18 @@ namespace ecommerce.Controllers
             ordertosave.OrderShipZip5 = order.zip5;
             ordertosave.OrderShipZip4 = order.zip4;
             ordertosave.OrderDate = DateTime.Now;
-            
-            foreach (var item in order.detail)
-            {
-                ordertosave.OrderDetails.ProductId = item.productId;
-                ordertosave.OrderDetails.Quantity = item.quantity;
-                ordertosave.OrderDetails.SalePrice = item.productPrice;
-            }
-
             await _dataContext.Orders.AddAsync(ordertosave);
+            await _dataContext.SaveChangesAsync();
+
+            foreach(var item in order.detail)
+            {
+                var itemtosave = new OrderDetails();
+                itemtosave.ProductId = item.productId;
+                itemtosave.Quantity = item.quantity;
+                itemtosave.SalePrice = item.productPrice;
+                itemtosave.OrderId = _dataContext.Orders.Max(o => o.OrderId);
+                await _dataContext.OrderDetails.AddAsync(itemtosave);
+            }
             await _dataContext.SaveChangesAsync();
             return Ok("save successful");
         }

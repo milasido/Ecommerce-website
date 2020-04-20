@@ -17,6 +17,6 @@ namespace ecommerce.Model
         public double ProductPrice { get; set; }
         public string ProductImageUrl { get; set; }    
         public string ProductInformation { get; set; }
-        public ProductDetails productDetails { get; set; }
+        public ICollection<ProductDetails> productDetails { get; set; }
     }
 }
