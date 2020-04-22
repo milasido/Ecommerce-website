@@ -31,7 +31,8 @@ export class Account extends Component {
         //const isValid = this.handleValidate();
         // check validation frontend first
         //if (isValid) {
-        axios.post('/api/user/update', this.state.userchange)
+        axios.post('/api/user/update', this.state.userchange);
+        console.log("edit", this.state.userchange)
         //}
     }
 
@@ -171,7 +172,7 @@ export class Account extends Component {
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Full Name</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} value={newname} name="newname" className="form-control" type="text" defaultValue={user.fullname} placeholder="Enter your fullname"/>
+                                                    <input onChange={this.handleChange} name="newname" className="form-control" type="text" defaultValue={user.fullname} placeholder="Enter your fullname"/>
                                                 </div>
                                             </div>
                                             
@@ -179,34 +180,34 @@ export class Account extends Component {
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Address 1</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} value={newaddress1} name="newaddress1" className="form-control" type="text" defaultValue={user.address1} placeholder="Enter your address" />
+                                                    <input onChange={this.handleChange} name="newaddress1" className="form-control" type="text" defaultValue={user.address1} placeholder="Enter your address" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Address 2</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} value={newaddress2} name="newaddress2" className="form-control" type="text" defaultValue={user.address2} placeholder="apt #, PO box, Unit... (optional) " />
+                                                    <input onChange={this.handleChange} name="newaddress2" className="form-control" type="text" defaultValue={user.address2} placeholder="apt #, PO box, Unit... (optional) " />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">City</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} value={newcity} name="newcity" className="form-control" type="text" defaultValue={user.city} placeholder="Enter your city" />
+                                                    <input onChange={this.handleChange} name="newcity" className="form-control" type="text" defaultValue={user.city} placeholder="Enter your city" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">State</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} value={newstate} name="newstate"className="form-control" type="text" defaultValue={user.state} placeholder="Enter your state" />
+                                                    <input onChange={this.handleChange} name="newstate"className="form-control" type="text" defaultValue={user.state} placeholder="Enter your state" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Zipcode</label>
                                                 <div className="col-lg-4">
-                                                    <input onChange={this.handleChange} value={newzip5} name="newzip5" className="form-control" type="text" defaultValue={user.zip5} placeholder="Zip 5 number"/>
+                                                    <input onChange={this.handleChange} name="newzip5" className="form-control" type="text" defaultValue={user.zip5} placeholder="Zip 5 number"/>
                                                 </div>
                                                 <div className="col-lg-4">
-                                                    <input onChange={this.handleChange} value={newzip4} name="newzip4" className="form-control" type="text" defaultValue={user.zip4} placeholder="Zip 4 number" />
+                                                    <input onChange={this.handleChange} name="newzip4" className="form-control" type="text" defaultValue={user.zip4} placeholder="Zip 4 number" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
@@ -227,19 +228,19 @@ export class Account extends Component {
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Email</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} value={newemail} name="newemail" className="form-control" type="email" defaultValue={user.email}/>
+                                                    <input onChange={this.handleChange} name="newemail" className="form-control" type="email" defaultValue={user.email}/>
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Password</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} value={newpassword} name="newpassword" className="form-control" type="password" defaultValue={user.password} />
+                                                    <input onChange={this.handleChange} name="newpassword" className="form-control" type="password" defaultValue={user.password} />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Confirm password</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} value={newpassword2} name="newpassword2" className="form-control" type="password" placeholder="Confrim your password" />
+                                                    <input onChange={this.handleChange} name="newpassword2" className="form-control" type="password" placeholder="Confrim your password" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">

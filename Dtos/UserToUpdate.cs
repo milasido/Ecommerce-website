@@ -7,16 +7,16 @@ namespace ecommerce.Dtos
 {
     public class UserToUpdate
     {
-        public string fullname { get; set; }
-        public string address1 { get; set; }
-        public string address2 { get; set; }
-        public string city { get; set; }
-        public string email { get; set; }
-        public string state { get; set; }
-        public string zip5 { get; set; }
-        public string password { get; set; }
-        public string password2 { get; set; }
-        public string zip4 { get; set; }
+        public string newname { get; set; }
+        public string newaddress1 { get; set; }
+        public string newaddress2 { get; set; }
+        public string newcity { get; set; }
+        public string newemail { get; set; }
+        public string newstate { get; set; }
+        public string newzip5 { get; set; }
+        public string newpassword { get; set; }
+        public string newpassword2 { get; set; }
+        public string newzip4 { get; set; }
 
     }
 }

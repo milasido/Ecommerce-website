@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using ecommerce.Data;
 using ecommerce.Dtos;
 using ecommerce.Model;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +19,7 @@ namespace ecommerce.Controllers
     public class UsersController : ControllerBase
     {
         private DataContext _dataContext;
+
         public UsersController(DataContext dataContext)
         {
             _dataContext = dataContext;
@@ -121,14 +124,40 @@ namespace ecommerce.Controllers
 
 
 
-        /*[HttpPost("{id}/update")]
+        [HttpPost("{id}/update")]
         public async Task<IActionResult> UserUpdate(int id, UserToUpdate usertoupdate)
         {
             var user = await _dataContext.Customer.FirstOrDefaultAsync(x => x.CustomerId == id);
+            if (usertoupdate.newname != "") user.Fullname = usertoupdate.newname; 
+            if (usertoupdate.newemail != "") user.Email = usertoupdate.newemail;
+            if (usertoupdate.newaddress1 != "") user.Address1 = usertoupdate.newaddress1;
+            if (usertoupdate.newaddress1 != "") user.Address2 = usertoupdate.newaddress2;
+            if (usertoupdate.newcity != "") user.City = usertoupdate.newcity;
+            if (usertoupdate.newstate != "") user.State = usertoupdate.newstate;
+            if (usertoupdate.newzip4 != "") user.Zip4 = usertoupdate.newzip4;
+            if (usertoupdate.newzip5 != "") user.Zip5 = usertoupdate.newzip5;
+
+            //create new pass hash & satl for new password
+            if (usertoupdate.newpassword != "")
+            {
+                byte[] salted = new byte[128 / 8];
+                using (var rng = RandomNumberGenerator.Create())
+                {
+                    rng.GetBytes(salted);
+                }
+                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                      password: usertoupdate.newpassword,
+                      salt: salted,
+                      prf: KeyDerivationPrf.HMACSHA1,
+                      iterationCount: 10000,
+                      numBytesRequested: 256 / 8));
+
+                user.PasswordHashed = hashed;
+                user.PasswordSalt = salted;
+            }
+
             await _dataContext.SaveChangesAsync();
-            //var items = JsonConvert.DeserializeObject<List<Cart>>(CartData);
-            
-            return Ok("save successful");
-        }*/
+            return Ok("update successful");
+        }
     }
 }
