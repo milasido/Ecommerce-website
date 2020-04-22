@@ -49,7 +49,7 @@ export class OrderDetail extends Component {
             <div className="container">
                 {order.map(or => (
                     <div>
-                    <h1>Order details</h1>
+                    <div className="page-header"><h1>ORDER DETAILS</h1></div>
                     <div className="bose-orderDetail">
                         <p>
                             <span className="bose-orderDetail__headerText"><b>Date:</b> {or.orderDate}</span>

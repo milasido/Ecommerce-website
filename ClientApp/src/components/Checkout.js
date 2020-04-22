@@ -14,14 +14,19 @@ export class Checkout extends Component {
 /*    constructor(props) {
         super(props)*/
         state = {
-            Name: '',
-            Address1: '',
-            Address2: '',
-            City: '',
-            State: '',
-            Zip5: '',
-            Zip4: '',
-            ValidateResult: {}
+            Name: '', NameError:"",
+            Address1: '', Address1Error: "",
+            Address2: '', Address2Error: "",
+            City: '', CityError: "",
+            State: '', StateError: "",
+            Zip5: '', Zip5Error: "",
+            Zip4: '', Zip4Error: "",
+            ValidateResult: {},
+            cardname: "", CardNameError:"",
+            cartnumber: "", CardNumberError: "",
+            expmonth: "", ExpMonthError: "",
+            expyear: "", ExpYearError: "",
+            cvv: "", CvvError: ""
         }
         /*this.handleChange = this.handleChange.bind(this);
         this.handleValidate = this.handleValidate.bind(this);*/
@@ -44,9 +49,10 @@ export class Checkout extends Component {
     };
 
     render() {
-        const { Name, Address1, Address2, City, State, Zip5, Zip4 } = this.state;
+        const { Name, Address1, Address2, City, State, Zip5, Zip4, cardname, cardnumber, expmonth, expyear, cvv } = this.state;
         return (
             <div class="row rrr">
+                <div className="page-header" style={{marginLeft: '50px'}}><h1>CHECKOUT INFORMATION</h1></div>
                 <div class="col-75 c75">
                     <div class="container ctn">
                         <form onSubmit={this.handleValidate}>
@@ -89,20 +95,20 @@ export class Checkout extends Component {
                                         <i id="discover" class="fa fa-cc-discover" >   </i>
                                     </div>
                                     <label for="cname">Name on Card</label>
-                                    <input type="text1" id="cname" name="cardname" placeholder="John More Doe" />
+                                    <input onChange={this.handleChange} value={cardname} type="text1" id="cname" name="cardname" placeholder="John More Doe" />
                                     <label for="ccnum">Credit card number</label>
-                                    <input type="text1" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" />
+                                    <input onChange={this.handleChange} value={cardnumber} type="text1" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" />
                                     <label for="expmonth">Exp Month</label>
-                                    <input type="text1" id="expmonth" name="expmonth" placeholder="September" />
+                                    <input onChange={this.handleChange} value={expmonth} type="text1" id="expmonth" name="expmonth" placeholder="September" />
 
                                     <div class="row rrr">
                                         <div class="col-50 c50">
                                             <label for="expyear">Exp Year</label>
-                                            <input type="text1" id="expyear" name="expyear" placeholder="2018" />
+                                            <input onChange={this.handleChange} value={expyear} type="text1" id="expyear" name="expyear" placeholder="2018" />
                                         </div>
                                         <div class="col-50 c50">
                                             <label for="cvv">CVV</label>
-                                            <input type="text1" id="cvv" name="cvv" placeholder="352" />
+                                            <input onChange={this.handleChange} value={cvv} type="text1" id="cvv" name="cvv" placeholder="352" />
                                         </div>
                                     </div>
                                 </div>

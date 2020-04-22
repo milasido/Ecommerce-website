@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import './Home_products.css';
 
@@ -42,7 +42,9 @@ export class Home extends Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <div className="row">
+                <Fragment>
+                    <div className="page-header" style={{marginLeft: '30px'}}><h1>OUR PRODUCTS</h1></div>
+                <div className="row">                 
                     {items.map(item => (
                         <div id="card-wrapper" className="cwrapper">
                             
@@ -55,7 +57,9 @@ export class Home extends Component {
 
                             <div id="product-info" className="product-info">
                                 <div id="product-text" className="product-text">
-                                    <h1><b>{item.productName}</b></h1>
+                                    <Link to='/productdetail' onClick={() => localStorage.setItem("PID", item.productId)}>
+                                        <h1><b>{item.productName}</b></h1>
+                                    </Link>
                                     <h2>imported by knn inc</h2>
                                     <p>{item.productInformation}</p>
                                 </div>
@@ -68,7 +72,8 @@ export class Home extends Component {
                         </div>
 
                     ))}
-                </div>
+                    </div>
+                    </Fragment>
             );
         }
     }
