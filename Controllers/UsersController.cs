@@ -118,5 +118,17 @@ namespace ecommerce.Controllers
             var history = await _dataContext.Orders.Where(x => x.CustomerId == id).Include(i => i.OrderDetails).ToListAsync();
             return Ok(history);
         }
+
+
+
+        /*[HttpPost("{id}/update")]
+        public async Task<IActionResult> UserUpdate(int id, UserToUpdate usertoupdate)
+        {
+            var user = await _dataContext.Customer.FirstOrDefaultAsync(x => x.CustomerId == id);
+            await _dataContext.SaveChangesAsync();
+            //var items = JsonConvert.DeserializeObject<List<Cart>>(CartData);
+            
+            return Ok("save successful");
+        }*/
     }
 }

@@ -103,7 +103,6 @@ export default class App extends Component {
                 <Route path='/cart' render={props => <Cart {...props} isLogin={this.state.isLogin} cartChange={this.state.cartChange} />} />
                 <Route path='/thankyou' component={ThankYou} />
                 <Route path='/confirm' component={Confirm} />
-                <Route path='/confirm' component={Confirm} />
                 <Route path='/history' component={OrderHistory} />
                 <Route path='/orderdetail' component={OrderDetail} />
                 <Route path='/productdetail' component={ProductDetail} />

@@ -9,10 +9,31 @@ import { Container } from 'reactstrap';
 export class Account extends Component {
     constructor(props) {
         super(props);
-        this.state = { user: {}, isLogin: this.props.isLogin };
+        this.state = {
+            user: {}, 
+            userchange: { newname:"", newaddress1:"", newaddress2:"", newcity:"", newstate:"", newzip5:"", newzip4:"", newemail:"", newpassword:"", newpassword2:"" },
+            isLogin: this.props.isLogin
+        };
         this.Auth = new AuthService();
+        this.handleChange = this.handleChange.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
     }
 
+    //handle change form events
+    handleChange = (event) => {
+        this.setState({
+            userchange: { ...this.state.userchange, [event.target.name]: event.target.value}          
+        })
+    }
+    //handle submit form
+    handleUpdate = () => {
+        //event.preventDefault();
+        //const isValid = this.handleValidate();
+        // check validation frontend first
+        //if (isValid) {
+        axios.post('/api/user/update', this.state.userchange)
+        //}
+    }
 
     componentDidMount() {
         //get id from profile after login
@@ -29,8 +50,10 @@ export class Account extends Component {
     }
 
 
+
     render() {
         const user = this.state.user;
+        const { newname, newpassword2,newpassword,newzip4,newzip5,newaddress1,newaddress2,newcity,newstate,newemail} = this.state.userchange;
         if (this.state.isLogin == false) {
             return <div>Please login to see your account...</div>;
         } else {
@@ -50,7 +73,7 @@ export class Account extends Component {
                                         <a href data-target="#messages" data-toggle="tab" className="nav-link">Messages</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a href data-target="#edit" data-toggle="tab" className="nav-link">Edit</a>
+                                        <a href data-target="#edit" data-toggle="tab" className="nav-link">Update/Edit</a>
                                     </li>
                                     <li className="nav-item">
                                         <Link to='/history'>
@@ -59,11 +82,11 @@ export class Account extends Component {
                                     </li>
                                     
                                 </ul>
-                                <div className="tab-content py-4">
+                                <div className="tab-content py-4 page-">
                                     <div className="tab-pane active" id="profile">
                                         <h5 className="mb-3"><b>Customer Profile</b></h5>
                                         <div className="row">
-                                            <div className="col-md-6">
+                                            <div className="col-md-6 page-header">
                                                 <h6><b>Fullname:</b>{" "}{user.fullname}</h6>
                                                 <h6><b>Email:</b>{"    "}{user.email}</h6>
                                                 <h6><b>Address1:</b>{" "}{user.address1}</h6>
@@ -89,7 +112,7 @@ export class Account extends Component {
                                                 <span className="badge badge-danger"><i className="fa fa-eye" /> 15 Logs</span>
                                             </div>
                                             <div className="col-md-12">
-                                                <h5 className="mt-2"><span className="fa fa-clock-o ion-clock float-right" /> Recent Activity</h5>
+                                                <h5 className="mt-2"><span className="fa fa-clock-o ion-clock float-right" /> <b>Recent Activity</b></h5>
                                                 <table className="table table-sm table-hover table-striped">
                                                     <tbody>
                                                         <tr>
@@ -148,7 +171,7 @@ export class Account extends Component {
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Full Name</label>
                                                 <div className="col-lg-9">
-                                                    <input className="form-control" type="text" defaultValue={user.fullname} placeholder="Enter your fullname"/>
+                                                    <input onChange={this.handleChange} value={newname} name="newname" className="form-control" type="text" defaultValue={user.fullname} placeholder="Enter your fullname"/>
                                                 </div>
                                             </div>
                                             
@@ -156,38 +179,38 @@ export class Account extends Component {
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Address 1</label>
                                                 <div className="col-lg-9">
-                                                    <input className="form-control" type="text" defaultValue={user.address1} placeholder="Enter your address" />
+                                                    <input onChange={this.handleChange} value={newaddress1} name="newaddress1" className="form-control" type="text" defaultValue={user.address1} placeholder="Enter your address" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Address 2</label>
                                                 <div className="col-lg-9">
-                                                    <input className="form-control" type="text" defaultValue={user.address2} placeholder="apt #, PO box, Unit... (optional) " />
+                                                    <input onChange={this.handleChange} value={newaddress2} name="newaddress2" className="form-control" type="text" defaultValue={user.address2} placeholder="apt #, PO box, Unit... (optional) " />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">City</label>
                                                 <div className="col-lg-9">
-                                                    <input className="form-control" type="text" defaultValue={user.city} placeholder="Enter your city" />
+                                                    <input onChange={this.handleChange} value={newcity} name="newcity" className="form-control" type="text" defaultValue={user.city} placeholder="Enter your city" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">State</label>
                                                 <div className="col-lg-9">
-                                                    <input className="form-control" type="text" defaultValue={user.state} placeholder="Enter your state" />
+                                                    <input onChange={this.handleChange} value={newstate} name="newstate"className="form-control" type="text" defaultValue={user.state} placeholder="Enter your state" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Zipcode</label>
                                                 <div className="col-lg-4">
-                                                    <input className="form-control" type="text" defaultValue={user.zip5} placeholder="Zip 5 number"/>
+                                                    <input onChange={this.handleChange} value={newzip5} name="newzip5" className="form-control" type="text" defaultValue={user.zip5} placeholder="Zip 5 number"/>
                                                 </div>
                                                 <div className="col-lg-4">
-                                                    <input className="form-control" type="text" defaultValue={user.zip4} placeholder="Zip 4 number" />
+                                                    <input onChange={this.handleChange} value={newzip4} name="newzip4" className="form-control" type="text" defaultValue={user.zip4} placeholder="Zip 4 number" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
-                                                <label className="col-lg-3 col-form-label form-control-label">Time Zone</label>
+                                                {/*<label className="col-lg-3 col-form-label form-control-label">Time Zone</label>
                                                 <div className="col-lg-9">
                                                     <select id="user_time_zone" className="form-control" size={0}>
                                                         <option value="Hawaii">(GMT-10:00) Hawaii</option>
@@ -199,31 +222,31 @@ export class Account extends Component {
                                                         <option value="Eastern Time (US & Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
                                                         <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
                                                     </select>
-                                                </div>
+                                                </div>*/}
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Email</label>
                                                 <div className="col-lg-9">
-                                                    <input className="form-control" type="email" defaultValue={user.email}/>
+                                                    <input onChange={this.handleChange} value={newemail} name="newemail" className="form-control" type="email" defaultValue={user.email}/>
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Password</label>
                                                 <div className="col-lg-9">
-                                                    <input className="form-control" type="password" defaultValue={user.password} />
+                                                    <input onChange={this.handleChange} value={newpassword} name="newpassword" className="form-control" type="password" defaultValue={user.password} />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Confirm password</label>
                                                 <div className="col-lg-9">
-                                                    <input className="form-control" type="password" placeholder="Confrim your password" />
+                                                    <input onChange={this.handleChange} value={newpassword2} name="newpassword2" className="form-control" type="password" placeholder="Confrim your password" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label" />
                                                 <div className="col-lg-9">
                                                     <input type="reset" className="btn btn-secondary" defaultValue="Cancel" />
-                                                    <input type="button" className="btn btn-primary" defaultValue="Save Changes" />
+                                                    <input onClick={()=>this.handleUpdate()} type="button" className="btn btn-primary" defaultValue="Save Changes" />
                                                 </div>
                                             </div>
                                         </form>
