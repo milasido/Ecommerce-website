@@ -94,6 +94,8 @@ namespace ecommerce.Controllers
             ordertosave.OrderDate = DateTime.Now;
             ordertosave.NumberOfItems = numberOfItems;
             ordertosave.OrderTotal = total;
+            ordertosave.CardName = order.cardname;
+            ordertosave.CardNumber = order.cardnumber;
             await _dataContext.Orders.AddAsync(ordertosave);
             await _dataContext.SaveChangesAsync();
 

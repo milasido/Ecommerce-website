@@ -17,6 +17,8 @@ namespace ecommerce.Model
         public string state { get; set; }
         public string zip5 { get; set; }
         public string zip4 { get; set; }
+        public string cardname { get; set; }
+        public string cardnumber { get; set; }
         public List<CartToSave> detail{ get; set; }
     }
 }

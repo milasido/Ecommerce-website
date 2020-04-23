@@ -36,7 +36,10 @@ export class Signup extends Component {
         if (emailError || passwordError || password2Error) {
             this.setState({ emailError: emailError, passwordError: passwordError, password2Error: password2Error });
             return false;
-        } else return true;
+        } else {
+            this.setState({ emailError: "", passwordError: "", password2Error: "" });
+            return true;
+        }
     }
 
     handleChange = (event) => {

@@ -80,7 +80,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset] {
+input[type=button], input[type=submit], input[type=reset], button[id=continue-checkout] {
     background-color: #56baed;
     border: none;
     color: white;

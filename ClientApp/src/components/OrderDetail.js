@@ -61,7 +61,8 @@ export class OrderDetail extends Component {
                             <p className="bose-orderDetail__summarySection">
                                 <b className="bose-orderDetail__summarySectionTitle">Payment:</b>
                                 Visa<br />
-                                xxxx-xxxx-xxxx-1234
+                                {or.cardName}<br/>
+                                xxxx-xxxx-xxxx-{or.cardNumber.slice(-4)}
                             </p>
 
                             <p className="bose-orderDetail__summarySection">

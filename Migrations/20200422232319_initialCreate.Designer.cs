@@ -9,7 +9,7 @@ using ecommerce.Data;
 namespace ecommerce.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200420135206_initialCreate")]
+    [Migration("20200422232319_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -627,12 +627,12 @@ namespace ecommerce.Migrations
                             Address1 = "8200 broadway st",
                             Address2 = "apt 711n",
                             City = "houston",
-                            DateCreated = new DateTime(2020, 4, 20, 8, 52, 6, 13, DateTimeKind.Local).AddTicks(2965),
+                            DateCreated = new DateTime(2020, 4, 22, 18, 23, 18, 703, DateTimeKind.Local).AddTicks(1465),
                             Email = "wolnguyen98@gmail.com",
                             Fullname = "thuy nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "CibeUTJOTA9bPKI6ZJd9UlahrSUC9bXcCh6GVBVeqGU=",
-                            PasswordSalt = new byte[] { 176, 184, 182, 117, 78, 152, 17, 49, 175, 184, 91, 5, 50, 87, 203, 88 },
+                            PasswordHashed = "0lxtMHEG9XqPWBuLiI/Mxs9qz2br9xfERcXM8okklYA=",
+                            PasswordSalt = new byte[] { 190, 72, 232, 90, 192, 167, 61, 6, 136, 135, 10, 21, 86, 93, 153, 7 },
                             State = "tx",
                             Zip4 = "",
                             Zip5 = ""
@@ -643,12 +643,12 @@ namespace ecommerce.Migrations
                             Address1 = "8956 Sage St",
                             Address2 = "",
                             City = "Benton Harbor",
-                            DateCreated = new DateTime(2020, 4, 20, 8, 52, 6, 16, DateTimeKind.Local).AddTicks(9122),
+                            DateCreated = new DateTime(2020, 4, 22, 18, 23, 18, 708, DateTimeKind.Local).AddTicks(44),
                             Email = "cmphan7@gmail.com",
                             Fullname = "cuong phan",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "CibeUTJOTA9bPKI6ZJd9UlahrSUC9bXcCh6GVBVeqGU=",
-                            PasswordSalt = new byte[] { 176, 184, 182, 117, 78, 152, 17, 49, 175, 184, 91, 5, 50, 87, 203, 88 },
+                            PasswordHashed = "0lxtMHEG9XqPWBuLiI/Mxs9qz2br9xfERcXM8okklYA=",
+                            PasswordSalt = new byte[] { 190, 72, 232, 90, 192, 167, 61, 6, 136, 135, 10, 21, 86, 93, 153, 7 },
                             State = "MI",
                             Zip4 = "",
                             Zip5 = "49022"
@@ -659,12 +659,12 @@ namespace ecommerce.Migrations
                             Address1 = "457 Illinois Road",
                             Address2 = "",
                             City = "Monsey",
-                            DateCreated = new DateTime(2020, 4, 20, 8, 52, 6, 16, DateTimeKind.Local).AddTicks(9162),
+                            DateCreated = new DateTime(2020, 4, 22, 18, 23, 18, 708, DateTimeKind.Local).AddTicks(99),
                             Email = "kimnguyen137@gmail.com",
                             Fullname = "kim nguyen",
                             LastLogin = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            PasswordHashed = "CibeUTJOTA9bPKI6ZJd9UlahrSUC9bXcCh6GVBVeqGU=",
-                            PasswordSalt = new byte[] { 176, 184, 182, 117, 78, 152, 17, 49, 175, 184, 91, 5, 50, 87, 203, 88 },
+                            PasswordHashed = "0lxtMHEG9XqPWBuLiI/Mxs9qz2br9xfERcXM8okklYA=",
+                            PasswordSalt = new byte[] { 190, 72, 232, 90, 192, 167, 61, 6, 136, 135, 10, 21, 86, 93, 153, 7 },
                             State = "ny",
                             Zip4 = "",
                             Zip5 = "10952"
@@ -818,6 +818,12 @@ namespace ecommerce.Migrations
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("CardName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CardNumber")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("INTEGER");

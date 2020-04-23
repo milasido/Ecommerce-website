@@ -37,7 +37,10 @@ export class Login extends Component {
         if (emailError || passwordError) {
             this.setState({ emailError: emailError, passwordError: passwordError });
             return false;
-        } else return true;
+        } else {
+            this.setState({ emailError: "", passwordError: "" });
+            return true;
+        }
     }
 
     //handle change form events
