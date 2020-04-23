@@ -27,14 +27,17 @@ export class Account extends Component {
     }
     //handle submit form
     handleUpdate = () => {
+        const id = JSON.parse(localStorage.getItem("profile")).CustomerId;
         //event.preventDefault();
         //const isValid = this.handleValidate();
         // check validation frontend first
         //if (isValid) {
-        axios.post('/api/user/update', this.state.userchange);
-        console.log("edit", this.state.userchange)
+        axios.post('/api/users/' + id + '/update/', this.state.userchange)
+            .then(res => (this.setState({ user: res })));
+        console.log("profile will edit", this.state.userchange)
         //}
     }
+   
 
     componentDidMount() {
         //get id from profile after login

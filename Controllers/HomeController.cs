@@ -21,9 +21,17 @@ namespace ecommerce.Controllers
 
         // api/Home/Products
         [HttpGet("Products")]
-        public ActionResult Get()
+        public ActionResult GetAllProduct()
         {
             return Ok(_dataContext.Products.ToList());
+        }
+
+        // api/Home/Product/id =>get one product for add cart
+        [HttpGet("Product/{id}")]
+        public async Task<ActionResult> GetOneProduct(int id)
+        {
+            var product = await _dataContext.Products.FirstOrDefaultAsync(x => x.ProductId == id);
+            return Ok(product);
         }
 
         //api/home/products/{id}

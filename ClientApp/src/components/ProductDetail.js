@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-
+import axios from 'axios';
 import './ProductDetail.css';
 
 export class ProductDetail extends Component {
@@ -8,20 +8,50 @@ export class ProductDetail extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            items: [],
+            obj: []
         };
+        this.addToCart = this.addToCart.bind(this);
+    }
+
+    addToCart(item) {
+        if (localStorage.getItem("id_token")!=null) { // if loggin
+            if (localStorage.getItem("cart") != "[]") {
+                var myJsonObject = (item); 
+                myJsonObject.quantity = 1; 
+                myJsonObject = JSON.stringify(myJsonObject); //change back to string
+                var items = localStorage.getItem("cart").slice(0, -1).concat(',' + myJsonObject) + "]"; // set as array string
+                localStorage.setItem("cart", items); // add array cart to localstorage
+            }
+            else {
+                var myJsonObject = (item); //change to obj
+                myJsonObject.quantity = 1; //add quantity
+                myJsonObject = "[" + JSON.stringify(myJsonObject) + "]"; //change back to string
+                localStorage.setItem("cart", myJsonObject);
+            }
+        }
+    }
+
+    getProductToAddCart() {
+        const id = localStorage.getItem("PID");
+        fetch("/api/Home/Product/" + id)
+            .then(res => res.json())
+            .then(result => {
+                this.setState({
+                    obj: JSON.parse('[' + JSON.stringify(result) + ']')
+                })
+            })
     }
 
     componentDidMount() {
         const id = localStorage.getItem("PID");
-        const temp = [];
-        fetch("/api/Home/Products/"+id)
+        fetch("/api/Home/Products/" + id)
             .then(res => res.json())
             .then(
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        items: JSON.parse('['+JSON.stringify(result)+']')
+                        items: JSON.parse('[' + JSON.stringify(result) + ']')
                     });
                 },
                 // Note: it's important to handle errors here
@@ -33,12 +63,13 @@ export class ProductDetail extends Component {
                         error
                     });
                 }
-            )
+        );
+        this.getProductToAddCart();
+        
     }
 
     render() {
-        const { error, isLoaded, items } = this.state;
-        console.log("item", items);
+        const { error, isLoaded, items, obj } = this.state;           
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -49,6 +80,7 @@ export class ProductDetail extends Component {
                     <div className="container">
                         {items.map(item => (
                             <h1>{item.name}</h1>
+
                         ))}
                         <div id="myCarousel" className="carousel slide" data-ride="carousel">
                             {/* Indicators */}
@@ -82,9 +114,11 @@ export class ProductDetail extends Component {
                             </a>
                         </div>
                     </div>
-                    <div className="text-center">
-                        <button type="button" className="btn btn-warning">Add To Cart</button>
-                    </div>
+                    {obj.map(item => (
+                        <div className="text-center">
+                            <button onClick={() => this.addToCart(item)} type="button" className="btn btn-warning">Add To Cart</button>
+                        </div>
+                    ))}
                     <div className="container">
                         {items.map(item => (
                             <div className="panel panel-default">

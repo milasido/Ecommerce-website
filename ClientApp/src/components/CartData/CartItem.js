@@ -1,8 +1,8 @@
 ﻿import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function CartItem({ carts, handleRemoveItem }) {
-
+export default function CartItem({ carts, handleRemoveItem, handleIncrease, handleDecrease }) {
+   
     return (
         <div>
         {
@@ -22,20 +22,23 @@ export default function CartItem({ carts, handleRemoveItem }) {
                         <span className="d-lg-none">Product: </span>{item.productName}
 
                     </div>
+
                     <div className="col-10 mx-auto col-lg-2">
                         <span className="d-lg-none">Price: </span>$ {item.productPrice}
                     </div>
+
                     <div className="col-10 mx-auto col-lg-2 my-2 my-lg-0">
                         <div className="d-flex justify-content-center">
-                            <span className="btn btn-black mx-1" >
+                            <span onClick={() => handleDecrease(item)} className="btn btn-black mx-1" >
                                 -
                             </span>
                             <span className="btn btn-black mx-1" style={{ cursor: 'auto' }}>
                                 {item.quantity}
                             </span>
-                            <span className="btn btn-black mx-1" >
+                            <span onClick={() => handleIncrease(item)} className="btn btn-black mx-1" >
                                 +
-                        </span>
+                            </span>
+                            {/*<span className="d-lg-none">Quantity: </span> {item.quantity}*/}
                         </div>
                     </div>
                     <div className="col-10 mx-auto col-lg-2">

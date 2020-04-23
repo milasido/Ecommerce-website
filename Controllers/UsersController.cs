@@ -133,7 +133,7 @@ namespace ecommerce.Controllers
             if (usertoupdate.newname != "") user.Fullname = usertoupdate.newname; 
             if (usertoupdate.newemail != "") user.Email = usertoupdate.newemail;
             if (usertoupdate.newaddress1 != "") user.Address1 = usertoupdate.newaddress1;
-            if (usertoupdate.newaddress1 != "") user.Address2 = usertoupdate.newaddress2;
+            if (usertoupdate.newaddress2 != "") user.Address2 = usertoupdate.newaddress2;
             if (usertoupdate.newcity != "") user.City = usertoupdate.newcity;
             if (usertoupdate.newstate != "") user.State = usertoupdate.newstate;
             if (usertoupdate.newzip4 != "") user.Zip4 = usertoupdate.newzip4;
