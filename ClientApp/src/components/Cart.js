@@ -65,7 +65,7 @@ export class Cart extends Component {
             }, Object.create(null));
 
             console.log("cartafter", result);
-
+            //localStorage.setItem("cart", JSON.stringify(result));
             // set state for new cart after merging
             this.setState({ carts: result });
         }
