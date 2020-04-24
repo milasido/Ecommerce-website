@@ -56,12 +56,13 @@ export class Login extends Component {
             this.Auth.login(this.state.email, this.state.password)
                 .then(res => {
                     this.props.history.push('/');
+                    this.props.handleLogin();
                     //this.props.handleStatus(); //after login, run to update the login/logout status
                 })
                 .catch(error => {
                     this.setState({ passwordError: "* " + JSON.parse(error).message });
                 })
-            this.props.handleStatus();
+            
         }
     }
 

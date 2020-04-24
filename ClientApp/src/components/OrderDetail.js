@@ -1,5 +1,4 @@
 ﻿import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './OrderDetail.css';
 
 export class OrderDetail extends Component {
@@ -76,7 +75,7 @@ export class OrderDetail extends Component {
                                 <b className="bose-orderDetail__summarySectionTitle">Order summary:</b>
                                 <div className="bose-orderDetail__priceSummary">
                                     <div className="bose-orderDetail__priceRow">
-                                            <span>Subtotal:</span><span>${(or.orderTotal-(or.orderTotal*8.5/100)).toFixed(2)}</span>
+                                        <span>Subtotal:</span><span>${(or.orderTotal-(or.orderTotal*8.5/100)).toFixed(2)}</span>
                                     </div>
                                     <div className="bose-orderDetail__priceRow">
                                         <span>Shipping:</span><span>FREE</span>

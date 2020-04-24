@@ -25,6 +25,7 @@ export class Confirm extends Component {
 
     render() {
         const confirm = JSON.parse(localStorage.getItem("confirm"));
+        const ship = JSON.parse(localStorage.getItem("ship"));
         const items = JSON.parse(localStorage.getItem("cart"));
         const sub = (items.reduce((sum, i) => (sum += i.quantity * i.productPrice), 0));
         const tax = sub * 8.5 / 100;
@@ -53,12 +54,12 @@ export class Confirm extends Component {
                     <div className="panel-heading"><b>Your Shipping Address: </b></div>
                     <div className="panel-body">
 
-                            {confirm.Name}<br/>
-                            {confirm.Address1}<br />
-                            {confirm.Address2}<br />
-                            {confirm.City}<br />
-                            {confirm.State}<br />
-                            {confirm.Zip5}-{confirm.Zip4}<br />
+                            {ship.name}<br/>
+                            {ship.address1}<br />
+                            {ship.address2}<br />
+                            {ship.city}<br />
+                            {ship.state}<br />
+                            {ship.zip5}-{ship.zip4}<br />
                     </div>
                     </div>
 

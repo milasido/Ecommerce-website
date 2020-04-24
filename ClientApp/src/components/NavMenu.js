@@ -1,8 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import React, { Component} from 'react';
+import { Collapse, Navbar, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import logo from '../img/NNP_LOGO.png';
-import { Layout } from './Layout';
 import './NavMenu.css';
 
 export class NavMenu extends Component {
@@ -25,14 +23,14 @@ export class NavMenu extends Component {
 
  render() {
      return (
-         <Navbar className="navbar-expand-sm navbar-toggleable-sm navbar-inverse border-bottom box-shadow mb-1" light>
+         <Navbar className="navbar-expand-sm navbar-toggleable-sm navbar-inverse border-bottom box-shadow mb-1" >
                  <Link to={"/"}>     
                     <img id="logo-nav" className="img-fluid img-responsive" src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Flag_of_South_Vietnam.svg" alt="logo" />
                 </Link>
                  <NavbarToggler onClick={this.toggleNavbar} className="ml-auto" id="toggler" />
 
                      
-                     <Collapse className="d-sm-inline-flex flex-sm-row-reverse text-light" isOpen={!this.state.collapsed} light navbar>
+                     <Collapse className="d-sm-inline-flex flex-sm-row-reverse text-light" isOpen={!this.state.collapsed} navbar>
                          <ul className="navbar-nav flex-grow">
                              <NavItem>
                                  <NavLink tag={Link} className="text-light" to="/">Home</NavLink>

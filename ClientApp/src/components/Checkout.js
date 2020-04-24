@@ -37,7 +37,7 @@ export class Checkout extends Component {
 
     handleClick = () => {
         const isValid = this.handleCheckPay();
-        if (isValid) {
+        if (isValid && this.state.ValidateResult.Address1 != null) {
             localStorage.setItem("confirm", JSON.stringify(this.state));
             this.props.history.push('/confirm');
         }
@@ -116,68 +116,68 @@ export class Checkout extends Component {
         const tax = sub * 8.5 / 100;
         const total = sub + tax;
         return (
-            <div class="row rrr">
+            <div className="row rrr">
                 {/*<div className="page-header" style={{ marginLeft: '50px' }}><h1>CHECKOUT INFORMATION</h1></div>*/}
-                <div class="col-75 c75">
-                    <div class="container ctn">
+                <div className="col-75 c75">
+                    <div className="container ctn">
                         <form onSubmit={this.handleValidate}>
 
-                            <div class="row rrr">
-                                <div class="col-50 c50">
+                            <div className="row rrr">
+                                <div className="col-50 c50">
                                     <h3>Shipping Address</h3>
-                                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                                    <input onChange={this.handleChange} defaultValue={Name} type="text1" id="fname" name="Name" placeholder="John M. Doe" />
+                                    <label><i className="fa fa-user"></i> Full Name</label>
+                                    <input onChange={this.handleChange} value={Name} defaultValue={Name} type="text1" id="fname" name="Name" placeholder="John M. Doe" />
                                     <div style={{ fontSize: 12, color: "red" }}>{this.state.NameError}</div>
-                                    <label for="adr"><i class="fa fa-address-card-o"></i> Address 1</label>
-                                    <input onChange={this.handleChange} defaultValue={Address1} type="text1" id="adr1" name="Address1" placeholder="542 W. 15th Street" />
+                                    <label><i className="fa fa-address-card-o"></i> Address 1</label>
+                                    <input onChange={this.handleChange} value={Address1}  defaultValue={Address1} type="text1" id="adr1" name="Address1" placeholder="542 W. 15th Street" />
                                     <div style={{ fontSize: 12, color: "red" }}>{this.state.Address1Error}</div>
-                                    <label for="adr"><i class="fa fa-address-card-o"></i> Address 2 (optional)</label>
-                                    <input onChange={this.handleChange} defaultValue={Address2} type="text1" id="adr2" name="Address2" placeholder="Apt 123" />
-                                    <label for="city"><i class="fa fa-institution"></i> City</label>
-                                    <input onChange={this.handleChange} defaultValue={City}  type="text1" id="city" name="City" placeholder="New York" />
+                                    <label><i className="fa fa-address-card-o"></i> Address 2 (optional)</label>
+                                    <input onChange={this.handleChange} value={Address2} defaultValue={Address2} type="text1" id="adr2" name="Address2" placeholder="Apt 123" />
+                                    <label><i className="fa fa-institution"></i> City</label>
+                                    <input onChange={this.handleChange} value={City} defaultValue={City}  type="text1" id="city" name="City" placeholder="New York" />
 
-                                    <div class="row rrr">
-                                        <div class="col-50 c50">
-                                            <label for="state">State</label>
-                                            <input onChange={this.handleChange} defaultValue={State} type="text1" id="state" name="State" placeholder="NY" />
+                                    <div className="row rrr">
+                                        <div className="col-50 c50">
+                                            <label>State</label>
+                                            <input onChange={this.handleChange} value={State} defaultValue={State} type="text1" id="state" name="State" placeholder="NY" />
                                         </div>
-                                        <div class="col-50 c50">
-                                            <label for="zip5">Zip 5</label>
-                                            <input onChange={this.handleChange} defaultValue={Zip5} type="text1" id="zip" name="Zip5" placeholder="10001" />
+                                        <div className="col-50 c50">
+                                            <label>Zip 5</label>
+                                            <input onChange={this.handleChange} value={Zip5} defaultValue={Zip5} type="text1" id="zip" name="Zip5" placeholder="10001" />
                                         </div>
-                                        <div class="col-50 c50">
-                                            <label for="zip4">Zip 4</label>
-                                            <input onChange={this.handleChange} defaultValue={Zip4}  type="text1" id="zip4" name="Zip4" placeholder="1111" />
+                                        <div className="col-50 c50">
+                                            <label>Zip 4</label>
+                                            <input onChange={this.handleChange} value={Zip4} defaultValue={Zip4}  type="text1" id="zip4" name="Zip4" placeholder="1111" />
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-50 c50">
+                                <div className="col-50 c50">
                                     <h3>Payment</h3>
-                                    <label for="fname">Accepted Cards</label>
-                                    <div class="icon-container">
-                                        <i id="visa" class="fa fa-cc-visa" >   </i>
-                                        <i id="amex" class="fa fa-cc-amex" >   </i>
-                                        <i id="mastercard" class="fa fa-cc-mastercard" >   </i>
-                                        <i id="discover" class="fa fa-cc-discover" >   </i>
+                                    <label>Accepted Cards</label>
+                                    <div className="icon-container">
+                                        <i id="visa" className="fa fa-cc-visa" >   </i>
+                                        <i id="amex" className="fa fa-cc-amex" >   </i>
+                                        <i id="mastercard" className="fa fa-cc-mastercard" >   </i>
+                                        <i id="discover" className="fa fa-cc-discover" >   </i>
                                     </div>
-                                    <label for="cname">Name on Card</label>
+                                    <label>Name on Card</label>
                                     <input onChange={this.handleChange} value={cardname} type="text1" id="cname" name="cardname" placeholder="John More Doe" />
                                     <div style={{ fontSize: 12, color: "red" }}>{this.state.CardNameError}</div>
-                                    <label for="ccnum">Credit card number</label>
+                                    <label>Credit card number</label>
                                     <input onChange={this.handleChange} value={cardnumber} type="text1" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" />
                                     <div style={{ fontSize: 12, color: "red" }}>{this.state.CardNumberError}</div>
-                                    <label for="expmonth">Exp Month</label>
+                                    <label>Exp Month</label>
                                     <input onChange={this.handleChange} value={expmonth} type="text1" id="expmonth" name="expmonth" placeholder="September" />
                                     <div style={{ fontSize: 12, color: "red" }}>{this.state.ExpMonthError}</div>
-                                    <div class="row rrr">
-                                        <div class="col-50 c50">
-                                            <label for="expyear">Exp Year</label>
+                                    <div className="row rrr">
+                                        <div className="col-50 c50">
+                                            <label>Exp Year</label>
                                             <input onChange={this.handleChange} value={expyear} type="text1" id="expyear" name="expyear" placeholder="2018" />
                                             <div style={{ fontSize: 12, color: "red" }}>{this.state.ExpYearError}</div>
                                         </div>
-                                        <div class="col-50 c50">
-                                            <label for="cvv">CVV</label>
+                                        <div className="col-50 c50">
+                                            <label>CVV</label>
                                             <input onChange={this.handleChange} value={cvv} type="text1" id="cvv" name="cvv" placeholder="352" />
                                             <div style={{ fontSize: 12, color: "red" }}>{this.state.CvvError}</div>
                                         </div>
@@ -193,9 +193,9 @@ export class Checkout extends Component {
 
                             {this.state.ValidateResult.address1 != "" && // able to return result
                                 <div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">Your Shipping Address Validated: </div>
-                                        <div class="panel-body">
+                                    <div className="panel panel-default">
+                                        <div className="panel-heading">Your Shipping Address Validated: </div>
+                                        <div className="panel-body">
                                             {this.state.ValidateResult.name} <br />
                                             {this.state.ValidateResult.address1} <br />
                                             {this.state.ValidateResult.address2} <br />
@@ -206,25 +206,23 @@ export class Checkout extends Component {
                                     </div>
                                 </div>
                             }
-                            {this.state.ValidateResult.address1 == "" && // return null if couldn't validate
-                                <div>
-                                    <p2>Cannot validate your address, please type it correcty</p2>
-                                </div>
+                            {this.state.ValidateResult.address1 == "" && // return null if couldn't validate                              
+                                <div style={{ fontSize: 14, color: "red", textAlign: "center" }}><br/>* Cannot validate your address, please type it correcty to continuous check out<br/></div>
                             }
 
 
-                            {/*<input type="submit" value="Continue to checkout" class="btnnn" />*/}
+                            {/*<input type="submit" value="Continue to checkout" className="btnnn" />*/}
 
-                            <button style={{textAlign: 'center !important'}} id="continue-checkout" onClick={() => this.handleClick()}>Continue to checkout</button>
+                            <button style={{textAlign: "center"}} className="btn-block" id="continue-checkout" onClick={() => this.handleClick()}>Continue to checkout</button>
 
                         </form>
                     </div>
                 </div>
 
-                <div class="col-25 ccc">
-                    <div class="container">
+                <div className="col-25 ccc">
+                    <div className="container">
                         <p2 className="page-header">YOUR CART</p2>
-                        <table class="table">
+                        <table className="table">
                             <thead>
                                 <tr>
                                     <th scope="col">Items</th>
@@ -240,9 +238,21 @@ export class Checkout extends Component {
                                         <td>{item.productPrice}</td>
                                     </tr>
                                 ))}
-                                <b>Sub total: $</b>{sub.toFixed(2)}<br/>
-                                <b>Tax: $</b>{tax.toFixed(2)}<br/>
-                                <b>Total: $</b>{total.toFixed(2)}<br/>
+                                <div className="bose-orderDetail__summarySection">
+                                    <b className="bose-orderDetail__summarySectionTitle">Order summary:</b>
+                                <div className="bose-orderDetail__priceRow">
+                                    <span>Subtotal:</span><span>${sub.toFixed(2)}</span>
+                                </div>
+                                <div className="bose-orderDetail__priceRow">
+                                    <span>Shipping:</span><span>FREE</span>
+                                </div>
+                                <div className="bose-orderDetail__priceRow">
+                                    <span>Tax:</span><span>${tax.toFixed(2)}</span>
+                                </div>
+                                <div className="bose-orderDetail__priceRow">
+                                    <span>Total:</span><span>${total.toFixed(2)}</span>
+                                </div>
+                                </div>
                             </tbody>
                         </table>
 

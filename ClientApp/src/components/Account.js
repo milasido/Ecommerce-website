@@ -11,7 +11,6 @@ export class Account extends Component {
         super(props);
         this.state = {
             user: {}, 
-            userchange: { newname:"", newaddress1:"", newaddress2:"", newcity:"", newstate:"", newzip5:"", newzip4:"", newemail:"", newpassword:"", newpassword2:"" },
             isLogin: this.props.isLogin
         };
         this.Auth = new AuthService();
@@ -22,19 +21,34 @@ export class Account extends Component {
     //handle change form events
     handleChange = (event) => {
         this.setState({
-            userchange: { ...this.state.userchange, [event.target.name]: event.target.value}          
+            user: { ...this.state.user, [event.target.name]: event.target.value}          
         })
     }
     //handle submit form
     handleUpdate = () => {
         const id = JSON.parse(localStorage.getItem("profile")).CustomerId;
+
+            var userchange = {
+                newname: this.state.user.fullname,
+                newaddress1: this.state.user.address1,
+                newaddress2: this.state.user.address2,
+                newcity: this.state.user.city,
+                newstate: this.state.user.state,
+                newzip5: this.state.user.zip5,
+                newzip4: this.state.user.zip4,
+                newemail: this.state.user.email,
+                newpassword: this.state.user.password,
+                newpassword2: this.state.user.password2
+            }
+
         //event.preventDefault();
         //const isValid = this.handleValidate();
         // check validation frontend first
         //if (isValid) {
-        axios.post('/api/users/' + id + '/update/', this.state.userchange)
+        axios.post('/api/users/' + id + '/update/', userchange)
             .then(res => (this.setState({ user: res })));
-        console.log("profile will edit", this.state.userchange)
+        console.log("user now", this.state.user);
+        console.log("profile will edit", userchange)
         //}
     }
    
@@ -43,13 +57,15 @@ export class Account extends Component {
         //get id from profile after login
         if (this.state.isLogin == true) {
             const id = JSON.parse(localStorage.getItem("profile")).CustomerId;
-            axios.get("/api/users/" + id)
-                .then(res => {
-                    this.setState({ user: res.data })
-                })
-                .catch(function (error) {
-                    console.log('Fetch error: ' + error.message);
-                });
+
+        axios.get("/api/users/" + id)
+            .then(res => {
+                this.setState({ user: res.data });
+                this.setState({ user: { ...this.state.user, ["password2"]: "" } });
+            })
+            .catch(function (error) {
+                console.log('Fetch error: ' + error.message);
+            });
         }
     }
 
@@ -57,7 +73,6 @@ export class Account extends Component {
 
     render() {
         const user = this.state.user;
-        const { newname, newpassword2,newpassword,newzip4,newzip5,newaddress1,newaddress2,newcity,newstate,newemail} = this.state.userchange;
         if (this.state.isLogin == false) {
             return <div>Please login to see your account...</div>;
         } else {
@@ -175,7 +190,7 @@ export class Account extends Component {
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Full Name</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} name="newname" className="form-control" type="text" defaultValue={user.fullname} placeholder="Enter your fullname"/>
+                                                    <input onChange={this.handleChange} name="fullname" className="form-control" type="text" value={user.fullname} placeholder="Enter your fullname"/>
                                                 </div>
                                             </div>
                                             
@@ -183,34 +198,34 @@ export class Account extends Component {
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Address 1</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} name="newaddress1" className="form-control" type="text" defaultValue={user.address1} placeholder="Enter your address" />
+                                                    <input onChange={this.handleChange} name="address1" className="form-control" type="text" value={user.address1} placeholder="Enter your address" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Address 2</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} name="newaddress2" className="form-control" type="text" defaultValue={user.address2} placeholder="apt #, PO box, Unit... (optional) " />
+                                                    <input onChange={this.handleChange} name="address2" className="form-control" type="text" value={user.address2} placeholder="apt #, PO box, Unit... (optional) " />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">City</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} name="newcity" className="form-control" type="text" defaultValue={user.city} placeholder="Enter your city" />
+                                                    <input onChange={this.handleChange} name="city" className="form-control" type="text" value={user.city} placeholder="Enter your city" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">State</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} name="newstate"className="form-control" type="text" defaultValue={user.state} placeholder="Enter your state" />
+                                                    <input onChange={this.handleChange} name="state" className="form-control" type="text" value={user.state} placeholder="Enter your state" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Zipcode</label>
                                                 <div className="col-lg-4">
-                                                    <input onChange={this.handleChange} name="newzip5" className="form-control" type="text" defaultValue={user.zip5} placeholder="Zip 5 number"/>
+                                                    <input onChange={this.handleChange} name="zip5" className="form-control" type="text" value={user.zip5} placeholder="Zip 5 number"/>
                                                 </div>
                                                 <div className="col-lg-4">
-                                                    <input onChange={this.handleChange} name="newzip4" className="form-control" type="text" defaultValue={user.zip4} placeholder="Zip 4 number" />
+                                                    <input onChange={this.handleChange} name="zip4" className="form-control" type="text" value={user.zip4} placeholder="Zip 4 number" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
@@ -231,19 +246,19 @@ export class Account extends Component {
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Email</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} name="newemail" className="form-control" type="email" defaultValue={user.email}/>
+                                                    <input onChange={this.handleChange} name="email" className="form-control" type="email" value={user.email}/>
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Password</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} name="newpassword" className="form-control" type="password" defaultValue={user.password} />
+                                                    <input onChange={this.handleChange} name="password" className="form-control" type="password" value={user.password} />
                                                 </div>
                                             </div>
                                             <div className="form-group row">
                                                 <label className="col-lg-3 col-form-label form-control-label">Confirm password</label>
                                                 <div className="col-lg-9">
-                                                    <input onChange={this.handleChange} name="newpassword2" className="form-control" type="password" placeholder="Confrim your password" />
+                                                    <input onChange={this.handleChange} name="password2" className="form-control" type="password" placeholder="Confrim your password" />
                                                 </div>
                                             </div>
                                             <div className="form-group row">

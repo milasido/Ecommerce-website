@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Route } from 'react-router';
-import { Layout } from './components/Layout';
 import { Home } from './components/Home';
 import { Validate } from './components/Validate';
 import { Counter } from './components/Counter';
@@ -15,19 +14,17 @@ import { OrderHistory } from './components/OrderHistory';
 
 import './custom.css'
 import axios from 'axios';
-import AuthService from './components/_Services/AuthService';
 import { ThankYou } from './components/ThankYou';
 import { OrderDetail } from './components/OrderDetail';
 import { ProductDetail } from './components/ProductDetail';
 
 
-const auth = new AuthService();
 export default class App extends Component {
     static displayName = App.name;
 
     constructor(props) {
         super(props);
-        if (localStorage.getItem('id_token') == null) // no token in local storage
+        if (localStorage.getItem('id_token') === null) // no token in local storage
             this.state = {
                 isLogin: false,
             };
@@ -36,14 +33,15 @@ export default class App extends Component {
                 isLogin: true,
                 cartChange: false
             };
-        this.handleStatus = this.handleStatus.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
         this.addToCart = this.addToCart.bind(this);
         this.handleSaveCart = this.handleSaveCart.bind(this);
     }
 
     addToCart(item) {
-        if (this.state.isLogin == true) { // if loggin
-            if (localStorage.getItem("cart") != "[]") {
+        if (this.state.isLogin === true) { // if loggin
+            if (localStorage.getItem("cart") !== "[]") {
                 var myJsonObject = JSON.parse(item); //change to obj
                 myJsonObject.quantity = 1; //add quantity
                 myJsonObject = JSON.stringify(myJsonObject); //change back to string
@@ -67,26 +65,26 @@ export default class App extends Component {
     }
 
     // handle logout or loggin when click
-    handleStatus() {
+    handleLogout() {
         if (localStorage.getItem('id_token') !== null) { // if logged in
             this.handleSaveCart(); // update current cart to database when logging out
             localStorage.removeItem('id_token');
             localStorage.removeItem('profile');
             localStorage.removeItem('cart');
             this.setState({ isLogin: !this.state.isLogin });
-        }
-        if (localStorage.getItem('id_token') === null) { // if not logged in
-            console.log("login is working");
-            this.setState({ isLogin: !this.state.isLogin });
-        }
+        }      
     }
 
+    handleLogin() {
+            console.log("login is working");
+            this.setState({ isLogin: !this.state.isLogin });
+    }
 
     render() {
         return (
             <Fragment>
 
-                <NavMenu handleStatus={this.handleStatus} isLogin={this.state.isLogin} />
+                <NavMenu handleStatus={this.handleLogout} isLogin={this.state.isLogin} />
 
                 <Route exact path='/' render={props => <Home {...props} addToCart={this.addToCart} />} />
 
@@ -94,8 +92,8 @@ export default class App extends Component {
 
                 <Route path='/validate' component={Validate} />
 
-                <Route path='/login' render={props => <Login {...props} handleStatus={this.handleStatus} />} isLogin={this.state.isLogin}/>
-                <Route path='/account' render={props => <Account {...props} handleStatus={this.handleStatus} isLogin={this.state.isLogin} />} />
+                <Route path='/login' render={props => <Login {...props} handleLogin={this.handleLogin} />} />
+                <Route path='/account' render={props => <Account {...props} isLogin={this.state.isLogin} />} />
                 <Route path='/signup' component={Signup} />
 
                 <Route path='/checkout' component={Checkout} />
