@@ -16,6 +16,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using System.Buffers.Text;
+using Ecommerce_website.Data;
 
 namespace ecommerce.Controllers
 {
@@ -23,12 +24,13 @@ namespace ecommerce.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private DataContext _dataContext;
+        private readonly IAuthRepository _repo;
+        // private DataContext _dataContext;
         private ApplicationSettings _appsetting;
 
-        public AuthController(DataContext dataContext, IOptions<ApplicationSettings> appsetting)
+        public AuthController(IAuthRepository repo, IOptions<ApplicationSettings> appsetting)
         {
-            _dataContext = dataContext;
+            _repo = repo;
             _appsetting = appsetting.Value;
         }
 
@@ -39,33 +41,35 @@ namespace ecommerce.Controllers
             // lowercase email
             customerToRegister.Email.ToLower();
             // check if email already in database 
-            if (await _dataContext.Customer.AnyAsync(xxx => xxx.Email == customerToRegister.Email))
+            // if (await _dataContext.Customer.AnyAsync(xxx => xxx.Email == customerToRegister.Email))
+            if (await _repo.UserExists(customerToRegister.Email))
                 return BadRequest(new { message = "This Email is already registered" });
-
+            // Register user if email is not existed 
             else
             {
                 // create new customer
-                var newCustomer = new Customer();
-                newCustomer.Email = customerToRegister.Email;
-                // encrypt password
-                byte[] salted = new byte[128 / 8];
-                using (var rng = RandomNumberGenerator.Create())
-                {
-                    rng.GetBytes(salted);
-                }
-                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                      password: customerToRegister.Password,
-                      salt: salted,
-                      prf: KeyDerivationPrf.HMACSHA1,
-                      iterationCount: 10000,
-                      numBytesRequested: 256 / 8));
-                // store password hashed for new customer
-                newCustomer.PasswordHashed = hashed;
-                newCustomer.PasswordSalt = salted;
-                newCustomer.DateCreated = DateTime.Now;
-                // add new customer to database
-                await _dataContext.Customer.AddAsync(newCustomer);
-                await _dataContext.SaveChangesAsync();
+                // var newCustomer = new Customer();
+                // newCustomer.Email = customerToRegister.Email;
+                // // encrypt password
+                // byte[] salted = new byte[128 / 8];
+                // using (var rng = RandomNumberGenerator.Create())
+                // {
+                //     rng.GetBytes(salted);
+                // }
+                // string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                //       password: customerToRegister.Password,
+                //       salt: salted,
+                //       prf: KeyDerivationPrf.HMACSHA1,
+                //       iterationCount: 10000,
+                //       numBytesRequested: 256 / 8));
+                // // store password hashed for new customer
+                // newCustomer.PasswordHashed = hashed;
+                // newCustomer.PasswordSalt = salted;
+                // newCustomer.DateCreated = DateTime.Now;
+                // // add new customer to database
+                // await _dataContext.Customer.AddAsync(newCustomer);
+                // await _dataContext.SaveChangesAsync();
+                var newCustomer = _repo.Register(customerToRegister);
                 return StatusCode(201);
             }
         }
@@ -75,12 +79,14 @@ namespace ecommerce.Controllers
         public async Task<IActionResult> Login(CustomerToLogin customerToLogin)
         {
             // lowercase email
-            customerToLogin.Email.ToLower();
+            var lowercaseEmail = customerToLogin.Email.ToLower();
             // find email in database
-            if (await _dataContext.Customer.AnyAsync(xxx => xxx.Email == customerToLogin.Email))
+            // if (await _dataContext.Customer.AnyAsync(xxx => xxx.Email == customerToLogin.Email))
+            // If user exits 
+            if (await _repo.UserExists(lowercaseEmail))
             {
                 // take customer from database
-                var user = await _dataContext.Customer.FirstOrDefaultAsync(xxx => xxx.Email == customerToLogin.Email);
+                var user = await _repo.GetCustomer(customerToLogin.Email);
                 // decrypt user pass from database             
                 string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                       password: customerToLogin.Password,
