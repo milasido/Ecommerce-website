@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ecommerce.Data;
+using Ecommerce_website.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,24 +14,25 @@ namespace ecommerce.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        private DataContext _dataContext;
-        public HomeController(DataContext dataContext)
+        private readonly IProductRepository _repo;
+        public HomeController(IProductRepository repo)
         {
-            _dataContext = dataContext;
+            _repo = repo;
         }
 
         // api/Home/Products
         [HttpGet("Products")]
         public ActionResult GetAllProduct()
         {
-            return Ok(_dataContext.Products.ToList());
+            var allProducts = _repo.GetAllProduct();
+            return Ok(allProducts);
         }
 
         // api/Home/Product/id =>get one product for add cart
         [HttpGet("Product/{id}")]
         public async Task<ActionResult> GetOneProduct(int id)
         {
-            var product = await _dataContext.Products.FirstOrDefaultAsync(x => x.ProductId == id);
+            var product = await _repo.GetOneProduct(id);
             return Ok(product);
         }
 
@@ -38,7 +40,7 @@ namespace ecommerce.Controllers
         [HttpGet("Products/{id}")]
         public async Task<IActionResult> GetProductDetail(int id)
         {
-            var detail = await _dataContext.ProductDetails.FirstOrDefaultAsync(x => x.ProductId == id);
+            var detail = await _repo.GetProductDetail(id);
             return Ok(detail);
         }
     }
