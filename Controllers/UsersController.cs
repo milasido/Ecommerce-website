@@ -80,7 +80,7 @@ namespace ecommerce.Controllers
             foreach (var item in order.detail)
             {
                 numberOfItems += item.quantity;
-                total += item.productPrice * item.quantity * 8.5 / 100;
+                total += (item.productPrice * item.quantity) + ((item.productPrice * item.quantity) * 8.5 / 100);
             }
             var ordertosave = new Orders();
             ordertosave.CustomerId = id;

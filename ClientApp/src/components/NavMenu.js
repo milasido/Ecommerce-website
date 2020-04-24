@@ -44,7 +44,7 @@ export class NavMenu extends Component {
                                  </NavItem>
                              }
                              {this.props.isLogin === true && //if status is logged in
-                                 <NavItem onClick={this.props.handleStatus}>
+                                 <NavItem onClick={this.props.handleLogout}>
                              <NavLink tag={Link} className="text-light" to="/">Logout</NavLink>
                                  </NavItem>
                              }

@@ -37,7 +37,9 @@ export class Checkout extends Component {
 
     handleClick = () => {
         const isValid = this.handleCheckPay();
-        if (isValid && this.state.ValidateResult.Address1 != null) {
+        console.log(isValid)
+        console.log(this.state.ValidateResult.address1)
+        if (isValid && this.state.ValidateResult.address1 !== null) {
             localStorage.setItem("confirm", JSON.stringify(this.state));
             this.props.history.push('/confirm');
         }
@@ -213,7 +215,7 @@ export class Checkout extends Component {
 
                             {/*<input type="submit" value="Continue to checkout" className="btnnn" />*/}
 
-                            <button style={{textAlign: "center"}} className="btn-block" id="continue-checkout" onClick={() => this.handleClick()}>Continue to checkout</button>
+                            <button style={{textAlign: "center"}} className="btn-block" id="continue-checkout" onClick={() => this.handleClick() }>Continue to checkout</button>
 
                         </form>
                     </div>

@@ -71,6 +71,10 @@ export default class App extends Component {
             localStorage.removeItem('id_token');
             localStorage.removeItem('profile');
             localStorage.removeItem('cart');
+            localStorage.removeItem('ship');
+            localStorage.removeItem('confirm');
+            localStorage.removeItem('PID');
+            localStorage.removeItem('OID');
             this.setState({ isLogin: !this.state.isLogin });
         }      
     }
@@ -84,7 +88,7 @@ export default class App extends Component {
         return (
             <Fragment>
 
-                <NavMenu handleStatus={this.handleLogout} isLogin={this.state.isLogin} />
+                <NavMenu handleLogout={this.handleLogout} isLogin={this.state.isLogin} />
 
                 <Route exact path='/' render={props => <Home {...props} addToCart={this.addToCart} />} />
 

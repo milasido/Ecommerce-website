@@ -75,13 +75,13 @@ export class OrderDetail extends Component {
                                 <b className="bose-orderDetail__summarySectionTitle">Order summary:</b>
                                 <div className="bose-orderDetail__priceSummary">
                                     <div className="bose-orderDetail__priceRow">
-                                        <span>Subtotal:</span><span>${(or.orderTotal-(or.orderTotal*8.5/100)).toFixed(2)}</span>
+                                        <span>Subtotal:</span><span>${(or.orderTotal/(108.5/100)).toFixed(2)}</span>
                                     </div>
                                     <div className="bose-orderDetail__priceRow">
                                         <span>Shipping:</span><span>FREE</span>
                                     </div>
                                     <div className="bose-orderDetail__priceRow">
-                                            <span>Tax:</span><span>${(or.orderTotal*8.5/100).toFixed(2)}</span>
+                                            <span>Tax:</span><span>${(or.orderTotal - (or.orderTotal / (108.5 / 100))).toFixed(2)}</span>
                                     </div>
                                     <div className="bose-orderDetail__priceRow">
                                             <span>Total:</span><span>${or.orderTotal.toFixed(2)}</span>

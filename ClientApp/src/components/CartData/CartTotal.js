@@ -1,5 +1,5 @@
-﻿import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
+import React from 'react';
 
 export default function CartTotal({ handleClearCart, carts }) {
     const sub = carts.reduce((sum, i) => (sum += i.quantity * i.productPrice), 0);
