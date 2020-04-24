@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ecommerce.Data;
 using ecommerce.Dtos;
 using ecommerce.Model;
+using Ecommerce_website.Data;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,24 +19,26 @@ namespace ecommerce.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private DataContext _dataContext;
+        private readonly IUserRepository _repo;
+        private readonly DataContext _dataContext;
 
-        public UsersController(DataContext dataContext)
+        public UsersController(IUserRepository repo, DataContext context)
         {
-            _dataContext = dataContext;
+            _repo = repo;
+            _dataContext = context;
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProfile(int id)
         {
             // take user from database who has customerId  = {id}
-            var user = await _dataContext.Customer.FirstOrDefaultAsync(x => x.CustomerId == id);
+            var user = await _repo.getProfile(id);
             return Ok(user);
         }
 
         [HttpGet("{id}/addresses")]
         public async Task<IActionResult> GetAddress(int id)
         {
-            var user = await _dataContext.Customer.Include(i=>i.CustomerShippingAddresses).FirstOrDefaultAsync(x => x.CustomerId == id);
+            var user = await _repo.getAddress(id);
             return Ok(user);
         }
 
@@ -96,22 +99,31 @@ namespace ecommerce.Controllers
             ordertosave.OrderTotal = total;
             ordertosave.CardName = order.cardname;
             ordertosave.CardNumber = order.cardnumber;
-            await _dataContext.Orders.AddAsync(ordertosave);
-            await _dataContext.SaveChangesAsync();
-
-            foreach(var item in order.detail)
+            // await _dataContext.Orders.AddAsync(ordertosave);
+            // await _dataContext.SaveChangesAsync();
+            var changes = await _repo.SaveHistory(ordertosave);
+            // If there is change in database
+            if(changes > 0)
             {
-                var itemtosave = new OrderDetails();
-                itemtosave.ProductId = item.productId;
-                itemtosave.ProductUrl = item.productImageUrl;
-                itemtosave.ProductName = item.productName;
-                itemtosave.Quantity = item.quantity;
-                itemtosave.SalePrice = item.productPrice;
-                itemtosave.OrderId = _dataContext.Orders.Max(o => o.OrderId); // get last orderid just added 
-                await _dataContext.OrderDetails.AddAsync(itemtosave);
+                foreach(var item in order.detail)
+                {
+                    var itemtosave = new OrderDetails();
+                    itemtosave.ProductId = item.productId;
+                    itemtosave.ProductUrl = item.productImageUrl;
+                    itemtosave.ProductName = item.productName;
+                    itemtosave.Quantity = item.quantity;
+                    itemtosave.SalePrice = item.productPrice;
+                    // itemtosave.OrderId = _dataContext.Orders.Max(o => o.OrderId); // get last orderid just added 
+                    itemtosave.OrderId = _repo.getLastestOrder();
+                    // update orderdetails 
+                    // await _dataContext.OrderDetails.AddAsync(itemtosave);
+                    _repo.updateOrderDetails(itemtosave);
+                }
+                // await _dataContext.SaveChangesAsync();
+                _repo.SaveAllChange();
+                return Ok("save successful");
             }
-            await _dataContext.SaveChangesAsync();
-            return Ok("save successful");
+            return BadRequest("save unsuccessfully");
         }
 
 

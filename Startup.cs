@@ -54,6 +54,7 @@ namespace ecommerce
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             //jwt authentication
             var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:JWT_secret"].ToString());
             services.AddAuthentication(x =>
