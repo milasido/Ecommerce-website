@@ -18,6 +18,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using ecommerce.Model;
 using ecommerce.Data;
+using Ecommerce_website.Data;
 
 namespace ecommerce
 {
@@ -51,7 +52,8 @@ namespace ecommerce
             });
 
             services.AddCors();
-
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             //jwt authentication
             var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:JWT_secret"].ToString());
             services.AddAuthentication(x =>
