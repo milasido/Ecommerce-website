@@ -96,7 +96,6 @@ export class Checkout extends Component {
 
     handleValidate = event => {
         event.preventDefault();
-        //console.log(this.state) 
         const isValid = this.handleCheckShip();
         if (isValid) {
             axios.post('/api/validate/validate', this.state)

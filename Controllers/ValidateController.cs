@@ -22,7 +22,7 @@ namespace ecommerce.Controllers
             AddressToValidate result = new AddressToValidate();
             XDocument requestDoc = new XDocument(
                 new XElement("AddressValidateRequest",
-                    new XAttribute("USERID", "798STUDE0649"),
+                    new XAttribute("USERID", "798STUDE0649"), // userid from USPS api reristered
                     new XElement("Revision", "1"),
                     new XElement("Address",
                         new XAttribute("ID", "0"),
@@ -35,7 +35,6 @@ namespace ecommerce.Controllers
                     )
                 )
             );
-
             try
             {
                 var usps_api_url = "http://production.shippingapis.com/ShippingAPI.dll?API=Verify&XML=" + requestDoc;
