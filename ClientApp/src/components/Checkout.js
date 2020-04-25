@@ -23,7 +23,7 @@ export class Checkout extends Component {
         Zip4: '', Zip4Error: "",
         ValidateResult: {},
         cardname: "", CardNameError: "",
-        cartnumber: "", CardNumberError: "",
+        cardnumber: "", CardNumberError: "",
         expmonth: "", ExpMonthError: "",
         expyear: "", ExpYearError: "",
         cvv: "", CvvError: ""
@@ -65,10 +65,16 @@ export class Checkout extends Component {
 
         if (!this.state.cardname) CardNameError = "* Card Name cannot be blank";
         if (!this.state.cardnumber) CardNumberError = "* Card Number cannot be blank";
+        if ((!this.state.cardnumber.match(/^\d+$/) && this.state.cardnumber !== "") || this.state.cardnumber.length !== 16) CardNumberError = "* Please put 16 numbers from your card";
         if (!this.state.expmonth) ExpMonthError = "* Exp Month cannot be blank";
+        if ((!this.state.expmonth.match(/^\d+$/) && this.state.expmonth !== "") || this.state.expmonth.length !== 2) ExpMonthError = "* Exp Month must be 2 digits";
         if (!this.state.expyear) ExpYearError = "* Exp Year cannot be blank";
+        if (!this.state.expyear.match(/^\d+$/) && this.state.expyear !== "")  ExpYearError = "* Exp Year must be number";
+        if (this.state.expyear.length !== 4 && this.state.expyear !== "") ExpYearError = "* Exp Year must be 4 digits";
         if (!this.state.cvv) CvvError = "* Cvv cannot be blank";
-        if (this.state.cartnumber.match(/^[0-9]+$/) != null) CardNumberError = "* Please put 16 numbers from your card";
+        if ((!this.state.cvv.match(/^\d+$/) && this.state.cvv !== "") || this.state.cvv.length !== 3) CvvError = "* Cvv must be 3 digits";
+
+        
 
         if (CardNameError || CardNumberError || ExpMonthError || ExpYearError || CvvError) {
             this.setState({ CardNameError: CardNameError, CardNumberError: CardNumberError, ExpMonthError: ExpMonthError, ExpYearError: ExpYearError, CvvError: CvvError });
@@ -169,7 +175,7 @@ export class Checkout extends Component {
                                     <input onChange={this.handleChange} value={cardnumber} type="text1" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" />
                                     <div style={{ fontSize: 12, color: "red" }}>{this.state.CardNumberError}</div>
                                     <label>Exp Month</label>
-                                    <input onChange={this.handleChange} value={expmonth} type="text1" id="expmonth" name="expmonth" placeholder="September" />
+                                    <input onChange={this.handleChange} value={expmonth} type="text1" id="expmonth" name="expmonth" placeholder="01" />
                                     <div style={{ fontSize: 12, color: "red" }}>{this.state.ExpMonthError}</div>
                                     <div className="row rrr">
                                         <div className="col-50 c50">
