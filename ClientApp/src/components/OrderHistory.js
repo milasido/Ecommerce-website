@@ -72,6 +72,9 @@ export class OrderHistory extends Component {
                             </div>
                             </Link>
                         ))}
+                        <Link style={{textAlign:"center"}} to="/account">
+                            <button  type="button" className="btn btn-success">ACCOUNT</button>
+                        </Link>
                         </div>
                     </div>
             </div>
