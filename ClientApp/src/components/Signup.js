@@ -55,7 +55,7 @@ export class Signup extends Component {
                 // status 200 (good response) direct to login page
                 .then(response => { this.props.history.replace('/login'); })
                 // bad request catch error and setstate email error
-                .catch(error => { this.setState({ emailError: error.response.message }) })
+                .catch(error => { this.setState({ emailError: error.response.data.message }) })
             }
     };
 
