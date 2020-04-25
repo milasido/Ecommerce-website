@@ -130,9 +130,10 @@ namespace ecommerce.Controllers
         [HttpGet("{id}/ordershistory")]
         public async Task<IActionResult> GetOrdersHistory(int id)
         {
-            var cart = await _dataContext.Cart.Where(x => x.CustomerId == id).ToListAsync();
+            // var cart = await _dataContext.Cart.Where(x => x.CustomerId == id).ToListAsync();
             // get list of orders include order detail
-            var history = await _dataContext.Orders.Where(x => x.CustomerId == id).Include(i => i.OrderDetails).ToListAsync();
+            // var history = await _dataContext.Orders.Where(x => x.CustomerId == id).Include(i => i.OrderDetails).ToListAsync();
+            var history = await _repo.GetOrderHistory(id);
             return Ok(history);
         }
 
@@ -141,7 +142,8 @@ namespace ecommerce.Controllers
         [HttpPost("{id}/update")]
         public async Task<IActionResult> UserUpdate(int id, UserToUpdate usertoupdate)
         {
-            var user = await _dataContext.Customer.FirstOrDefaultAsync(x => x.CustomerId == id);
+            // var user = await _dataContext.Customer.FirstOrDefaultAsync(x => x.CustomerId == id);
+            var user = await _repo.getProfile(id);
             if (usertoupdate.newname != "") user.Fullname = usertoupdate.newname; 
             if (usertoupdate.newemail != "") user.Email = usertoupdate.newemail;
             if (usertoupdate.newaddress1 != "") user.Address1 = usertoupdate.newaddress1;
@@ -170,7 +172,8 @@ namespace ecommerce.Controllers
                 user.PasswordSalt = salted;
             }
 
-            await _dataContext.SaveChangesAsync();
+            // await _dataContext.SaveChangesAsync();
+            _repo.SaveAllChange();
             return Ok("update successful");
         }
     }

@@ -13,5 +13,6 @@ namespace Ecommerce_website.Data
          public int getLastestOrder();
          public void updateOrderDetails(OrderDetails itemToSave);
          public void SaveAllChange();
+         public Task<List<Orders>> GetOrderHistory(int id);
     }
 }

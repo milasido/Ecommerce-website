@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ecommerce.Data;
@@ -23,6 +24,13 @@ namespace Ecommerce_website.Data
         {
             var order_id =  _dataContext.Orders.Max(o => o.OrderId);
             return order_id;
+        }
+
+        public async Task<List<Orders>> GetOrderHistory(int id)
+        {
+            var history = await _dataContext.Orders.Where(x => x.CustomerId == id).Include(i => i.OrderDetails).ToListAsync();
+            return history;
+
         }
 
         public async Task<Customer> getProfile(int id)
