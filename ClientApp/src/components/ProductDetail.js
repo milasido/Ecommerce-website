@@ -1,4 +1,5 @@
 ﻿import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './ProductDetail.css';
 
@@ -181,6 +182,17 @@ export class ProductDetail extends Component {
                             {items.map(item => (<tr><td>Backlight</td><td>{item.backlight}</td></tr>))}
                         </tbody>
                     </table>    
+                    
+                    {/* Back to home button at the end */}
+                    {obj.map(item => (
+                        <div className="text-center">
+                            <Link style={{textAlign:"center"}} to="/">
+                                <button  type="button" className="btn btn-success">BACK TO HOME</button>
+                            </Link>
+                        </div>
+                    ))}
+
+
                </div>
             );
         }
