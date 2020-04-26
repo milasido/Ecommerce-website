@@ -115,11 +115,19 @@ export class ProductDetail extends Component {
                             </a>
                         </div>
                     </div>
+
+                    {/* Add white text at the end of page */}
+                    <h8 style={{ color: 'white' }}>WOW </h8>
+
                     {obj.map(item => (
                         <div className="text-center">
                             <button onClick={() => this.addToCart(item)} type="button" className="btn btn-warning">Add To Cart</button>
                         </div>
                     ))}
+
+                    {/* Add white text at the end of page */}
+                    <h8 style={{ color: 'white' }}>WOW </h8>
+
                     <div className="container">
                         {items.map(item => (
                             <div className="panel panel-default">
@@ -192,6 +200,9 @@ export class ProductDetail extends Component {
                         </div>
                     ))}
 
+                    {/* Add white text at the end of page */}
+                    <h1 style={{ color: 'white' }}>WOW </h1>
+                    <h1 style={{ color: 'white' }}>YOU FOUND OUT OR SECRET</h1>
 
                </div>
             );
