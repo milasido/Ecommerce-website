@@ -11,7 +11,7 @@ import { Account } from './components/Account';
 import { Checkout } from './components/Checkout';
 import { Confirm } from './components/Confirm';
 import { OrderHistory } from './components/OrderHistory';
-
+import "react-notification-alert/dist/animate.css";
 import './custom.css'
 import axios from 'axios';
 import { ThankYou } from './components/ThankYou';
@@ -37,6 +37,7 @@ export default class App extends Component {
         this.handleLogin = this.handleLogin.bind(this);
         this.addToCart = this.addToCart.bind(this);
         this.handleSaveCart = this.handleSaveCart.bind(this);
+        this.handleLastLogin = this.handleLastLogin.bind(this);
     }
 
     addToCart(item) {
@@ -63,11 +64,17 @@ export default class App extends Component {
         const id = JSON.parse(localStorage.getItem('profile')).CustomerId;
         axios.post(('/api/users/' + id + '/savecart'), JSON.parse(cartSave));
     }
+    //handle lastlogin
+    handleLastLogin() {
+        const id = JSON.parse(localStorage.getItem('profile')).CustomerId;
+        axios.post('/api/users/'+id+'/lastlogin'); // update last login in database
+    }
 
     // handle logout or loggin when click
     handleLogout() {
         if (localStorage.getItem('id_token') !== null) { // if logged in
             this.handleSaveCart(); // update current cart to database when logging out
+            this.handleLastLogin();
             localStorage.removeItem('id_token');
             localStorage.removeItem('profile');
             localStorage.removeItem('cart');

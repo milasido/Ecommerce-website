@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 
 namespace ecommerce.Controllers
@@ -137,7 +138,14 @@ namespace ecommerce.Controllers
             return Ok(history);
         }
 
-
+        [HttpPost("{id}/lastlogin")]
+        public async Task<IActionResult> LastLogin(int id)
+        {
+            var user = await _repo.getProfile(id);
+            user.LastLogin = DateTime.Now;
+            _repo.SaveAllChange();
+            return Ok("last login saved");
+        }
 
         [HttpPost("{id}/update")]
         public async Task<IActionResult> UserUpdate(int id, UserToUpdate usertoupdate)

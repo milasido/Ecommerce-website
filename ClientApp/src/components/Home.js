@@ -1,6 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import './Home_products.css';
+import NotificationAlert from 'react-notification-alert';
+
+var success = { place: 'tl', message: (<div>Item added successful</div>), type: "success", icon: "now-ui-icons ui-1_bell-53", autoDismiss: 2 };
+var unsuccess = { place: 'tl', message: (<div>Please login to start shopping</div>), type: "danger", icon: "now-ui-icons ui-1_bell-53", autoDismiss: 2 };
+
 
 export class Home extends Component {
     constructor(props) {
@@ -8,8 +13,23 @@ export class Home extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: []
+            items: [],
+            visible: false
         };
+    }
+
+    onShowAlert = () => {
+        this.setState({ visible: true }, () => {
+            window.setTimeout(() => {
+                this.setState({ visible: false })
+            }, 2000)
+        });
+    }
+    noti() {
+        if (localStorage.getItem("id_token") !== null)
+            this.refs.notify.notificationAlert(success);
+        else
+            this.refs.notify.notificationAlert(unsuccess)
     }
 
     componentDidMount() {
@@ -43,7 +63,8 @@ export class Home extends Component {
         } else {
             return (
                 <Fragment>
-                    <div className="page-header" style={{marginLeft: '30px'}}><h1>OUR PRODUCTS</h1></div>
+                    <div className="page-header" style={{ marginLeft: '30px' }}><h1>OUR PRODUCTS</h1></div>
+                    <NotificationAlert ref="notify" />
                 <div className="row">                 
                     {items.map(item => (
                         <div id="card-wrapper" className="cwrapper">
@@ -65,7 +86,7 @@ export class Home extends Component {
                                 </div>
                                 <div className="product-price-btn">
                                     <p><span id="price" >${item.productPrice}</span></p>
-                                    <button onClick={()=>this.props.addToCart(JSON.stringify(item))} type="button">Add to cart</button>
+                                    <button onClick={() => { this.props.addToCart(JSON.stringify(item)); this.noti(); }} type="button">Add to cart</button>
                                 </div>
                             </div>
 

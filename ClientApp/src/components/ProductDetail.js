@@ -2,6 +2,11 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './ProductDetail.css';
+import NotificationAlert from 'react-notification-alert';
+
+var success = { place: 'tl', message: (<div>Item added successful</div>), type: "success", icon: "now-ui-icons ui-1_bell-53", autoDismiss: 2 };
+var unsuccess = { place: 'tl', message: (<div>Please login to start shopping</div>), type: "danger", icon: "now-ui-icons ui-1_bell-53", autoDismiss: 2 };
+
 
 export class ProductDetail extends Component {
     constructor(props) {
@@ -10,9 +15,24 @@ export class ProductDetail extends Component {
             error: null,
             isLoaded: false,
             items: [],
-            obj: []
+            obj: [],
+            visible: false
         };
         this.addToCart = this.addToCart.bind(this);
+    }
+
+    onShowAlert = () => {
+        this.setState({ visible: true }, () => {
+            window.setTimeout(() => {
+                this.setState({ visible: false })
+            }, 2000)
+        });
+    }
+    noti() {
+        if (localStorage.getItem("id_token") !== null)
+            this.refs.notify.notificationAlert(success);
+        else
+            this.refs.notify.notificationAlert(unsuccess)
     }
 
     addToCart(item) {
@@ -78,6 +98,7 @@ export class ProductDetail extends Component {
         } else {
             return (
                 <div className="container">
+                    <NotificationAlert ref="notify" />
                     <div className="container">
                         {items.map(item => (
                             <h1>{item.name}</h1>
@@ -121,7 +142,7 @@ export class ProductDetail extends Component {
 
                     {obj.map(item => (
                         <div className="text-center">
-                            <button onClick={() => this.addToCart(item)} type="button" className="btn btn-warning">Add To Cart</button>
+                            <button onClick={() => { this.addToCart(item); this.noti(); }} type="button" className="btn btn-warning">Add To Cart</button>
                         </div>
                     ))}
 
